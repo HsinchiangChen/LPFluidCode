@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Lagrangian Particle Code for Fluid Dynamics: Main Page</title>
+<title>Lagrangian Particle Code for The Simulation of 2D/3D Fluid Dynamics: Main Page</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Lagrangian Particle Code for Fluid Dynamics
+   <div id="projectname">Lagrangian Particle Code for The Simulation of 2D/3D Fluid Dynamics
    </div>
   </td>
  </tr>
@@ -75,13 +75,64 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Lagrangian Particle Code for Fluid Dynamics Documentation</div>  </div>
+<div class="title">Main Page </div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="textblock"><h1><a class="anchor" id="sec1"></a>
+Overview of the Lagrangian Particle Method</h1>
+<p>A new Lagrangian particle method for solving Euler quations for compressible inviscid fluid or gas flows is developed by Hsinchiang Chen, Roman Samulyak, and Wei Li at the department of Applied Mathematics and Statistics at Stony Brook University. The preliminary results has been submitted to the Journal of Computational Physics (2015). Similar to Smoothed Particle Hydrodynamics (SPH) (see <a href="http://en.wikipedia.org/wiki/Smoothed-particle_hydrodynamics">http://en.wikipedia.org/wiki/Smoothed-particle_hydrodynamics</a> for SPH method), the method represents fluid cells with Lagrangian particles and is suitable for the simulation of complex free surface / multiphase flows. The main contributions of the proposed method, which is different from SPH in all other aspects, are<br/>
+(a) Significant improvement of approximation of differential operators based on a polynomial fit and the corresponding weighted least squares problem and convergence of prescribed order<br/>
+ (b) A new particle-based algorithm which provides both accuracy and long term stability<br/>
+ (c) Elimination of the dependence on artificial parameters such as the smoothening length in SPH<br/>
+ (d) Accurate resolution of states at free interfaces.<br/>
+Numerical verification tests are performed and demonstrated the expected convergence order.<br/>
+ </p>
+<h1><a class="anchor" id="sec2"></a>
+Overview of the Lagrangian Particle Code</h1>
+<p>The Lagrangian Particle code implements the proposed Lagrangian Particle method and is capable of simulating both 2D and 3D fluid dynamics. Since 1D is of high research/experiment value we are merging a independent 1D code into this code now to make this code a full-fledged 1D/2D/3D fluid dynamics code. It is a C++ code which is parallelized using multithreads with the OpenMp APIs. We have preliminary success on the speedups, which is about 5 times faster on 8 threads The most updated version of the code contains about 15 main modules, and about 35 modules in total, which contains over 10,000 lines of C/C++ code. There are currently two contributors to this code:<br/>
+1). Hsinchiang Chen is the main author who design the code structure and implements almost all modules in this code<br/>
+2). Kwangmin Yu is the second author who is intensively involved in the initial code struture design and internal data structure design. He is also the main author of the NeighbourSearch and <a class="el" href="classOctree.html" title="This class contains the Octree data structure and algorithm for nearest neighbour search of particles...">Octree</a> classes.<br/>
+ The accuracy of the proposed numerical algorithm and the code has been verified by comparing to results using MUSCL scheme with the FronTier code at the Stony Brook University. The results achieved the desired rate of convergence of the proposed algorithm.<br/>
+ All test results on the accuracy, convergence, and parallel performance of the code will be updated soon.</p>
+<h1><a class="anchor" id="sec3"></a>
+The Governing Equations</h1>
+<p>Consider the one-dimensional Lagrangian formulation of the Euler equations, written in the conservative form</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\[ U_{t}^{'} + \left[ F(U^{'}) \right]_{x} = 0, \]" src="form_30.png"/>
+</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\[ U^{'} = \left( \begin{array} {c} V \\ u \\ E \end{array} \right), \, F(U^{'}) = V_{0} \left( \begin{array} {c} -u \\ P \\ Pu \end{array} \right), \]" src="form_31.png"/>
+</p>
+<p>where <img class="formulaInl" alt="$V$" src="form_36.png"/> is the specific volume, <img class="formulaInl" alt="$u$" src="form_16.png"/> is the velocity, <img class="formulaInl" alt="$E$" src="form_17.png"/> is the specific total energy, and <img class="formulaInl" alt="$P$" src="form_18.png"/> is the pressure.<br/>
+ Further theories and derivations of equations of this method will be updated soon.<br/>
+</p>
+<h1><a class="anchor" id="sec4"></a>
+The Work Flow of the Code</h1>
+<p>We give a qualitative description of the code by using a flow chart describing how the algorithm/code works.</p>
+<div class="image">
+<img src="flow_chart.jpg" alt="flow_chart.jpg"/>
+</div>
+<h1><a class="anchor" id="sec5"></a>
+Simulation of 2D disks collision</h1>
+<p>The following simulation snapshots demonstrates the results of two 2D disks colliding with each other.</p>
+<div class="image">
+<img src="disk_collision.gif" alt="disk_collision.gif"/>
+</div>
+<h1><a class="anchor" id="sec6"></a>
+Simulation of 2D Gaussian-profile pressure propagation</h1>
+<p>The following simulation snapshots demonstrates the results of a 2D disk with a Gaussian-profile pressure initialization with the center of Gaussian being the center of the disk.</p>
+<div class="image">
+<img src="gauss.gif" alt="gauss.gif"/>
+</div>
+<dl class="section author"><dt>Author</dt><dd>Chen, Hsin-Chiang (<a href="#" onclick="location.href='mai'+'lto:'+'mor'+'ri'+'sch'+'en'+'200'+'8@'+'gma'+'il'+'.co'+'m'; return false;">morri<span style="display: none;">.nosp@m.</span>sche<span style="display: none;">.nosp@m.</span>n2008<span style="display: none;">.nosp@m.</span>@gma<span style="display: none;">.nosp@m.</span>il.co<span style="display: none;">.nosp@m.</span>m</a>)</dd></dl>
+<p>Co-author: Yu, Kwangmin (<a href="#" onclick="location.href='mai'+'lto:'+'yuk'+'wa'+'ngm'+'in'+'@gm'+'ai'+'l.c'+'om'; return false;">yukwa<span style="display: none;">.nosp@m.</span>ngmi<span style="display: none;">.nosp@m.</span>n@gma<span style="display: none;">.nosp@m.</span>il.c<span style="display: none;">.nosp@m.</span>om</a>)</p>
+<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2015/03/09</dd></dl>
+<p>Created on: 2015/03/09 </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 9 2015 21:00:19 for Lagrangian Particle Code for Fluid Dynamics by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Mar 10 2015 18:26:51 for Lagrangian Particle Code for The Simulation of 2D/3D Fluid Dynamics by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

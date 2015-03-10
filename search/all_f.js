@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['readme',['README',['../md_README.html',1,'']]],
   ['registergeometry',['registerGeometry',['../classGeometryFactory.html#a6f722977cce9ea9a3cb3ef1e469178de',1,'GeometryFactory']]],
   ['registerstate',['registerState',['../classStateFactory.html#a16cb7a68980baccd46c01dcafb26c3ca',1,'StateFactory']]],
   ['registrar_2eh',['registrar.h',['../registrar_8h.html',1,'']]],

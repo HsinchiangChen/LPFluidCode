@@ -10,3 +10,28 @@
 \form#9:$x$
 \form#10:$y$
 \form#11:$z$
+\form#12:\begin{equation} { U_{t}^{'} + \left[ F(U^{'}) \right]_{x} = 0, \end{equation}
+\form#13:\begin{equation} { U^{'} = \left( \f{array} { {c} V \\ u \\ E \end{equation}
+\form#14:\begin{array} { {c} -u \\ P \\ Pu \end{array}
+\form#15:$ V $
+\form#16:$u$
+\form#17:$E$
+\form#18:$P$
+\form#19:$e=f\left( P,V \right) $
+\form#20:$e$
+\form#21:$e = E - u^2/2$
+\form#22:$U=[V$
+\form#23:$P]^{T}$
+\form#24:\begin{equation} { U_{t} + A(U)U_{x} = 0, \end{equation}
+\form#25:\begin{equation} { U^{'} = \left( \begin{array} {c} V \\ u \\ E \end{array} \right), \, F(U^{'}) = V_{0} \left( \begin{array} {c} -u \\ P \\ Pu \end{array} \right), \end{equation}
+\form#26:\begin{equation} { U_{t}^{'} + \left[ F(U^{'}) \right]_{x} = 0, \nonumber \end{equation}
+\form#27:\begin{equation} { U^{'} = \left( \begin{array} {c} V \\ u \\ E \end{array} \right), \, F(U^{'}) = V_{0} \left( \begin{array} {c} -u \\ P \\ Pu \end{array} \right), \nonumber \end{equation}
+\form#28:$U=\left[ V$
+\form#29:$P \right]^{T}$
+\form#30:\[ U_{t}^{'} + \left[ F(U^{'}) \right]_{x} = 0, \]
+\form#31:\[ U^{'} = \left( \begin{array} {c} V \\ u \\ E \end{array} \right), \, F(U^{'}) = V_{0} \left( \begin{array} {c} -u \\ P \\ Pu \end{array} \right), \]
+\form#32:$ u $
+\form#33:$ E $
+\form#34:$ ABCDE $
+\form#35:$ VVVABCDE $
+\form#36:$V$

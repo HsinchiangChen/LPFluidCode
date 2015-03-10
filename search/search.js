@@ -14,7 +14,7 @@ var indexSectionsWithContent =
   4: "dim",
   5: "gs",
   6: "h",
-  7: "p"
+  7: "mr"
 };
 
 var indexSectionNames =

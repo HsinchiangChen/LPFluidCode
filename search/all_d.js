@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['project_20readme_20file',['Project README file',['../md_README.html',1,'']]],
   ['particle_5fdata_2eh',['particle_data.h',['../particle__data_8h.html',1,'']]],
   ['particle_5fviewer_2eh',['particle_viewer.h',['../particle__viewer_8h.html',1,'']]],
   ['particledata',['ParticleData',['../classParticleData.html',1,'ParticleData'],['../classParticleData.html#a462cb717b56e25a02ed1da805d1a7e53',1,'ParticleData::ParticleData()']]],
