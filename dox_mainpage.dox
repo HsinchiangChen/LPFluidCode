@@ -1,0 +1,103 @@
+/**
+ * \mainpage Main Page
+ * 
+ * \section sec1 Overview of the Lagrangian Particle Method 
+ *
+ * A new Lagrangian particle method for solving Euler
+ * quations for compressible inviscid fluid or gas flows is developed by 
+ * Hsinchiang Chen, Roman Samulyak, and Wei Li at 
+ * the department of Applied Mathematics and Statistics at Stony Brook University. 
+ * The preliminary results has been submitted to the Journal of Computational Physics (2015).
+ * Similar to Smoothed Particle Hydrodynamics (SPH) 
+ * (see http://en.wikipedia.org/wiki/Smoothed-particle_hydrodynamics for SPH method),
+ * the method represents fluid cells with Lagrangian particles and is suitable for the
+ * simulation of complex free surface / multiphase flows.
+ * The main contributions of the proposed method, which is different from SPH in all other aspects,
+ * are\n
+ * (a) Significant improvement of approximation of differential operators based on 
+ * a polynomial fit and the corresponding weighted least squares problem
+ * and convergence of prescribed order\n 
+ * (b) A new particle-based algorithm which provides both accuracy and long term stability\n 
+ * (c) Elimination of the dependence on artificial parameters such as the
+ * smoothening length in SPH\n  
+ * (d) Accurate resolution of states at free interfaces.\n
+ * Numerical verification tests are performed and demonstrated the expected convergence order.\n
+ *
+ * \section sec2 Overview of the Lagrangian Particle Code
+ *
+ * The Lagrangian Particle code implements the proposed Lagrangian Particle method
+ * and is capable of simulating both 2D and 3D fluid dynamics. 
+ * Since 1D is of high research/experiment value we are merging a independent 1D code into
+ * this code now to make this code a full-fledged 1D/2D/3D fluid dynamics code. 
+ * It is a C++ code which is parallelized using multithreads with the OpenMp APIs. 
+ * We have preliminary success on the speedups, which is about 5 times faster on 8 threads
+ * The most updated version of the code contains about 15 main modules, and about 35 modules in total,
+ * which contains over 10,000 lines of C/C++ code. There are currently two contributors to this code:\n
+ * 1). Hsinchiang Chen is the main author who design the code structure and implements almost all modules
+ * in this code\n
+ * 2). Kwangmin Yu is the second author who is intensively involved in the initial code struture design and
+ * internal data structure design. He is also the main author of the NeighbourSearch and Octree classes.\n
+ * 
+ * The accuracy of the proposed numerical algorithm and the code has been verified 
+ * by comparing to results using MUSCL scheme with the FronTier code at the Stony Brook University.
+ * The results achieved the desired rate of convergence of the proposed algorithm.\n
+ *
+ * All test results on the accuracy, convergence, and parallel performance of the code will be updated soon.
+ *
+ * 
+ * \section sec3 The Governing Equations  
+ * Consider the one-dimensional Lagrangian formulation of the Euler
+ * equations, written in the conservative form
+ *
+ * \f[ 
+ *	   U_{t}^{'} + \left[ F(U^{'}) \right]_{x} = 0, 
+ * \f]
+ *
+ * \f[
+ *	   U^{'} = \left( \begin{array} {c} V \\ u \\ E \end{array} \right), 
+ *	   \, F(U^{'}) = V_{0} \left( \begin{array} {c} -u \\ P \\ Pu \end{array} \right),
+ * \f]
+ *
+ * where \f$V\f$ is the specific volume, \f$u\f$ is the velocity, \f$E\f$ is the specific
+ * total energy, and \f$P\f$ is the pressure.\n
+ *
+ * Further theories and derivations of equations of this method will be updated soon.\n 
+ *
+ * \section sec4 The Work Flow of the Code
+ * 
+ * We give a qualitative description of the code by using a flow chart describing how the algorithm/code works.
+ *
+ * \image html flow_chart.jpg
+ *
+ * \section sec5 Simulation of 2D disks collision 
+ *
+ * The following simulation snapshots demonstrates the results of two 2D disks colliding with
+ * each other. 
+ * 
+ * 
+ * \image html disk_collision.gif
+ *
+ *
+ * \section sec6 Simulation of 2D Gaussian-profile pressure propagation 
+ *
+ * The following simulation snapshots demonstrates the results of a 2D disk 
+ * with a Gaussian-profile pressure initialization with the center of Gaussian being
+ * the center of the disk. 
+ * 
+ * 
+ * \image html gauss.gif
+ *
+ *
+ * \author Chen, Hsin-Chiang (morrischen2008@gmail.com) 
+ *
+ * Co-author: Yu, Kwangmin (yukwangmin@gmail.com) 
+ *                          
+ *
+ *
+ * \version 1.0 
+ *
+ * \date 2015/03/09
+ *
+ * Created on: 2015/03/09 
+ *
+ */

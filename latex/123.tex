@@ -1,0 +1,41 @@
+\hypertarget{123_Overview}{}\section{of the Lagrangian Particle Method}\label{123_Overview}
+A new Lagrangian particle method for solving Euler quations for compressible inviscid fluid or gas flows is developed by Hsinchiang Chen, Roman Samulyak, and Wei Li at the department of Applied Mathematics and Statistics at Stony Brook University. The preliminary results has been submitted to the Journal of Computational Physics (2015). Similar to Smoothed Particle Hydrodynamics (S\-P\-H) (see \href{http://en.wikipedia.org/wiki/Smoothed-particle_hydrodynamics}{\tt http\-://en.\-wikipedia.\-org/wiki/\-Smoothed-\/particle\-\_\-hydrodynamics} for S\-P\-H method), the method represents fluid cells with Lagrangian particles and is suitable for the simulation of complex free surface / multiphase flows. The main contributions of the proposed method, which is different from S\-P\-H in all other aspects, are\par
+(a) Significant improvement of approximation of differential operators based on a polynomial fit and the corresponding weighted least squares problem and convergence of prescribed order\par
+ (b) A new particle-\/based algorithm which provides both accuracy and long term stability\par
+ (c) Elimination of the dependence on artificial parameters such as the smoothening length in S\-P\-H\par
+ (d) Accurate resolution of states at free interfaces.\par
+Numerical verification tests are performed and demonstrated the expected convergence order.\par
+ {\bfseries  Overview of the Lagrangian Particle Code }\par
+ The Lagrangian Particle code implements The accuracy of the proposed numerical algorithm and the code has been verified by comparing to results using M\-U\-S\-C\-L scheme with the Fron\-Tier code at the Stony Brook University. The results also achieved the desired rate of convergence of the proposed algorithm.\par
+
+
+The code now is parallelized using multithreads with the Open\-Mp A\-P\-Is. We have preliminary success on the speedups, which is about 5 times faster on 8 threads.\par
+ Test results on the accuracy, convergence, and parallel performance of the code will be updated soon.
+
+{\bfseries  The Governing Equations }\par
+ Consider the one-\/dimensional Lagrangian formulation of the Euler equations, written in the conservative form
+
+\[ U_{t}^{'} + \left[ F(U^{'}) \right]_{x} = 0, \]
+
+\[ U^{'} = \left( \begin{array} {c} V \\ u \\ E \end{array} \right), \, F(U^{'}) = V_{0} \left( \begin{array} {c} -u \\ P \\ Pu \end{array} \right), \]
+
+where $V$ is the specific volume, $u$ is the velocity, $E$ is the specific total energy, and $P$ is the pressure.\par
+ Further details about this method will be updated soon.\par
+
+
+We give a qualitative description of the code by using a flow chart describing how the algorithm/code works.
+
+
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+Co-\/author\-: Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com})
+
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2015/03/09
+\end{DoxyDate}
+Created on\-: 2015/03/09 
