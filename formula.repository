@@ -1,0 +1,12 @@
+\form#0:$ (x-\mbox{xcen})^2+(y-\mbox{ycen})^2+(z-\mbox{zcen})^2 \leq r^2 $
+\form#1:$ (x-\mbox{xcen})^2+(y-\mbox{ycen})^2 \leq r^2 $
+\form#2:$ x $
+\form#3:\[ QRPx = b \]
+\form#4:$ P $
+\form#5:$ Q^T $
+\form#6:\[ RPx = Q^T b \]
+\form#7:$ y = Px $
+\form#8:$ Px = y $
+\form#9:$x$
+\form#10:$y$
+\form#11:$z$

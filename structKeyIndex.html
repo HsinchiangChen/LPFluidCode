@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Lagrangian Particle Code for Fluid Dynamics: Main Page</title>
+<title>Lagrangian Particle Code for Fluid Dynamics: KeyIndex Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -36,9 +36,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -58,7 +58,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-</div><!-- top -->
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -73,15 +80,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+</div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structKeyIndex-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Lagrangian Particle Code for Fluid Dynamics Documentation</div>  </div>
+<div class="title">KeyIndex Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This struct contains the morton key and the index of a particle. a vector of such structs is then sorted by the "key" field.  
+ <a href="structKeyIndex.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="octree_8h_source.html">octree.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:add3acab245c56654038ed2fa7767cbdd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add3acab245c56654038ed2fa7767cbdd"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (const <a class="el" href="structKeyIndex.html">KeyIndex</a> &amp;a) const </td></tr>
+<tr class="separator:add3acab245c56654038ed2fa7767cbdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a295cabcb7cd3d9acf0aac6a2b6ec58fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a295cabcb7cd3d9acf0aac6a2b6ec58fd"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>key</b></td></tr>
+<tr class="separator:a295cabcb7cd3d9acf0aac6a2b6ec58fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad67b48894485303bdfd1ae11c77c4239"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad67b48894485303bdfd1ae11c77c4239"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>index</b></td></tr>
+<tr class="separator:ad67b48894485303bdfd1ae11c77c4239"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This struct contains the morton key and the index of a particle. a vector of such structs is then sorted by the "key" field. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="octree_8h_source.html">octree.h</a></li>
+</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 9 2015 21:00:19 for Lagrangian Particle Code for Fluid Dynamics by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 9 2015 21:00:14 for Lagrangian Particle Code for Fluid Dynamics by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
