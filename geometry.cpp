@@ -1,0 +1,89 @@
+#include "geometry.h"
+#include <iostream>
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+// Start of Ball
+////////////////////////////////////////////////////////////////////////////////////////
+
+Ball::Ball():radius(0.5), xCen(0), yCen(0), zCen(0) {}
+
+bool Ball::operator()(double x, double y, double z) const {
+	return ((x-xCen)*(x-xCen)+(y-yCen)*(y-yCen)+(z-zCen)*(z-zCen)<radius*radius);
+}
+
+void Ball::getBoundingBox(double& xmin, double& xmax, double& ymin, double& ymax, double& zmin, double& zmax) {
+	xmin = xCen-radius;
+	xmax = xCen+radius;
+	ymin = yCen-radius;
+	ymax = yCen+radius;
+	zmin = zCen-radius;
+	zmax = zCen+radius;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+// End of Ball
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+// Start of Disk
+////////////////////////////////////////////////////////////////////////////////////////
+
+Disk::Disk():radius(1), xCen(0), yCen(0) {}
+
+bool Disk::operator()(double x, double y, double z=0) const {
+	return ((x-xCen)*(x-xCen)+(y-yCen)*(y-yCen)<radius*radius);
+}
+
+void Disk::getBoundingBox(double& xmin, double& xmax, double& ymin, double& ymax, double& zmin, double& zmax) {
+	xmin = xCen-radius;
+	xmax = xCen+radius;
+	ymin = yCen-radius;
+	ymax = yCen+radius;
+	zmin = 0;
+	zmax = 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+// End of Disk
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+// Start of GeometryFactory
+////////////////////////////////////////////////////////////////////////////////////////
+
+GeometryFactory& GeometryFactory::instance() { 
+	static GeometryFactory geoFactory;
+	return geoFactory;
+}
+
+void GeometryFactory::registerGeometry(std::string name, GeoCreateFunc func) {
+	
+	geoTable.insert({name,func});
+
+}
+
+Geometry* GeometryFactory::createGeometry(std::string name) {
+	const auto result = geoTable.find(name);
+	if(result==geoTable.end()) { // the goemetry class name is not registered
+		std::cout<<"This geometry class name is not registered!!!"<<std::endl;
+		return nullptr;
+	}
+	return (result->second)();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+// End of GeometryFactory
+////////////////////////////////////////////////////////////////////////////////////////
+
