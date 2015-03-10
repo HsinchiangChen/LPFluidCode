@@ -1,0 +1,103 @@
+\hypertarget{classDefaultTimeController}{\section{Default\-Time\-Controller Class Reference}
+\label{classDefaultTimeController}\index{Default\-Time\-Controller@{Default\-Time\-Controller}}
+}
+
+
+This time controller calculates the time stepping based on the C\-F\-L condition.  
+
+
+
+
+{\ttfamily \#include $<$time\-\_\-controller.\-h$>$}
+
+Inheritance diagram for Default\-Time\-Controller\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDefaultTimeController}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDefaultTimeController_a7664ecb4e31ff04870353492bdbb337e}{Default\-Time\-Controller} (const \hyperlink{classInitializer}{Initializer} \&init, \hyperlink{classLPSolver}{L\-P\-Solver} $\ast$solver, const std\-::vector$<$ \hyperlink{classParticleViewer}{Particle\-Viewer} $\ast$ $>$ \&viewers)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classDefaultTimeController_a25ac85307f49f9f304a78d648b5676d7}{solve} ()
+\begin{DoxyCompactList}\small\item\em Calls main solvers of the simulation and determines the time stepping between iterations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This time controller calculates the time stepping based on the C\-F\-L condition. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+Co-\/author\-: Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com}) on initial interface design
+
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/07/12
+\end{DoxyDate}
+Created on\-: 2014/07/02 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classDefaultTimeController_a7664ecb4e31ff04870353492bdbb337e}{\index{Default\-Time\-Controller@{Default\-Time\-Controller}!Default\-Time\-Controller@{Default\-Time\-Controller}}
+\index{Default\-Time\-Controller@{Default\-Time\-Controller}!DefaultTimeController@{Default\-Time\-Controller}}
+\subsubsection[{Default\-Time\-Controller}]{\setlength{\rightskip}{0pt plus 5cm}Default\-Time\-Controller\-::\-Default\-Time\-Controller (
+\begin{DoxyParamCaption}
+\item[{const {\bf Initializer} \&}]{init, }
+\item[{{\bf L\-P\-Solver} $\ast$}]{solver, }
+\item[{const std\-::vector$<$ {\bf Particle\-Viewer} $\ast$ $>$ \&}]{viewers}
+\end{DoxyParamCaption}
+)}}\label{classDefaultTimeController_a7664ecb4e31ff04870353492bdbb337e}
+
+
+Constructor. 
+
+The constructor initializes parameters based on  and also initializes the main solver and viewer based on {\itshape solver} and  used to perform the main iterations and to write results for viewing
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em init} & Const reference to an object of the \hyperlink{classInitializer}{Initializer} class \\
+\hline
+\mbox{\tt in}  & {\em solver} & Pointer to an object of the \hyperlink{classLPSolver}{L\-P\-Solver} family \\
+\hline
+\mbox{\tt in}  & {\em viewers} & Vector containing pointers to objects of the \hyperlink{classParticleViewer}{Particle\-Viewer} family \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classDefaultTimeController_a25ac85307f49f9f304a78d648b5676d7}{\index{Default\-Time\-Controller@{Default\-Time\-Controller}!solve@{solve}}
+\index{solve@{solve}!DefaultTimeController@{Default\-Time\-Controller}}
+\subsubsection[{solve}]{\setlength{\rightskip}{0pt plus 5cm}int Default\-Time\-Controller\-::solve (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classDefaultTimeController_a25ac85307f49f9f304a78d648b5676d7}
+
+
+Calls main solvers of the simulation and determines the time stepping between iterations. 
+
+The simulation is performed by calling the main L\-P solver for each iteration and the time length between iterations is determined by the C\-F\-L condition
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the entire simulation runs successfully to the end; 1 if main solver fails during any iteration 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classTimeController_abcb9dcb68b50cac5c176595091d913d1}{Time\-Controller}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{time__controller_8h}{time\-\_\-controller.\-h}\item 
+time\-\_\-controller.\-cpp\end{DoxyCompactItemize}

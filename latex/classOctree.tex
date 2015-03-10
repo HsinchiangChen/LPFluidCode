@@ -1,0 +1,53 @@
+\hypertarget{classOctree}{\section{Octree Class Reference}
+\label{classOctree}\index{Octree@{Octree}}
+}
+
+
+This class contains the \hyperlink{classOctree}{Octree} data structure and algorithm for nearest neighbour search of particles.  
+
+
+
+
+{\ttfamily \#include $<$octree.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classOctree_ab357c57a94cc06c3b31206b92b52dd01}{{\bfseries Octree} (int treedepth, size\-\_\-t max\-Particle\-Num)}\label{classOctree_ab357c57a94cc06c3b31206b92b52dd01}
+
+\item 
+int \hyperlink{classOctree_afca0e9d681795da46f2fbfb24894be6c}{build\-Octree} (const double $\ast$x, const double $\ast$y, const double $\ast$z, size\-\_\-t num\-Particles)
+\item 
+\hypertarget{classOctree_a2dd2fcfd44f50ac39fcf8320861efcd4}{int {\bfseries search\-Neighbor} (const double search\-\_\-x, const double search\-\_\-y, const double search\-\_\-z, const double radius, int $\ast$result, size\-\_\-t \&result\-\_\-length)}\label{classOctree_a2dd2fcfd44f50ac39fcf8320861efcd4}
+
+\item 
+\hypertarget{classOctree_aa04260035f1e0fceb840f637330eda78}{int {\bfseries search\-Neighbor} (const double search\-\_\-x, const double search\-\_\-y, const double search\-\_\-z, const double radius, \hyperlink{structSearchResult}{Search\-Result} $\ast$result, size\-\_\-t \&result\-\_\-length)}\label{classOctree_aa04260035f1e0fceb840f637330eda78}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class contains the \hyperlink{classOctree}{Octree} data structure and algorithm for nearest neighbour search of particles. 
+
+This class is very strongly related with its implementation and the data structure of Default\-Particles class. So do not use this class with the general purpose. This class does not have octree search algorithm. The search algorithm is implemented in Default\-Particles and its subclasses. The member fields starting from \char`\"{}m\-\_\-v\char`\"{} must have same length with Default\-Particles\-::m\-\_\-i\-Num\-Of\-Particles and m\-\_\-i\-Total\-Number\-Of\-Particles. That is, the length of these member field means the total number of particles. Each value of the array represent octree nodes. The location information can be fetched by decoding m\-\_\-v\-Key value. \begin{DoxySeeAlso}{See Also}
+Default\-Particles 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classOctree_afca0e9d681795da46f2fbfb24894be6c}{\index{Octree@{Octree}!build\-Octree@{build\-Octree}}
+\index{build\-Octree@{build\-Octree}!Octree@{Octree}}
+\subsubsection[{build\-Octree}]{\setlength{\rightskip}{0pt plus 5cm}int Octree\-::build\-Octree (
+\begin{DoxyParamCaption}
+\item[{const double $\ast$}]{x, }
+\item[{const double $\ast$}]{y, }
+\item[{const double $\ast$}]{z, }
+\item[{size\-\_\-t}]{num\-Particles}
+\end{DoxyParamCaption}
+)}}\label{classOctree_afca0e9d681795da46f2fbfb24894be6c}
+brief Building octree data structure. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{octree_8h}{octree.\-h}\item 
+octree.\-cpp\end{DoxyCompactItemize}

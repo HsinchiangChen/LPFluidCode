@@ -1,0 +1,33 @@
+\hypertarget{octree_8h}{\section{octree.\-h File Reference}
+\label{octree_8h}\index{octree.\-h@{octree.\-h}}
+}
+
+
+This header file contains classes for the \hyperlink{classOctree}{Octree} data structure and nearest neighbour search algorithms.  
+
+
+{\ttfamily \#include $<$stdint.\-h$>$}\\*
+{\ttfamily \#include $<$deque$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structSearchResult}{Search\-Result}
+\begin{DoxyCompactList}\small\item\em A simple struct for the neighbour search result. \end{DoxyCompactList}\item 
+struct \hyperlink{structKeyIndex}{Key\-Index}
+\begin{DoxyCompactList}\small\item\em This struct contains the morton key and the index of a particle. a vector of such structs is then sorted by the \char`\"{}key\char`\"{} field. \end{DoxyCompactList}\item 
+class \hyperlink{classOctree}{Octree}
+\begin{DoxyCompactList}\small\item\em This class contains the \hyperlink{classOctree}{Octree} data structure and algorithm for nearest neighbour search of particles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This header file contains classes for the \hyperlink{classOctree}{Octree} data structure and nearest neighbour search algorithms. \begin{DoxyAuthor}{Author}
+Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/10/15
+\end{DoxyDate}
+Created on\-: 2014/8/22 

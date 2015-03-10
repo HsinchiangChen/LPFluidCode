@@ -1,0 +1,236 @@
+\hypertarget{classOctreeSearcher}{\section{Octree\-Searcher Class Reference}
+\label{classOctreeSearcher}\index{Octree\-Searcher@{Octree\-Searcher}}
+}
+
+
+A class that searches nearest neighbours of particles based on the \hyperlink{classOctree}{Octree} data structure and algorithm.  
+
+
+
+
+{\ttfamily \#include $<$neighbour\-\_\-searcher.\-h$>$}
+
+Inheritance diagram for Octree\-Searcher\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classOctreeSearcher}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classOctreeSearcher_ac2c8c97728fffdf4149c97ee336e7a9f}{Octree\-Searcher} (const \hyperlink{classInitializer}{Initializer} \&init)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classOctreeSearcher_ac47c6353d956585475cc1ce62b69afe0}{Octree\-Searcher} (size\-\_\-t max\-Particle\-Num, size\-\_\-t max\-Neighbour\-Num, int treedepth)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classOctreeSearcher_a2bdc0bfe3a735b21055f310ddd41031d}{$\sim$\-Octree\-Searcher} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classOctreeSearcher_acc585c4f280f453930f0d1e33f8ed040}{build\-Search\-Structure} (const double $\ast$x, const double $\ast$y, const double $\ast$z, size\-\_\-t num\-Particles)
+\begin{DoxyCompactList}\small\item\em Build an \hyperlink{classOctree}{Octree} object for the nearest neighbour search, based on the input particle location ayyays in the x, y, and z-\/coordinates and the number of particles. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classOctreeSearcher_a3fd644ff4fe22f3fc5d2ab154449d839}{build\-Search\-Structure} (const double $\ast$x, const double $\ast$y, const double $\ast$z, size\-\_\-t begin, size\-\_\-t num\-Particles)
+\begin{DoxyCompactList}\small\item\em Build an \hyperlink{classOctree}{Octree} object for the nearest neighbour search, based on the input particle location arrays in the x, y, and z-\/coordinates, the starting point in the arrays and the number of particles. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classOctreeSearcher_a30a8a3fc13649be5640f599721f2526a}{search\-Neighbour} (const double x, const double y, const double z, const double radius, int $\ast$result, double $\ast$distance, size\-\_\-t \&result\-\_\-length, int index=-\/1)
+\begin{DoxyCompactList}\small\item\em Searches the nearest neighbours for a particle on the built \hyperlink{classOctree}{Octree} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that searches nearest neighbours of particles based on the \hyperlink{classOctree}{Octree} data structure and algorithm. 
+
+\begin{DoxyAuthor}{Author}
+Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/10/14
+\end{DoxyDate}
+Created on\-: 2014/8/22 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classOctreeSearcher_ac2c8c97728fffdf4149c97ee336e7a9f}{\index{Octree\-Searcher@{Octree\-Searcher}!Octree\-Searcher@{Octree\-Searcher}}
+\index{Octree\-Searcher@{Octree\-Searcher}!OctreeSearcher@{Octree\-Searcher}}
+\subsubsection[{Octree\-Searcher}]{\setlength{\rightskip}{0pt plus 5cm}Octree\-Searcher\-::\-Octree\-Searcher (
+\begin{DoxyParamCaption}
+\item[{const {\bf Initializer} \&}]{init}
+\end{DoxyParamCaption}
+)}}\label{classOctreeSearcher_ac2c8c97728fffdf4149c97ee336e7a9f}
+
+
+Constructor. 
+
+Obtain all necessary information for the \hyperlink{classInitializer}{Initializer} object and allocate memory for the \hyperlink{classOctree}{Octree} object and array of \hyperlink{structSearchResult}{Search\-Result}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em init} & An object of the \hyperlink{classInitializer}{Initializer} class\\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Yu, Kwangmin \href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Mon Oct. 15 2014 
+\end{DoxyDate}
+\hypertarget{classOctreeSearcher_ac47c6353d956585475cc1ce62b69afe0}{\index{Octree\-Searcher@{Octree\-Searcher}!Octree\-Searcher@{Octree\-Searcher}}
+\index{Octree\-Searcher@{Octree\-Searcher}!OctreeSearcher@{Octree\-Searcher}}
+\subsubsection[{Octree\-Searcher}]{\setlength{\rightskip}{0pt plus 5cm}Octree\-Searcher\-::\-Octree\-Searcher (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{max\-Particle\-Num, }
+\item[{size\-\_\-t}]{max\-Neighbour\-Num, }
+\item[{int}]{treedepth}
+\end{DoxyParamCaption}
+)}}\label{classOctreeSearcher_ac47c6353d956585475cc1ce62b69afe0}
+
+
+Constructor. 
+
+Obtain scalar parameters and allocate memory for the \hyperlink{classOctree}{Octree} object and array of \hyperlink{structSearchResult}{Search\-Result}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em max\-Particle\-Num} & The capacity of the particle array ($>$ the total number of particles) \\
+\hline
+\mbox{\tt in}  & {\em max\-Neighbour\-Num} & The maximum number of neighbours of a particle \\
+\hline
+\mbox{\tt in}  & {\em treedepth} & The depth of octrees \\
+\hline
+\end{DoxyParams}
+\hypertarget{classOctreeSearcher_a2bdc0bfe3a735b21055f310ddd41031d}{\index{Octree\-Searcher@{Octree\-Searcher}!$\sim$\-Octree\-Searcher@{$\sim$\-Octree\-Searcher}}
+\index{$\sim$\-Octree\-Searcher@{$\sim$\-Octree\-Searcher}!OctreeSearcher@{Octree\-Searcher}}
+\subsubsection[{$\sim$\-Octree\-Searcher}]{\setlength{\rightskip}{0pt plus 5cm}virtual Octree\-Searcher\-::$\sim$\-Octree\-Searcher (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classOctreeSearcher_a2bdc0bfe3a735b21055f310ddd41031d}
+
+
+Destructor. 
+
+Delete the \hyperlink{classOctree}{Octree} object and the array of \hyperlink{structSearchResult}{Search\-Result} 
+
+\subsection{Member Function Documentation}
+\hypertarget{classOctreeSearcher_acc585c4f280f453930f0d1e33f8ed040}{\index{Octree\-Searcher@{Octree\-Searcher}!build\-Search\-Structure@{build\-Search\-Structure}}
+\index{build\-Search\-Structure@{build\-Search\-Structure}!OctreeSearcher@{Octree\-Searcher}}
+\subsubsection[{build\-Search\-Structure}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Octree\-Searcher\-::build\-Search\-Structure (
+\begin{DoxyParamCaption}
+\item[{const double $\ast$}]{x, }
+\item[{const double $\ast$}]{y, }
+\item[{const double $\ast$}]{z, }
+\item[{size\-\_\-t}]{num\-Particles}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classOctreeSearcher_acc585c4f280f453930f0d1e33f8ed040}
+
+
+Build an \hyperlink{classOctree}{Octree} object for the nearest neighbour search, based on the input particle location ayyays in the x, y, and z-\/coordinates and the number of particles. 
+
+The function uses the information of the input arrays in the range \mbox{[}0,{\itshape num\-Particles})
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The particle location array in the x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em y} & The particle location array in the y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em z} & The particle location array in the z-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em num\-Particles} & The number of particles used in the particle location arrays \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0, if success 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classNeighbourSearcher_a8bc715cc108edbe1be3fcaacaef3958f}{Neighbour\-Searcher}.
+
+\hypertarget{classOctreeSearcher_a3fd644ff4fe22f3fc5d2ab154449d839}{\index{Octree\-Searcher@{Octree\-Searcher}!build\-Search\-Structure@{build\-Search\-Structure}}
+\index{build\-Search\-Structure@{build\-Search\-Structure}!OctreeSearcher@{Octree\-Searcher}}
+\subsubsection[{build\-Search\-Structure}]{\setlength{\rightskip}{0pt plus 5cm}int Octree\-Searcher\-::build\-Search\-Structure (
+\begin{DoxyParamCaption}
+\item[{const double $\ast$}]{x, }
+\item[{const double $\ast$}]{y, }
+\item[{const double $\ast$}]{z, }
+\item[{size\-\_\-t}]{begin, }
+\item[{size\-\_\-t}]{num\-Particles}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classOctreeSearcher_a3fd644ff4fe22f3fc5d2ab154449d839}
+
+
+Build an \hyperlink{classOctree}{Octree} object for the nearest neighbour search, based on the input particle location arrays in the x, y, and z-\/coordinates, the starting point in the arrays and the number of particles. 
+
+The function uses the information of the input arrays in the range \mbox{[}{\itshape begin},{\itshape num\-Particles})
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The particle location array in the x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em y} & The particle location array in the y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em z} & The particle location array in the z-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em begin} & The starting point in the particle array to use to build the search structure \\
+\hline
+\mbox{\tt in}  & {\em num\-Particles} & The number of particles used in the particle location arrays \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0, if success 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classNeighbourSearcher_a5268534d8a08622f66760202e12cbd07}{Neighbour\-Searcher}.
+
+\hypertarget{classOctreeSearcher_a30a8a3fc13649be5640f599721f2526a}{\index{Octree\-Searcher@{Octree\-Searcher}!search\-Neighbour@{search\-Neighbour}}
+\index{search\-Neighbour@{search\-Neighbour}!OctreeSearcher@{Octree\-Searcher}}
+\subsubsection[{search\-Neighbour}]{\setlength{\rightskip}{0pt plus 5cm}int Octree\-Searcher\-::search\-Neighbour (
+\begin{DoxyParamCaption}
+\item[{const double}]{x, }
+\item[{const double}]{y, }
+\item[{const double}]{z, }
+\item[{const double}]{radius, }
+\item[{int $\ast$}]{result, }
+\item[{double $\ast$}]{distance, }
+\item[{size\-\_\-t \&}]{result\-\_\-length, }
+\item[{int}]{index = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classOctreeSearcher_a30a8a3fc13649be5640f599721f2526a}
+
+
+Searches the nearest neighbours for a particle on the built \hyperlink{classOctree}{Octree} object. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The location in the x-\/coordinate of the target particle \\
+\hline
+\mbox{\tt in}  & {\em y} & The location in the y-\/coordinate of the target particle \\
+\hline
+\mbox{\tt in}  & {\em z} & The location in the z-\/coordinate of the target particle \\
+\hline
+\mbox{\tt in}  & {\em radius} & The neighbour search radius \\
+\hline
+\mbox{\tt out}  & {\em result} & An array saving the results of neighbour search (the neighbour list), which is sorted based on the the {\itshape distance} (in the {\bfseries ascending} order of {\itshape distance}) \\
+\hline
+\mbox{\tt out}  & {\em distance} & An array saving the distance between the target particle and its neighbours \\
+\hline
+\mbox{\tt out}  & {\em result\-\_\-length} & The number of neighbours obtained for the target particle \\
+\hline
+\mbox{\tt in}  & {\em index} & The index of target particle; this index is used to remove the target particle itself from its own neighbour list. The default argument is -\/1, which should only be used when the target particle itself is {\bfseries not} in the search structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0, if success
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This is the {\bfseries single-\/thread} version of this function 
+\end{DoxyNote}
+
+
+Implements \hyperlink{classNeighbourSearcher_aeb7a7ca7e97680b159f1fc3f6e467764}{Neighbour\-Searcher}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{neighbour__searcher_8h}{neighbour\-\_\-searcher.\-h}\item 
+neighbour\-\_\-searcher.\-cpp\end{DoxyCompactItemize}

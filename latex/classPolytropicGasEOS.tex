@@ -1,0 +1,154 @@
+\hypertarget{classPolytropicGasEOS}{\section{Polytropic\-Gas\-E\-O\-S Class Reference}
+\label{classPolytropicGasEOS}\index{Polytropic\-Gas\-E\-O\-S@{Polytropic\-Gas\-E\-O\-S}}
+}
+
+
+Calculates energy and sound speed based on the Polytropic gas eos model.  
+
+
+
+
+{\ttfamily \#include $<$eos.\-h$>$}
+
+Inheritance diagram for Polytropic\-Gas\-E\-O\-S\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPolytropicGasEOS}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPolytropicGasEOS_aa332e62d30c0b388c999c547c75fbd5a}{Polytropic\-Gas\-E\-O\-S} (double gamma)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classPolytropicGasEOS_adc6cca9144a7797fd78908467b4d438f}{get\-Parameters} (std\-::vector$<$ double $>$ \&params)
+\begin{DoxyCompactList}\small\item\em Getter function of all the parameters specified in the construtor argument list. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classPolytropicGasEOS_a754b30cb17e7e112d985dd1fe9d5051f}{get\-Energy} (double pressure, double density)
+\begin{DoxyCompactList}\small\item\em Calculates energy based on the Polytropic gas eos and the input pressure and density values. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classPolytropicGasEOS_a2f562ecc76589538fd88b78d3b5497f5}{get\-Sound\-Speed} (double pressure, double density)
+\begin{DoxyCompactList}\small\item\em Calculates sound speed based on the Polytropic gas eos and the input pressure and density values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPolytropicGasEOS_ad39e9519c229aa34f709e6c374fba4b8}{double \hyperlink{classPolytropicGasEOS_ad39e9519c229aa34f709e6c374fba4b8}{m\-\_\-f\-Gamma}}\label{classPolytropicGasEOS_ad39e9519c229aa34f709e6c374fba4b8}
+
+\begin{DoxyCompactList}\small\item\em The parameter {\itshape gamma}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Calculates energy and sound speed based on the Polytropic gas eos model. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+Co-\/author\-: Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com}) on initial interface design
+
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/05/09
+\end{DoxyDate}
+Created on\-: 2014/05/01 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPolytropicGasEOS_aa332e62d30c0b388c999c547c75fbd5a}{\index{Polytropic\-Gas\-E\-O\-S@{Polytropic\-Gas\-E\-O\-S}!Polytropic\-Gas\-E\-O\-S@{Polytropic\-Gas\-E\-O\-S}}
+\index{Polytropic\-Gas\-E\-O\-S@{Polytropic\-Gas\-E\-O\-S}!PolytropicGasEOS@{Polytropic\-Gas\-E\-O\-S}}
+\subsubsection[{Polytropic\-Gas\-E\-O\-S}]{\setlength{\rightskip}{0pt plus 5cm}Polytropic\-Gas\-E\-O\-S\-::\-Polytropic\-Gas\-E\-O\-S (
+\begin{DoxyParamCaption}
+\item[{double}]{gamma}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPolytropicGasEOS_aa332e62d30c0b388c999c547c75fbd5a}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em gamma} & The parameter {\itshape gamma} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPolytropicGasEOS_a754b30cb17e7e112d985dd1fe9d5051f}{\index{Polytropic\-Gas\-E\-O\-S@{Polytropic\-Gas\-E\-O\-S}!get\-Energy@{get\-Energy}}
+\index{get\-Energy@{get\-Energy}!PolytropicGasEOS@{Polytropic\-Gas\-E\-O\-S}}
+\subsubsection[{get\-Energy}]{\setlength{\rightskip}{0pt plus 5cm}double Polytropic\-Gas\-E\-O\-S\-::get\-Energy (
+\begin{DoxyParamCaption}
+\item[{double}]{pressure, }
+\item[{double}]{density}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolytropicGasEOS_a754b30cb17e7e112d985dd1fe9d5051f}
+
+
+Calculates energy based on the Polytropic gas eos and the input pressure and density values. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pressure} & the input pressure value \\
+\hline
+\mbox{\tt in}  & {\em density} & the input density value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the calculated energy value 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classEOS_acaaad3b306b042a03f5669a719588c85}{E\-O\-S}.
+
+\hypertarget{classPolytropicGasEOS_adc6cca9144a7797fd78908467b4d438f}{\index{Polytropic\-Gas\-E\-O\-S@{Polytropic\-Gas\-E\-O\-S}!get\-Parameters@{get\-Parameters}}
+\index{get\-Parameters@{get\-Parameters}!PolytropicGasEOS@{Polytropic\-Gas\-E\-O\-S}}
+\subsubsection[{get\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Polytropic\-Gas\-E\-O\-S\-::get\-Parameters (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ double $>$ \&}]{params}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classPolytropicGasEOS_adc6cca9144a7797fd78908467b4d438f}
+
+
+Getter function of all the parameters specified in the construtor argument list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em params} & the params vector contains m\-\_\-f\-Gamma \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classEOS_ae658a4cdb726da6502cc58566abe1c53}{E\-O\-S}.
+
+\hypertarget{classPolytropicGasEOS_a2f562ecc76589538fd88b78d3b5497f5}{\index{Polytropic\-Gas\-E\-O\-S@{Polytropic\-Gas\-E\-O\-S}!get\-Sound\-Speed@{get\-Sound\-Speed}}
+\index{get\-Sound\-Speed@{get\-Sound\-Speed}!PolytropicGasEOS@{Polytropic\-Gas\-E\-O\-S}}
+\subsubsection[{get\-Sound\-Speed}]{\setlength{\rightskip}{0pt plus 5cm}double Polytropic\-Gas\-E\-O\-S\-::get\-Sound\-Speed (
+\begin{DoxyParamCaption}
+\item[{double}]{pressure, }
+\item[{double}]{density}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolytropicGasEOS_a2f562ecc76589538fd88b78d3b5497f5}
+
+
+Calculates sound speed based on the Polytropic gas eos and the input pressure and density values. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pressure} & the input pressure value \\
+\hline
+\mbox{\tt in}  & {\em density} & the input density value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the calculated sound speed value 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classEOS_a6afa3c018685f2100b649fd804a4f3dc}{E\-O\-S}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{eos_8h}{eos.\-h}\item 
+eos.\-cpp\end{DoxyCompactItemize}

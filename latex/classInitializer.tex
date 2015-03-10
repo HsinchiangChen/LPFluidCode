@@ -1,0 +1,1008 @@
+\hypertarget{classInitializer}{\section{Initializer Class Reference}
+\label{classInitializer}\index{Initializer@{Initializer}}
+}
+
+
+This class initializes the simulation.  
+
+
+
+
+{\ttfamily \#include $<$initializer.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classInitializer_ad2bebb491fabcaec13ae64528fcdbf49}{Initializer} (const std\-::string \&input\-File\-Name)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classInitializer_add39a548b1e5405e938e786f069191e1}{\hyperlink{classInitializer_add39a548b1e5405e938e786f069191e1}{$\sim$\-Initializer} ()}\label{classInitializer_add39a548b1e5405e938e786f069191e1}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int \hyperlink{classInitializer_a4dcf0bde88ac4546d5bd514ccee9edd9}{get\-Num\-Threads} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified number of threads. \end{DoxyCompactList}\item 
+double \hyperlink{classInitializer_a9ceaeef9151ef04eec9869d87ef72fc9}{get\-Start\-Time} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified simulation physical start time. \end{DoxyCompactList}\item 
+double \hyperlink{classInitializer_a1ae812ddd69f72689ed6d09c86d9aeb7}{get\-End\-Time} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified simulation physical end time. \end{DoxyCompactList}\item 
+double \hyperlink{classInitializer_acae2ad876640dcf42d52ebe7d0ca3603}{get\-Write\-Time\-Interval} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified physical time interval between writes. \end{DoxyCompactList}\item 
+double \hyperlink{classInitializer_a8a279957aac13e582142bc90701e873d}{get\-C\-F\-L\-Coeff} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified C\-F\-L coefficient. \end{DoxyCompactList}\item 
+int \hyperlink{classInitializer_ad336449c8ae4f0866aaed2b6ecb8b47b}{get\-Dimension} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified dimension of simulation. \end{DoxyCompactList}\item 
+bool \hyperlink{classInitializer_a93eb0679fd63b07cf0774875b96d66e9}{get\-Random\-Dir\-Split\-Order} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified boolean value on whether to use random order of Strang splitting or not. \end{DoxyCompactList}\item 
+int \hyperlink{classInitializer_a03411fd19b6b3141b80652646a2a3796}{get\-L\-P\-F\-Order} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified order of Local Polynomial Fitting. \end{DoxyCompactList}\item 
+int \hyperlink{classInitializer_a2107696e4b4638f9752ba4a2b2e9c57e}{get\-E\-O\-S\-Choice} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified choice of equation of state (eos) \end{DoxyCompactList}\item 
+double \hyperlink{classInitializer_a70bb3a249925f55e2e1581bdc960b260}{get\-Init\-Particle\-Spacing} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified initial inter-\/particle spacing. \end{DoxyCompactList}\item 
+double \hyperlink{classInitializer_a29d827fbcc690011796160e9c372819c}{get\-Gravity} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified gravity value. \end{DoxyCompactList}\item 
+bool \hyperlink{classInitializer_abf444acdb91394def021a2f74ab5243f}{get\-Moving\-Box\-For\-Ghost\-Particle} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified boolean value on whether to update the bounding box of fluid objects. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classInitializer_a32b46cefcbeccae88af7a46bed5949ee}{get\-Max\-Neighbour\-Num} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified maximum number of neighbours of a particle. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classInitializer_a67b441e77ae377f8f418d6c28afd8df1}{get\-Max\-Neighbour\-Num\-In\-One\-Dir} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified maximum number of neighbours in one direction (eg. right-\/hand-\/side in the x-\/coordinate) of a particle. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classInitializer_a2e286f2e4362dea53eda3c20ab5f7ede}{get\-Num\-Row2nd\-Order} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified minimum number of neighbours in one direction of a particle for using 2nd order local polynomial fitting to compute the one-\/sided spatial derivatives. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classInitializer_a50c331f21050b50e4f4d0dee113ac69d}{get\-Num\-Row1st\-Order} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified minimum number of neighbours in one direction of a particle for using 1st order local polynomial fitting to compute the one-\/sided spatial derivatives. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classInitializer_a6e605410501b5ae0295cc27b80fa76d0}{get\-Num\-Col2nd\-Order} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the theoretical minimum number of neighbours required in one direction of a particle for 2nd order local polynomial fitting for the computation of one-\/sided spatial derivatives. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classInitializer_af0098f9d59ac38ca48e19759f2c4b6a5}{get\-Num\-Col1st\-Order} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the theoretical minimum number of neighbours required in one direction of a particle for using 1st order local polynomial fitting to compute the one-\/sided spatial derivatives. \end{DoxyCompactList}\item 
+double \hyperlink{classInitializer_ad2c591d1796c255cb62c0e90c5c0a875}{get\-Nei\-Search\-Radius} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified radius for neighbour search. \end{DoxyCompactList}\item 
+double \hyperlink{classInitializer_a9607400f0e0115fb7b677423403e2144}{get\-Invalid\-Pressure} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified maximum/minimum pressure value a particle can possibly attain. \end{DoxyCompactList}\item 
+double \hyperlink{classInitializer_a007b62d5ce2c5f19bf1bd379498ef64b}{get\-Invalid\-Volume} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified maximum/minimum volume value a particle can possibly attain. \end{DoxyCompactList}\item 
+int \hyperlink{classInitializer_ada300941810ded357d47b0f60c78eff9}{get\-Tree\-Depth} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified tree depth for the octree neighbour search algorithm. \end{DoxyCompactList}\item 
+double \hyperlink{classInitializer_a2ab802f1e315b413d2f9a7cf409e8330}{get\-Contact\-Length} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified length such that if the distance between two particles coming from different fluid objects is less than this length, they are considered as \char`\"{}in contact\char`\"{}. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classInitializer_ab6879dbbdc2362c8d274a5b25ec2bb28}{get\-Capacity} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified array length for particle data arrays such as x, y, and z-\/coordinates, pressure, volume, and sound speeds. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classInitializer_a5b13b014185a5a2b7cf8c0f8b23e07c0}{get\-Fluid\-Num} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the number of {\itshape fluid} particles initialized. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classInitializer_a68bbcc759e78e4774d32b1cd3a71ef82}{get\-Boundary\-Num} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the number of {\itshape boundary} particles initialized. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classInitializer_a96076c67424121f0b546571faa2bcba6}{get\-Fluid\-Start\-Index} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the start index of fluid particles in the particle data arrays. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classInitializer_ae9ff8c4f144f3dee1b14ec72e7c59157}{get\-Boundary\-Start\-Index} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the start index of boundary particles in the particle data arrays. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classInitializer_a9458ff0d23312baa3f13f0ad8c96aaba}{get\-Ghost\-Start\-Index} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the start index of ghost particles in the particle arrays of the \hyperlink{classParticleData}{Particle\-Data} class. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classInitializer_a85aa458bf8657237aa018fc0d01ecac9}{get\-Num\-Particle\-Within\-Search\-Radius} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the number of particles located inside the specified radius of neighbour search at the time of initialization. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classInitializer_a2b19b845e3fa7b7009fd97dab4e3e6a9}{get\-Position\-X} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of x-\/coordinates of the initialized particles. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classInitializer_a96d8812e9f8972d2f2461a691bb66ad5}{get\-Position\-Y} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of y-\/coordinates of the initialized particles. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classInitializer_a144439df028b3768b0c0ad7a8e4926c4}{get\-Position\-Z} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of z-\/coordinates of the initialized particles. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classInitializer_a519f3ec935a5c159c564d7877ee5b9a9}{get\-Velocity\-U} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of velocity in x-\/coordinate of the initialized particles. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classInitializer_aaba9434291386479dbeda9c1b436556b}{get\-Velocity\-V} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of velocity in y-\/coordinate of the initialized particles. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classInitializer_ad522318d3fe5d4d3019941cd75b4a078}{get\-Velocity\-W} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of velocity in z-\/coordinate of the initialized particles. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classInitializer_ade9b3fe198ecb8b7b4d0f90a34e69b41}{get\-Volume} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of volume of the initialized particles. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classInitializer_aa20c070f47fbef85698018de12a73861}{get\-Pressure} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of pressure of the initialized particles. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{classInitializer_a2fc7adb85eb243906fc756b4f124ebef}{get\-Sound\-Speed} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of sound speed of the initialized particles. \end{DoxyCompactList}\item 
+int $\ast$ \hyperlink{classInitializer_a8f419c10688793258e1359ea25683bca}{get\-Object\-Tag} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of \char`\"{}object tags\char`\"{} of the initialized particles. \end{DoxyCompactList}\item 
+\hyperlink{classEOS}{E\-O\-S} $\ast$ \hyperlink{classInitializer_a20859e6765c50a0173b7f164c1962e6f}{get\-E\-O\-S} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the pointer to an object in the \hyperlink{classEOS}{E\-O\-S} family. \end{DoxyCompactList}\item 
+const std\-::vector$<$ \hyperlink{classBoundingBox}{Bounding\-Box} $\ast$ $>$ \& \hyperlink{classInitializer_ac7822b9561a21c40809738236b10bb91}{get\-Fluid\-Bounding\-Box} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the bounding boxes for the initialized fluid objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class initializes the simulation. 
+
+The task of initialization of the simulation includes\-:\par
+
+\begin{DoxyEnumerate}
+\item Reading the input file \par
+
+\item Initializing the geometry of fluid objects\par
+
+\item Initializing the state of fluid objects\par
+
+\item Specifying some pre-\/determined parameters and calculate some parameters
+\end{DoxyEnumerate}
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/06/09
+\end{DoxyDate}
+Created on\-: 2014/06/01 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classInitializer_ad2bebb491fabcaec13ae64528fcdbf49}{\index{Initializer@{Initializer}!Initializer@{Initializer}}
+\index{Initializer@{Initializer}!Initializer@{Initializer}}
+\subsubsection[{Initializer}]{\setlength{\rightskip}{0pt plus 5cm}Initializer\-::\-Initializer (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{input\-File\-Name}
+\end{DoxyParamCaption}
+)}}\label{classInitializer_ad2bebb491fabcaec13ae64528fcdbf49}
+
+
+Constructor. 
+
+
+\begin{DoxyEnumerate}
+\item Reads the input file\par
+
+\item Initializes the geometry of fluid objects\par
+
+\item Initializes the state of fluid objects\par
+
+\item Specifies some pre-\/determined parameters and calculate some parameters 
+\end{DoxyEnumerate}
+
+\subsection{Member Function Documentation}
+\hypertarget{classInitializer_a68bbcc759e78e4774d32b1cd3a71ef82}{\index{Initializer@{Initializer}!get\-Boundary\-Num@{get\-Boundary\-Num}}
+\index{get\-Boundary\-Num@{get\-Boundary\-Num}!Initializer@{Initializer}}
+\subsubsection[{get\-Boundary\-Num}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Initializer\-::get\-Boundary\-Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a68bbcc759e78e4774d32b1cd3a71ef82}
+
+
+Getter function of the number of {\itshape boundary} particles initialized. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of {\itshape boundary} particles initialized 
+\end{DoxyReturn}
+\hypertarget{classInitializer_ae9ff8c4f144f3dee1b14ec72e7c59157}{\index{Initializer@{Initializer}!get\-Boundary\-Start\-Index@{get\-Boundary\-Start\-Index}}
+\index{get\-Boundary\-Start\-Index@{get\-Boundary\-Start\-Index}!Initializer@{Initializer}}
+\subsubsection[{get\-Boundary\-Start\-Index}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Initializer\-::get\-Boundary\-Start\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_ae9ff8c4f144f3dee1b14ec72e7c59157}
+
+
+Getter function of the start index of boundary particles in the particle data arrays. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The start index of boundary particles in the partical data arrays 
+\end{DoxyReturn}
+\hypertarget{classInitializer_ab6879dbbdc2362c8d274a5b25ec2bb28}{\index{Initializer@{Initializer}!get\-Capacity@{get\-Capacity}}
+\index{get\-Capacity@{get\-Capacity}!Initializer@{Initializer}}
+\subsubsection[{get\-Capacity}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Initializer\-::get\-Capacity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_ab6879dbbdc2362c8d274a5b25ec2bb28}
+
+
+Getter function of the specified array length for particle data arrays such as x, y, and z-\/coordinates, pressure, volume, and sound speeds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified array length for particle data arrays such as x, y, and z-\/coordinates, pressure, volume, and sound speeds 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Capacity is a number larger than the total number of {\itshape all} types of particles 
+\end{DoxyNote}
+\hypertarget{classInitializer_a8a279957aac13e582142bc90701e873d}{\index{Initializer@{Initializer}!get\-C\-F\-L\-Coeff@{get\-C\-F\-L\-Coeff}}
+\index{get\-C\-F\-L\-Coeff@{get\-C\-F\-L\-Coeff}!Initializer@{Initializer}}
+\subsubsection[{get\-C\-F\-L\-Coeff}]{\setlength{\rightskip}{0pt plus 5cm}double Initializer\-::get\-C\-F\-L\-Coeff (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a8a279957aac13e582142bc90701e873d}
+
+
+Getter function of the specified C\-F\-L coefficient. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified C\-F\-L coefficient 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a2ab802f1e315b413d2f9a7cf409e8330}{\index{Initializer@{Initializer}!get\-Contact\-Length@{get\-Contact\-Length}}
+\index{get\-Contact\-Length@{get\-Contact\-Length}!Initializer@{Initializer}}
+\subsubsection[{get\-Contact\-Length}]{\setlength{\rightskip}{0pt plus 5cm}double Initializer\-::get\-Contact\-Length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a2ab802f1e315b413d2f9a7cf409e8330}
+
+
+Getter function of the specified length such that if the distance between two particles coming from different fluid objects is less than this length, they are considered as \char`\"{}in contact\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified length such that if the distance between two particles coming from different fluid objects is less than this length, they are considered as \char`\"{}in contact\char`\"{}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The length is only valid in simulations with more than one fluid object. If two particles are in contact, they can start to take neighbours from the other fluid object. The length is specified as a number less than the initial inter-\/particle spacing 
+\end{DoxyNote}
+\hypertarget{classInitializer_ad336449c8ae4f0866aaed2b6ecb8b47b}{\index{Initializer@{Initializer}!get\-Dimension@{get\-Dimension}}
+\index{get\-Dimension@{get\-Dimension}!Initializer@{Initializer}}
+\subsubsection[{get\-Dimension}]{\setlength{\rightskip}{0pt plus 5cm}int Initializer\-::get\-Dimension (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_ad336449c8ae4f0866aaed2b6ecb8b47b}
+
+
+Getter function of the specified dimension of simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified dimension of simulation 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a1ae812ddd69f72689ed6d09c86d9aeb7}{\index{Initializer@{Initializer}!get\-End\-Time@{get\-End\-Time}}
+\index{get\-End\-Time@{get\-End\-Time}!Initializer@{Initializer}}
+\subsubsection[{get\-End\-Time}]{\setlength{\rightskip}{0pt plus 5cm}double Initializer\-::get\-End\-Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a1ae812ddd69f72689ed6d09c86d9aeb7}
+
+
+Getter function of the specified simulation physical end time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified simulation physical end time 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a20859e6765c50a0173b7f164c1962e6f}{\index{Initializer@{Initializer}!get\-E\-O\-S@{get\-E\-O\-S}}
+\index{get\-E\-O\-S@{get\-E\-O\-S}!Initializer@{Initializer}}
+\subsubsection[{get\-E\-O\-S}]{\setlength{\rightskip}{0pt plus 5cm}{\bf E\-O\-S}$\ast$ Initializer\-::get\-E\-O\-S (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a20859e6765c50a0173b7f164c1962e6f}
+
+
+Getter function of the pointer to an object in the \hyperlink{classEOS}{E\-O\-S} family. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to an object in the \hyperlink{classEOS}{E\-O\-S} family 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The memory of the object pointed to by the pointer is on the heap. This memory will not be deleted but the ownership will be transfered to other classes. It is save to have multiple pointers to this object since this object does not modify its own data 
+\end{DoxyWarning}
+\hypertarget{classInitializer_a2107696e4b4638f9752ba4a2b2e9c57e}{\index{Initializer@{Initializer}!get\-E\-O\-S\-Choice@{get\-E\-O\-S\-Choice}}
+\index{get\-E\-O\-S\-Choice@{get\-E\-O\-S\-Choice}!Initializer@{Initializer}}
+\subsubsection[{get\-E\-O\-S\-Choice}]{\setlength{\rightskip}{0pt plus 5cm}int Initializer\-::get\-E\-O\-S\-Choice (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a2107696e4b4638f9752ba4a2b2e9c57e}
+
+
+Getter function of the specified choice of equation of state (eos) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified specified choice of equation of state (eos) 
+\end{DoxyReturn}
+\hypertarget{classInitializer_ac7822b9561a21c40809738236b10bb91}{\index{Initializer@{Initializer}!get\-Fluid\-Bounding\-Box@{get\-Fluid\-Bounding\-Box}}
+\index{get\-Fluid\-Bounding\-Box@{get\-Fluid\-Bounding\-Box}!Initializer@{Initializer}}
+\subsubsection[{get\-Fluid\-Bounding\-Box}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<${\bf Bounding\-Box}$\ast$$>$\& Initializer\-::get\-Fluid\-Bounding\-Box (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_ac7822b9561a21c40809738236b10bb91}
+
+
+Getter function of the bounding boxes for the initialized fluid objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of pointers to \hyperlink{classBoundingBox}{Bounding\-Box} type 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a5b13b014185a5a2b7cf8c0f8b23e07c0}{\index{Initializer@{Initializer}!get\-Fluid\-Num@{get\-Fluid\-Num}}
+\index{get\-Fluid\-Num@{get\-Fluid\-Num}!Initializer@{Initializer}}
+\subsubsection[{get\-Fluid\-Num}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Initializer\-::get\-Fluid\-Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a5b13b014185a5a2b7cf8c0f8b23e07c0}
+
+
+Getter function of the number of {\itshape fluid} particles initialized. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of {\itshape fluid} particles initialized 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a96076c67424121f0b546571faa2bcba6}{\index{Initializer@{Initializer}!get\-Fluid\-Start\-Index@{get\-Fluid\-Start\-Index}}
+\index{get\-Fluid\-Start\-Index@{get\-Fluid\-Start\-Index}!Initializer@{Initializer}}
+\subsubsection[{get\-Fluid\-Start\-Index}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Initializer\-::get\-Fluid\-Start\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a96076c67424121f0b546571faa2bcba6}
+
+
+Getter function of the start index of fluid particles in the particle data arrays. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The start index of fluid particles in the particle data arrays 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a9458ff0d23312baa3f13f0ad8c96aaba}{\index{Initializer@{Initializer}!get\-Ghost\-Start\-Index@{get\-Ghost\-Start\-Index}}
+\index{get\-Ghost\-Start\-Index@{get\-Ghost\-Start\-Index}!Initializer@{Initializer}}
+\subsubsection[{get\-Ghost\-Start\-Index}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Initializer\-::get\-Ghost\-Start\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a9458ff0d23312baa3f13f0ad8c96aaba}
+
+
+Getter function of the start index of ghost particles in the particle arrays of the \hyperlink{classParticleData}{Particle\-Data} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The start index of ghost particles in the particle arrays 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a29d827fbcc690011796160e9c372819c}{\index{Initializer@{Initializer}!get\-Gravity@{get\-Gravity}}
+\index{get\-Gravity@{get\-Gravity}!Initializer@{Initializer}}
+\subsubsection[{get\-Gravity}]{\setlength{\rightskip}{0pt plus 5cm}double Initializer\-::get\-Gravity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a29d827fbcc690011796160e9c372819c}
+
+
+Getter function of the specified gravity value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified gravity value 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a70bb3a249925f55e2e1581bdc960b260}{\index{Initializer@{Initializer}!get\-Init\-Particle\-Spacing@{get\-Init\-Particle\-Spacing}}
+\index{get\-Init\-Particle\-Spacing@{get\-Init\-Particle\-Spacing}!Initializer@{Initializer}}
+\subsubsection[{get\-Init\-Particle\-Spacing}]{\setlength{\rightskip}{0pt plus 5cm}double Initializer\-::get\-Init\-Particle\-Spacing (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a70bb3a249925f55e2e1581bdc960b260}
+
+
+Getter function of the specified initial inter-\/particle spacing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified initial inter-\/particle spacing 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a9607400f0e0115fb7b677423403e2144}{\index{Initializer@{Initializer}!get\-Invalid\-Pressure@{get\-Invalid\-Pressure}}
+\index{get\-Invalid\-Pressure@{get\-Invalid\-Pressure}!Initializer@{Initializer}}
+\subsubsection[{get\-Invalid\-Pressure}]{\setlength{\rightskip}{0pt plus 5cm}double Initializer\-::get\-Invalid\-Pressure (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a9607400f0e0115fb7b677423403e2144}
+
+
+Getter function of the specified maximum/minimum pressure value a particle can possibly attain. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified maximum/minimum pressure value a particle can possibly attain 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If this value is exceeded certain actions, such as re-\/calculating spatial derivatives using a lower order of local polynomial fitting, needs to be carried to avoid the crash of the program 
+\end{DoxyNote}
+\hypertarget{classInitializer_a007b62d5ce2c5f19bf1bd379498ef64b}{\index{Initializer@{Initializer}!get\-Invalid\-Volume@{get\-Invalid\-Volume}}
+\index{get\-Invalid\-Volume@{get\-Invalid\-Volume}!Initializer@{Initializer}}
+\subsubsection[{get\-Invalid\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}double Initializer\-::get\-Invalid\-Volume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a007b62d5ce2c5f19bf1bd379498ef64b}
+
+
+Getter function of the specified maximum/minimum volume value a particle can possibly attain. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified maximum/minimum volume value a particle can possibly attain 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If this value is exceeded certain actions, such as re-\/calculating spatial derivatives using a lower order of local polynomial fitting, needs to be carried to avoid the crash of the program 
+\end{DoxyNote}
+\hypertarget{classInitializer_a03411fd19b6b3141b80652646a2a3796}{\index{Initializer@{Initializer}!get\-L\-P\-F\-Order@{get\-L\-P\-F\-Order}}
+\index{get\-L\-P\-F\-Order@{get\-L\-P\-F\-Order}!Initializer@{Initializer}}
+\subsubsection[{get\-L\-P\-F\-Order}]{\setlength{\rightskip}{0pt plus 5cm}int Initializer\-::get\-L\-P\-F\-Order (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a03411fd19b6b3141b80652646a2a3796}
+
+
+Getter function of the specified order of Local Polynomial Fitting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified order of Local Polynomial Fitting 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a32b46cefcbeccae88af7a46bed5949ee}{\index{Initializer@{Initializer}!get\-Max\-Neighbour\-Num@{get\-Max\-Neighbour\-Num}}
+\index{get\-Max\-Neighbour\-Num@{get\-Max\-Neighbour\-Num}!Initializer@{Initializer}}
+\subsubsection[{get\-Max\-Neighbour\-Num}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Initializer\-::get\-Max\-Neighbour\-Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a32b46cefcbeccae88af7a46bed5949ee}
+
+
+Getter function of the specified maximum number of neighbours of a particle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified maximum number of neighbours of a particle 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a67b441e77ae377f8f418d6c28afd8df1}{\index{Initializer@{Initializer}!get\-Max\-Neighbour\-Num\-In\-One\-Dir@{get\-Max\-Neighbour\-Num\-In\-One\-Dir}}
+\index{get\-Max\-Neighbour\-Num\-In\-One\-Dir@{get\-Max\-Neighbour\-Num\-In\-One\-Dir}!Initializer@{Initializer}}
+\subsubsection[{get\-Max\-Neighbour\-Num\-In\-One\-Dir}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Initializer\-::get\-Max\-Neighbour\-Num\-In\-One\-Dir (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a67b441e77ae377f8f418d6c28afd8df1}
+
+
+Getter function of the specified maximum number of neighbours in one direction (eg. right-\/hand-\/side in the x-\/coordinate) of a particle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified maximum number of neighbours in one direction (eg. right-\/hand-\/side in the x-\/coordinate) of a particle 
+\end{DoxyReturn}
+\hypertarget{classInitializer_abf444acdb91394def021a2f74ab5243f}{\index{Initializer@{Initializer}!get\-Moving\-Box\-For\-Ghost\-Particle@{get\-Moving\-Box\-For\-Ghost\-Particle}}
+\index{get\-Moving\-Box\-For\-Ghost\-Particle@{get\-Moving\-Box\-For\-Ghost\-Particle}!Initializer@{Initializer}}
+\subsubsection[{get\-Moving\-Box\-For\-Ghost\-Particle}]{\setlength{\rightskip}{0pt plus 5cm}bool Initializer\-::get\-Moving\-Box\-For\-Ghost\-Particle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_abf444acdb91394def021a2f74ab5243f}
+
+
+Getter function of the specified boolean value on whether to update the bounding box of fluid objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified boolean value on whether to update the bounding box of fluid objects 
+\end{DoxyReturn}
+\hypertarget{classInitializer_ad2c591d1796c255cb62c0e90c5c0a875}{\index{Initializer@{Initializer}!get\-Nei\-Search\-Radius@{get\-Nei\-Search\-Radius}}
+\index{get\-Nei\-Search\-Radius@{get\-Nei\-Search\-Radius}!Initializer@{Initializer}}
+\subsubsection[{get\-Nei\-Search\-Radius}]{\setlength{\rightskip}{0pt plus 5cm}double Initializer\-::get\-Nei\-Search\-Radius (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_ad2c591d1796c255cb62c0e90c5c0a875}
+
+
+Getter function of the specified radius for neighbour search. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified radius for neighbour search 
+\end{DoxyReturn}
+\hypertarget{classInitializer_af0098f9d59ac38ca48e19759f2c4b6a5}{\index{Initializer@{Initializer}!get\-Num\-Col1st\-Order@{get\-Num\-Col1st\-Order}}
+\index{get\-Num\-Col1st\-Order@{get\-Num\-Col1st\-Order}!Initializer@{Initializer}}
+\subsubsection[{get\-Num\-Col1st\-Order}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Initializer\-::get\-Num\-Col1st\-Order (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_af0098f9d59ac38ca48e19759f2c4b6a5}
+
+
+Getter function of the theoretical minimum number of neighbours required in one direction of a particle for using 1st order local polynomial fitting to compute the one-\/sided spatial derivatives. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The theoretical minimum number of neighbours required in one direction of a particle for using 1st order local polynomial fitting to compute the one-\/sided spatial derivatives 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a6e605410501b5ae0295cc27b80fa76d0}{\index{Initializer@{Initializer}!get\-Num\-Col2nd\-Order@{get\-Num\-Col2nd\-Order}}
+\index{get\-Num\-Col2nd\-Order@{get\-Num\-Col2nd\-Order}!Initializer@{Initializer}}
+\subsubsection[{get\-Num\-Col2nd\-Order}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Initializer\-::get\-Num\-Col2nd\-Order (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a6e605410501b5ae0295cc27b80fa76d0}
+
+
+Getter function of the theoretical minimum number of neighbours required in one direction of a particle for 2nd order local polynomial fitting for the computation of one-\/sided spatial derivatives. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The theoretical minimum number of neighbours required in one direction of a particle for using 2nd order local polynomial fitting to compute the one-\/sided spatial derivatives 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a85aa458bf8657237aa018fc0d01ecac9}{\index{Initializer@{Initializer}!get\-Num\-Particle\-Within\-Search\-Radius@{get\-Num\-Particle\-Within\-Search\-Radius}}
+\index{get\-Num\-Particle\-Within\-Search\-Radius@{get\-Num\-Particle\-Within\-Search\-Radius}!Initializer@{Initializer}}
+\subsubsection[{get\-Num\-Particle\-Within\-Search\-Radius}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Initializer\-::get\-Num\-Particle\-Within\-Search\-Radius (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a85aa458bf8657237aa018fc0d01ecac9}
+
+
+Getter function of the number of particles located inside the specified radius of neighbour search at the time of initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of particles located inside the specified radius of neighbour search at the time of initialization 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This number is used in the context of ghost particle selection 
+\end{DoxyNote}
+\hypertarget{classInitializer_a50c331f21050b50e4f4d0dee113ac69d}{\index{Initializer@{Initializer}!get\-Num\-Row1st\-Order@{get\-Num\-Row1st\-Order}}
+\index{get\-Num\-Row1st\-Order@{get\-Num\-Row1st\-Order}!Initializer@{Initializer}}
+\subsubsection[{get\-Num\-Row1st\-Order}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Initializer\-::get\-Num\-Row1st\-Order (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a50c331f21050b50e4f4d0dee113ac69d}
+
+
+Getter function of the specified minimum number of neighbours in one direction of a particle for using 1st order local polynomial fitting to compute the one-\/sided spatial derivatives. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified minimum number of neighbours in one direction of a particle for using 1st order local polynomial fitting to compute the one-\/sided spatial derivatives 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a2e286f2e4362dea53eda3c20ab5f7ede}{\index{Initializer@{Initializer}!get\-Num\-Row2nd\-Order@{get\-Num\-Row2nd\-Order}}
+\index{get\-Num\-Row2nd\-Order@{get\-Num\-Row2nd\-Order}!Initializer@{Initializer}}
+\subsubsection[{get\-Num\-Row2nd\-Order}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Initializer\-::get\-Num\-Row2nd\-Order (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a2e286f2e4362dea53eda3c20ab5f7ede}
+
+
+Getter function of the specified minimum number of neighbours in one direction of a particle for using 2nd order local polynomial fitting to compute the one-\/sided spatial derivatives. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified minimum number of neighbours in one direction of a particle for using 2nd order local polynomial fitting to compute the one-\/sided spatial derivatives 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a4dcf0bde88ac4546d5bd514ccee9edd9}{\index{Initializer@{Initializer}!get\-Num\-Threads@{get\-Num\-Threads}}
+\index{get\-Num\-Threads@{get\-Num\-Threads}!Initializer@{Initializer}}
+\subsubsection[{get\-Num\-Threads}]{\setlength{\rightskip}{0pt plus 5cm}int Initializer\-::get\-Num\-Threads (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a4dcf0bde88ac4546d5bd514ccee9edd9}
+
+
+Getter function of the specified number of threads. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified number of threads 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a8f419c10688793258e1359ea25683bca}{\index{Initializer@{Initializer}!get\-Object\-Tag@{get\-Object\-Tag}}
+\index{get\-Object\-Tag@{get\-Object\-Tag}!Initializer@{Initializer}}
+\subsubsection[{get\-Object\-Tag}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ Initializer\-::get\-Object\-Tag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a8f419c10688793258e1359ea25683bca}
+
+
+Getter function of the array of \char`\"{}object tags\char`\"{} of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of \char`\"{}object tags\char`\"{} of the initialized particles 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The tag of a particle in a fluid object is the index of the fluid object (the index of fluid object is 1,2,...). The tag of a particle {\bfseries not} in fluid object is 0 
+\end{DoxyNote}
+\hypertarget{classInitializer_a2b19b845e3fa7b7009fd97dab4e3e6a9}{\index{Initializer@{Initializer}!get\-Position\-X@{get\-Position\-X}}
+\index{get\-Position\-X@{get\-Position\-X}!Initializer@{Initializer}}
+\subsubsection[{get\-Position\-X}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ Initializer\-::get\-Position\-X (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a2b19b845e3fa7b7009fd97dab4e3e6a9}
+
+
+Getter function of the array of x-\/coordinates of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of x-\/coordinates of the initialized particles 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The array of x-\/coordinate is initialized on the heap in this class, and will be not deleted in the destructor of this class. The reason is that the ownership of this array will be transfered to the \hyperlink{classParticleData}{Particle\-Data} class via this getter function. It is advised not to assign the ownership of this array to other classes 
+\end{DoxyWarning}
+\hypertarget{classInitializer_a96d8812e9f8972d2f2461a691bb66ad5}{\index{Initializer@{Initializer}!get\-Position\-Y@{get\-Position\-Y}}
+\index{get\-Position\-Y@{get\-Position\-Y}!Initializer@{Initializer}}
+\subsubsection[{get\-Position\-Y}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ Initializer\-::get\-Position\-Y (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a96d8812e9f8972d2f2461a691bb66ad5}
+
+
+Getter function of the array of y-\/coordinates of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of y-\/coordinates of the initialized particles 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The array of x-\/coordinate is initialized on the heap in this class, and will be not deleted in the destructor of this class. The reason is that the ownership of this array will be transfered to the \hyperlink{classParticleData}{Particle\-Data} class via this getter function. It is advised not to assign the ownership of this array to other classes 
+\end{DoxyWarning}
+\hypertarget{classInitializer_a144439df028b3768b0c0ad7a8e4926c4}{\index{Initializer@{Initializer}!get\-Position\-Z@{get\-Position\-Z}}
+\index{get\-Position\-Z@{get\-Position\-Z}!Initializer@{Initializer}}
+\subsubsection[{get\-Position\-Z}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ Initializer\-::get\-Position\-Z (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a144439df028b3768b0c0ad7a8e4926c4}
+
+
+Getter function of the array of z-\/coordinates of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of z-\/coordinates of the initialized particles 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The array of x-\/coordinate is initialized on the heap in this class, and will be not deleted in the destructor of this class. The reason is that the ownership of this array will be transfered to the \hyperlink{classParticleData}{Particle\-Data} class via this getter function. It is advised not to assign the ownership of this array to other classes 
+\end{DoxyWarning}
+\hypertarget{classInitializer_aa20c070f47fbef85698018de12a73861}{\index{Initializer@{Initializer}!get\-Pressure@{get\-Pressure}}
+\index{get\-Pressure@{get\-Pressure}!Initializer@{Initializer}}
+\subsubsection[{get\-Pressure}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ Initializer\-::get\-Pressure (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_aa20c070f47fbef85698018de12a73861}
+
+
+Getter function of the array of pressure of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of pressure of the initialized particles 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The array of pressure is initialized on the heap in this class, and will be not deleted in the destructor of this class. The reason is that the ownership of this array will be transfered to the \hyperlink{classParticleData}{Particle\-Data} class via this getter function. It is advised not to assign the ownership of this array to other classes 
+\end{DoxyWarning}
+\hypertarget{classInitializer_a93eb0679fd63b07cf0774875b96d66e9}{\index{Initializer@{Initializer}!get\-Random\-Dir\-Split\-Order@{get\-Random\-Dir\-Split\-Order}}
+\index{get\-Random\-Dir\-Split\-Order@{get\-Random\-Dir\-Split\-Order}!Initializer@{Initializer}}
+\subsubsection[{get\-Random\-Dir\-Split\-Order}]{\setlength{\rightskip}{0pt plus 5cm}bool Initializer\-::get\-Random\-Dir\-Split\-Order (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a93eb0679fd63b07cf0774875b96d66e9}
+
+
+Getter function of the specified boolean value on whether to use random order of Strang splitting or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified boolean value on whether to use random order of Strang splitting or not 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a2fc7adb85eb243906fc756b4f124ebef}{\index{Initializer@{Initializer}!get\-Sound\-Speed@{get\-Sound\-Speed}}
+\index{get\-Sound\-Speed@{get\-Sound\-Speed}!Initializer@{Initializer}}
+\subsubsection[{get\-Sound\-Speed}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ Initializer\-::get\-Sound\-Speed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a2fc7adb85eb243906fc756b4f124ebef}
+
+
+Getter function of the array of sound speed of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of sound speed of the initialized particles 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The array of volume is initialized on the heap in this class, and will be not deleted in the destructor of this class. The reason is that the ownership of this array will be transfered to the \hyperlink{classParticleData}{Particle\-Data} class via this getter function. It is advised not to assign the ownership of this array to other classes 
+\end{DoxyWarning}
+\hypertarget{classInitializer_a9ceaeef9151ef04eec9869d87ef72fc9}{\index{Initializer@{Initializer}!get\-Start\-Time@{get\-Start\-Time}}
+\index{get\-Start\-Time@{get\-Start\-Time}!Initializer@{Initializer}}
+\subsubsection[{get\-Start\-Time}]{\setlength{\rightskip}{0pt plus 5cm}double Initializer\-::get\-Start\-Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a9ceaeef9151ef04eec9869d87ef72fc9}
+
+
+Getter function of the specified simulation physical start time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified simulation physical start time specified 
+\end{DoxyReturn}
+\hypertarget{classInitializer_ada300941810ded357d47b0f60c78eff9}{\index{Initializer@{Initializer}!get\-Tree\-Depth@{get\-Tree\-Depth}}
+\index{get\-Tree\-Depth@{get\-Tree\-Depth}!Initializer@{Initializer}}
+\subsubsection[{get\-Tree\-Depth}]{\setlength{\rightskip}{0pt plus 5cm}int Initializer\-::get\-Tree\-Depth (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_ada300941810ded357d47b0f60c78eff9}
+
+
+Getter function of the specified tree depth for the octree neighbour search algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified tree depth for the octree neighbour search algorithm 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a519f3ec935a5c159c564d7877ee5b9a9}{\index{Initializer@{Initializer}!get\-Velocity\-U@{get\-Velocity\-U}}
+\index{get\-Velocity\-U@{get\-Velocity\-U}!Initializer@{Initializer}}
+\subsubsection[{get\-Velocity\-U}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ Initializer\-::get\-Velocity\-U (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a519f3ec935a5c159c564d7877ee5b9a9}
+
+
+Getter function of the array of velocity in x-\/coordinate of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of velocity in x-\/coordinate of the initialized particles 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The array of velocity in x-\/coordinate is initialized on the heap in this class, and will be not deleted in the destructor of this class. The reason is that the ownership of this array will be transfered to the \hyperlink{classParticleData}{Particle\-Data} class via this getter function. It is advised not to assign the ownership of this array to other classes 
+\end{DoxyWarning}
+\hypertarget{classInitializer_aaba9434291386479dbeda9c1b436556b}{\index{Initializer@{Initializer}!get\-Velocity\-V@{get\-Velocity\-V}}
+\index{get\-Velocity\-V@{get\-Velocity\-V}!Initializer@{Initializer}}
+\subsubsection[{get\-Velocity\-V}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ Initializer\-::get\-Velocity\-V (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_aaba9434291386479dbeda9c1b436556b}
+
+
+Getter function of the array of velocity in y-\/coordinate of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of velocity in y-\/coordinate of the initialized particles 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The array of velocity in x-\/coordinate is initialized on the heap in this class, and will be not deleted in the destructor of this class. The reason is that the ownership of this array will be transfered to the \hyperlink{classParticleData}{Particle\-Data} class via this getter function. It is advised not to assign the ownership of this array to other classes 
+\end{DoxyWarning}
+\hypertarget{classInitializer_ad522318d3fe5d4d3019941cd75b4a078}{\index{Initializer@{Initializer}!get\-Velocity\-W@{get\-Velocity\-W}}
+\index{get\-Velocity\-W@{get\-Velocity\-W}!Initializer@{Initializer}}
+\subsubsection[{get\-Velocity\-W}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ Initializer\-::get\-Velocity\-W (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_ad522318d3fe5d4d3019941cd75b4a078}
+
+
+Getter function of the array of velocity in z-\/coordinate of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of velocity in z-\/coordinate of the initialized particles 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The array of velocity in x-\/coordinate is initialized on the heap in this class, and will be not deleted in the destructor of this class. The reason is that the ownership of this array will be transfered to the \hyperlink{classParticleData}{Particle\-Data} class via this getter function. It is advised not to assign the ownership of this array to other classes 
+\end{DoxyWarning}
+\hypertarget{classInitializer_ade9b3fe198ecb8b7b4d0f90a34e69b41}{\index{Initializer@{Initializer}!get\-Volume@{get\-Volume}}
+\index{get\-Volume@{get\-Volume}!Initializer@{Initializer}}
+\subsubsection[{get\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ Initializer\-::get\-Volume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_ade9b3fe198ecb8b7b4d0f90a34e69b41}
+
+
+Getter function of the array of volume of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of volume of the initialized particles 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The array of volume is initialized on the heap in this class, and will be not deleted in the destructor of this class. The reason is that the ownership of this array will be transfered to the \hyperlink{classParticleData}{Particle\-Data} class via this getter function. It is advised not to assign the ownership of this array to other classes 
+\end{DoxyWarning}
+\hypertarget{classInitializer_acae2ad876640dcf42d52ebe7d0ca3603}{\index{Initializer@{Initializer}!get\-Write\-Time\-Interval@{get\-Write\-Time\-Interval}}
+\index{get\-Write\-Time\-Interval@{get\-Write\-Time\-Interval}!Initializer@{Initializer}}
+\subsubsection[{get\-Write\-Time\-Interval}]{\setlength{\rightskip}{0pt plus 5cm}double Initializer\-::get\-Write\-Time\-Interval (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_acae2ad876640dcf42d52ebe7d0ca3603}
+
+
+Getter function of the specified physical time interval between writes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified physical time interval between writes 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{initializer_8h}{initializer.\-h}\item 
+initializer.\-cpp\end{DoxyCompactItemize}

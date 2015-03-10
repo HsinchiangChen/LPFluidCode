@@ -1,0 +1,532 @@
+\hypertarget{classParticleData}{\section{Particle\-Data Class Reference}
+\label{classParticleData}\index{Particle\-Data@{Particle\-Data}}
+}
+
+
+A class that stores all information and data of particles, such as x, y, and z coordinates, neighbour lists, and bounding boxes.  
+
+
+
+
+{\ttfamily \#include $<$particle\-\_\-data.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classParticleData_a462cb717b56e25a02ed1da805d1a7e53}{Particle\-Data} (const \hyperlink{classInitializer}{Initializer} \&init)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classParticleData_a09673bdd8f17c8a39f1292df5727d71d}{$\sim$\-Particle\-Data} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classParticleData_a2b27f85dccbf0fa6dcfa69aac3afba7c}{get\-Capacity} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the specified array length for particle data arrays such as x, y, and z-\/coordinates, pressure, volume, and sound speeds. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classParticleData_a8540779a3428501d6f45a31e58ad36bd}{get\-Total\-Num} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the number of {\itshape all} types of particles. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classParticleData_aa3b6b967658f755ff919a53c7d6f08fe}{get\-Fluid\-Num} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the number of {\itshape fluid} particles. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classParticleData_ac333d486010c5990b8dda9bb39a084e4}{get\-Boundary\-Num} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the number of {\itshape boundary} particles. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classParticleData_a4f2840f8c303db330bcbb9310e42b63a}{get\-Ghost\-Num} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the number of {\itshape ghost} particles. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classParticleData_aaed390a75982301dd2d0f9e7548f429f}{get\-Max\-Neighbour\-Num} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the specified maximum number of neighbours of a particle. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classParticleData_ae4cb9eaa2b370db71bb411b69460ae88}{get\-Max\-Neighbour\-Num\-In\-One\-Dir} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the specified maximum number of neighbours in one direction (eg. right-\/hand-\/side in the x-\/coordinate) of a particle. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classParticleData_aeef5d282d6a0d4b994ebb6c9adf2e732}{get\-Fluid\-Start\-Index} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the start index of fluid particles in the particle data arrays. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classParticleData_a474f208bd625a6cb5f7d07ee182b88fd}{get\-Boundary\-Start\-Index} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the start index of boundary particles in the particle data arrays. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{classParticleData_aff6d2d9b42cf767c17e3d40e5e3f45af}{get\-Ghost\-Start\-Index} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the start index of ghost particles in the particle data arrays. \end{DoxyCompactList}\item 
+int \hyperlink{classParticleData_a60ceebcf0e4d76dfc5ce1a8f2875d735}{get\-Dimension} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the specified dimension of simulation. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_a0bc37c6de97d72802a050c8fcdcf992c}{get\-Position\-X} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of x-\/coordinates of the initialized particles. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_a35f579e90be114099676a825c543a27e}{get\-Position\-Y} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of y-\/coordinates of the initialized particles. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_ac95f723b00a4af40954290c4ba50a6f8}{get\-Position\-Z} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of z-\/coordinates of the initialized particles. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_ae542ee996372ad5cd3514df7c953a5e9}{get\-Velocity\-U} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of velocity in x-\/coordinate of the initialized particles. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_af81222ef767e1064575ac03b8be5786e}{get\-Velocity\-V} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of velocity in y-\/coordinate of the initialized particles. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_a35e82fba85a274782a3485bf99888635}{get\-Velocity\-W} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of velocity in z-\/coordinate of the initialized particles. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_a27b7864577ba44978a48a8587e9854ac}{get\-Volume} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of volume of the initialized particles. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_a3713fca18cdeba32c17a244a62dcafdd}{get\-Pressure} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of pressure of the initialized particles. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_a493cb98a9d33fc3bd48fc879456a426c}{get\-Sound\-Speed} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of sound speed of the initialized particles. \end{DoxyCompactList}\item 
+const int $\ast$const \hyperlink{classParticleData_abb5cbc18cc19ba33786fabdb6b6bf8be}{get\-Object\-Tag} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of \char`\"{}object tags\char`\"{} of the initialized particles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classParticleData_a0085845c5573d5e5dd332dc5bab4ad17}{class \hyperlink{classParticleData_a0085845c5573d5e5dd332dc5bab4ad17}{Hyperbolic\-L\-P\-Solver}}\label{classParticleData_a0085845c5573d5e5dd332dc5bab4ad17}
+
+\begin{DoxyCompactList}\small\item\em To facilitate access of data in this class for \hyperlink{classHyperbolicLPSolver}{Hyperbolic\-L\-P\-Solver}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that stores all information and data of particles, such as x, y, and z coordinates, neighbour lists, and bounding boxes. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+Co-\/author\-: Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com}) on initial interface and data structure design
+
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/07/12
+\end{DoxyDate}
+Created on\-: 2014/05/23 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classParticleData_a462cb717b56e25a02ed1da805d1a7e53}{\index{Particle\-Data@{Particle\-Data}!Particle\-Data@{Particle\-Data}}
+\index{Particle\-Data@{Particle\-Data}!ParticleData@{Particle\-Data}}
+\subsubsection[{Particle\-Data}]{\setlength{\rightskip}{0pt plus 5cm}Particle\-Data\-::\-Particle\-Data (
+\begin{DoxyParamCaption}
+\item[{const {\bf Initializer} \&}]{init}
+\end{DoxyParamCaption}
+)}}\label{classParticleData_a462cb717b56e25a02ed1da805d1a7e53}
+
+
+Constructor. 
+
+Use {\itshape init} to retrieve information from the \hyperlink{classInitializer}{Initializer} class, including getting scalar-\/valued parameters and ownership of data arrays. This method also allocates space for all other necessary particle data arrays
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em init} & To retrieve information from {\itshape init} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Obtains ownership of some data arrays (see implementation for details) from the \hyperlink{classInitializer}{Initializer} class. These data arrays are deleted in the Destructor of this class and should not be deleted anywhere else 
+\end{DoxyWarning}
+\hypertarget{classParticleData_a09673bdd8f17c8a39f1292df5727d71d}{\index{Particle\-Data@{Particle\-Data}!$\sim$\-Particle\-Data@{$\sim$\-Particle\-Data}}
+\index{$\sim$\-Particle\-Data@{$\sim$\-Particle\-Data}!ParticleData@{Particle\-Data}}
+\subsubsection[{$\sim$\-Particle\-Data}]{\setlength{\rightskip}{0pt plus 5cm}Particle\-Data\-::$\sim$\-Particle\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classParticleData_a09673bdd8f17c8a39f1292df5727d71d}
+
+
+Destructor. 
+
+Deletes memory of data arrays 
+
+\subsection{Member Function Documentation}
+\hypertarget{classParticleData_ac333d486010c5990b8dda9bb39a084e4}{\index{Particle\-Data@{Particle\-Data}!get\-Boundary\-Num@{get\-Boundary\-Num}}
+\index{get\-Boundary\-Num@{get\-Boundary\-Num}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Boundary\-Num}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Particle\-Data\-::get\-Boundary\-Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_ac333d486010c5990b8dda9bb39a084e4}
+
+
+Getter function of the number of {\itshape boundary} particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of {\itshape boundary} particles 
+\end{DoxyReturn}
+\hypertarget{classParticleData_a474f208bd625a6cb5f7d07ee182b88fd}{\index{Particle\-Data@{Particle\-Data}!get\-Boundary\-Start\-Index@{get\-Boundary\-Start\-Index}}
+\index{get\-Boundary\-Start\-Index@{get\-Boundary\-Start\-Index}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Boundary\-Start\-Index}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Particle\-Data\-::get\-Boundary\-Start\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a474f208bd625a6cb5f7d07ee182b88fd}
+
+
+Getter function of the start index of boundary particles in the particle data arrays. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The start index of boundary particles in the particle data arrays 
+\end{DoxyReturn}
+\hypertarget{classParticleData_a2b27f85dccbf0fa6dcfa69aac3afba7c}{\index{Particle\-Data@{Particle\-Data}!get\-Capacity@{get\-Capacity}}
+\index{get\-Capacity@{get\-Capacity}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Capacity}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Particle\-Data\-::get\-Capacity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a2b27f85dccbf0fa6dcfa69aac3afba7c}
+
+
+Getter function of the specified array length for particle data arrays such as x, y, and z-\/coordinates, pressure, volume, and sound speeds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified array length for particle data arrays such as x, y, and z-\/coordinates, pressure, volume, and sound speeds 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Capacity is a number larger than the total number of {\itshape all} types of particles 
+\end{DoxyNote}
+\hypertarget{classParticleData_a60ceebcf0e4d76dfc5ce1a8f2875d735}{\index{Particle\-Data@{Particle\-Data}!get\-Dimension@{get\-Dimension}}
+\index{get\-Dimension@{get\-Dimension}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Dimension}]{\setlength{\rightskip}{0pt plus 5cm}int Particle\-Data\-::get\-Dimension (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a60ceebcf0e4d76dfc5ce1a8f2875d735}
+
+
+Getter function of the specified dimension of simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified dimension of simulation 
+\end{DoxyReturn}
+\hypertarget{classParticleData_aa3b6b967658f755ff919a53c7d6f08fe}{\index{Particle\-Data@{Particle\-Data}!get\-Fluid\-Num@{get\-Fluid\-Num}}
+\index{get\-Fluid\-Num@{get\-Fluid\-Num}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Fluid\-Num}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Particle\-Data\-::get\-Fluid\-Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_aa3b6b967658f755ff919a53c7d6f08fe}
+
+
+Getter function of the number of {\itshape fluid} particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of {\itshape fluid} particles 
+\end{DoxyReturn}
+\hypertarget{classParticleData_aeef5d282d6a0d4b994ebb6c9adf2e732}{\index{Particle\-Data@{Particle\-Data}!get\-Fluid\-Start\-Index@{get\-Fluid\-Start\-Index}}
+\index{get\-Fluid\-Start\-Index@{get\-Fluid\-Start\-Index}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Fluid\-Start\-Index}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Particle\-Data\-::get\-Fluid\-Start\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_aeef5d282d6a0d4b994ebb6c9adf2e732}
+
+
+Getter function of the start index of fluid particles in the particle data arrays. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The start index of fluid particles in the particle data arrays 
+\end{DoxyReturn}
+\hypertarget{classParticleData_a4f2840f8c303db330bcbb9310e42b63a}{\index{Particle\-Data@{Particle\-Data}!get\-Ghost\-Num@{get\-Ghost\-Num}}
+\index{get\-Ghost\-Num@{get\-Ghost\-Num}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Ghost\-Num}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Particle\-Data\-::get\-Ghost\-Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a4f2840f8c303db330bcbb9310e42b63a}
+
+
+Getter function of the number of {\itshape ghost} particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of {\itshape ghost} particles 
+\end{DoxyReturn}
+\hypertarget{classParticleData_aff6d2d9b42cf767c17e3d40e5e3f45af}{\index{Particle\-Data@{Particle\-Data}!get\-Ghost\-Start\-Index@{get\-Ghost\-Start\-Index}}
+\index{get\-Ghost\-Start\-Index@{get\-Ghost\-Start\-Index}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Ghost\-Start\-Index}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Particle\-Data\-::get\-Ghost\-Start\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_aff6d2d9b42cf767c17e3d40e5e3f45af}
+
+
+Getter function of the start index of ghost particles in the particle data arrays. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The start index of ghost particles in the particle data arrays 
+\end{DoxyReturn}
+\hypertarget{classParticleData_aaed390a75982301dd2d0f9e7548f429f}{\index{Particle\-Data@{Particle\-Data}!get\-Max\-Neighbour\-Num@{get\-Max\-Neighbour\-Num}}
+\index{get\-Max\-Neighbour\-Num@{get\-Max\-Neighbour\-Num}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Max\-Neighbour\-Num}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Particle\-Data\-::get\-Max\-Neighbour\-Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_aaed390a75982301dd2d0f9e7548f429f}
+
+
+Getter function of the specified maximum number of neighbours of a particle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified maximum number of neighbours of a particle 
+\end{DoxyReturn}
+\hypertarget{classParticleData_ae4cb9eaa2b370db71bb411b69460ae88}{\index{Particle\-Data@{Particle\-Data}!get\-Max\-Neighbour\-Num\-In\-One\-Dir@{get\-Max\-Neighbour\-Num\-In\-One\-Dir}}
+\index{get\-Max\-Neighbour\-Num\-In\-One\-Dir@{get\-Max\-Neighbour\-Num\-In\-One\-Dir}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Max\-Neighbour\-Num\-In\-One\-Dir}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Particle\-Data\-::get\-Max\-Neighbour\-Num\-In\-One\-Dir (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_ae4cb9eaa2b370db71bb411b69460ae88}
+
+
+Getter function of the specified maximum number of neighbours in one direction (eg. right-\/hand-\/side in the x-\/coordinate) of a particle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified maximum number of neighbours in one direction (eg. right-\/hand-\/side in the x-\/coordinate) of a particle 
+\end{DoxyReturn}
+\hypertarget{classParticleData_abb5cbc18cc19ba33786fabdb6b6bf8be}{\index{Particle\-Data@{Particle\-Data}!get\-Object\-Tag@{get\-Object\-Tag}}
+\index{get\-Object\-Tag@{get\-Object\-Tag}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Object\-Tag}]{\setlength{\rightskip}{0pt plus 5cm}const int$\ast$ const Particle\-Data\-::get\-Object\-Tag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_abb5cbc18cc19ba33786fabdb6b6bf8be}
+
+
+Getter function of the array of \char`\"{}object tags\char`\"{} of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of \char`\"{}object tags\char`\"{} of the initialized particles 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The tag of a particle in a fluid object is the index of the fluid object (the index of fluid object is 1,2,...). The tag of a particle {\bfseries not} in fluid object is 0 
+\end{DoxyNote}
+\hypertarget{classParticleData_a0bc37c6de97d72802a050c8fcdcf992c}{\index{Particle\-Data@{Particle\-Data}!get\-Position\-X@{get\-Position\-X}}
+\index{get\-Position\-X@{get\-Position\-X}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Position\-X}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-Position\-X (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a0bc37c6de97d72802a050c8fcdcf992c}
+
+
+Getter function of the array of x-\/coordinates of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of x-\/coordinates of the initialized particles 
+\end{DoxyReturn}
+\hypertarget{classParticleData_a35f579e90be114099676a825c543a27e}{\index{Particle\-Data@{Particle\-Data}!get\-Position\-Y@{get\-Position\-Y}}
+\index{get\-Position\-Y@{get\-Position\-Y}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Position\-Y}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-Position\-Y (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a35f579e90be114099676a825c543a27e}
+
+
+Getter function of the array of y-\/coordinates of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of y-\/coordinates of the initialized particles 
+\end{DoxyReturn}
+\hypertarget{classParticleData_ac95f723b00a4af40954290c4ba50a6f8}{\index{Particle\-Data@{Particle\-Data}!get\-Position\-Z@{get\-Position\-Z}}
+\index{get\-Position\-Z@{get\-Position\-Z}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Position\-Z}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-Position\-Z (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_ac95f723b00a4af40954290c4ba50a6f8}
+
+
+Getter function of the array of z-\/coordinates of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of z-\/coordinates of the initialized particles 
+\end{DoxyReturn}
+\hypertarget{classParticleData_a3713fca18cdeba32c17a244a62dcafdd}{\index{Particle\-Data@{Particle\-Data}!get\-Pressure@{get\-Pressure}}
+\index{get\-Pressure@{get\-Pressure}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Pressure}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-Pressure (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a3713fca18cdeba32c17a244a62dcafdd}
+
+
+Getter function of the array of pressure of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of pressure of the initialized particles 
+\end{DoxyReturn}
+\hypertarget{classParticleData_a493cb98a9d33fc3bd48fc879456a426c}{\index{Particle\-Data@{Particle\-Data}!get\-Sound\-Speed@{get\-Sound\-Speed}}
+\index{get\-Sound\-Speed@{get\-Sound\-Speed}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Sound\-Speed}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-Sound\-Speed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a493cb98a9d33fc3bd48fc879456a426c}
+
+
+Getter function of the array of sound speed of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of sound speed of the initialized particles 
+\end{DoxyReturn}
+\hypertarget{classParticleData_a8540779a3428501d6f45a31e58ad36bd}{\index{Particle\-Data@{Particle\-Data}!get\-Total\-Num@{get\-Total\-Num}}
+\index{get\-Total\-Num@{get\-Total\-Num}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Total\-Num}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t Particle\-Data\-::get\-Total\-Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a8540779a3428501d6f45a31e58ad36bd}
+
+
+Getter function of the number of {\itshape all} types of particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of {\itshape all} types of particles 
+\end{DoxyReturn}
+\hypertarget{classParticleData_ae542ee996372ad5cd3514df7c953a5e9}{\index{Particle\-Data@{Particle\-Data}!get\-Velocity\-U@{get\-Velocity\-U}}
+\index{get\-Velocity\-U@{get\-Velocity\-U}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Velocity\-U}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-Velocity\-U (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_ae542ee996372ad5cd3514df7c953a5e9}
+
+
+Getter function of the array of velocity in x-\/coordinate of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of velocity in x-\/coordinate of the initialized particles 
+\end{DoxyReturn}
+\hypertarget{classParticleData_af81222ef767e1064575ac03b8be5786e}{\index{Particle\-Data@{Particle\-Data}!get\-Velocity\-V@{get\-Velocity\-V}}
+\index{get\-Velocity\-V@{get\-Velocity\-V}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Velocity\-V}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-Velocity\-V (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_af81222ef767e1064575ac03b8be5786e}
+
+
+Getter function of the array of velocity in y-\/coordinate of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of velocity in y-\/coordinate of the initialized particles 
+\end{DoxyReturn}
+\hypertarget{classParticleData_a35e82fba85a274782a3485bf99888635}{\index{Particle\-Data@{Particle\-Data}!get\-Velocity\-W@{get\-Velocity\-W}}
+\index{get\-Velocity\-W@{get\-Velocity\-W}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Velocity\-W}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-Velocity\-W (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a35e82fba85a274782a3485bf99888635}
+
+
+Getter function of the array of velocity in z-\/coordinate of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of velocity in z-\/coordinate of the initialized particles 
+\end{DoxyReturn}
+\hypertarget{classParticleData_a27b7864577ba44978a48a8587e9854ac}{\index{Particle\-Data@{Particle\-Data}!get\-Volume@{get\-Volume}}
+\index{get\-Volume@{get\-Volume}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-Volume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a27b7864577ba44978a48a8587e9854ac}
+
+
+Getter function of the array of volume of the initialized particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of volume of the initialized particles 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{particle__data_8h}{particle\-\_\-data.\-h}\item 
+particle\-\_\-data.\-cpp\end{DoxyCompactItemize}

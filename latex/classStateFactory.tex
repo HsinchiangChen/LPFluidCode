@@ -1,0 +1,127 @@
+\hypertarget{classStateFactory}{\section{State\-Factory Class Reference}
+\label{classStateFactory}\index{State\-Factory@{State\-Factory}}
+}
+
+
+The abstract factory class for creating objects in the \hyperlink{classState}{State} family.  
+
+
+
+
+{\ttfamily \#include $<$state.\-h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classStateFactory_ab207bad5fc0d332d65c62c5163d9ea77}{typedef \hyperlink{classState}{State} $\ast$($\ast$ \hyperlink{classStateFactory_ab207bad5fc0d332d65c62c5163d9ea77}{State\-Create\-Func} )()}\label{classStateFactory_ab207bad5fc0d332d65c62c5163d9ea77}
+
+\begin{DoxyCompactList}\small\item\em Defines a function pointer pointing to a function which creates objects in the \hyperlink{classState}{State} family. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classStateFactory_a16cb7a68980baccd46c01dcafb26c3ca}{register\-State} (std\-::string name, \hyperlink{classStateFactory_ab207bad5fc0d332d65c62c5163d9ea77}{State\-Create\-Func} func)
+\begin{DoxyCompactList}\small\item\em Registers (links) the state name {\itshape name} with the function {\itshape func} for creating objects in the \hyperlink{classState}{State} family. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classStateFactory}{State\-Factory} \& \hyperlink{classStateFactory_aab530d852a1024f169a019cc4fb14f93}{instance} ()
+\begin{DoxyCompactList}\small\item\em Returns reference to a Singleton object of class \hyperlink{classStateFactory}{State\-Factory}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\label{_amgrp01747264fe7bf50731df0522c351974e}%
+This function creates an object of the class linked to the
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & the name linked to a specific class in the \hyperlink{classState}{State} family via the registrer\-State member function\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classState}{State} $\ast$ pointer pointing to an object of a specific class in the \hyperlink{classState}{State} family
+\end{DoxyReturn}
+Example usage\-: 
+\begin{DoxyCode}
+\hyperlink{classStateFactory}{StateFactory}& factory = \hyperlink{classStateFactory_aab530d852a1024f169a019cc4fb14f93}{StateFactory::instance}();
+\hyperlink{classState}{State}* newState = factory.createState(name);
+\end{DoxyCode}
+ \begin{DoxyCompactItemize}
+\item 
+\hypertarget{classStateFactory_a01ea8b0749a77f51e0c17d7a50be5cca}{\hyperlink{classState}{State} $\ast$ {\bfseries create\-State} (std\-::string name)}\label{classStateFactory_a01ea8b0749a77f51e0c17d7a50be5cca}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The abstract factory class for creating objects in the \hyperlink{classState}{State} family. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/08/08
+\end{DoxyDate}
+Created on\-: 2014/06/07 
+
+\subsection{Member Function Documentation}
+\hypertarget{classStateFactory_aab530d852a1024f169a019cc4fb14f93}{\index{State\-Factory@{State\-Factory}!instance@{instance}}
+\index{instance@{instance}!StateFactory@{State\-Factory}}
+\subsubsection[{instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf State\-Factory} \& State\-Factory\-::instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classStateFactory_aab530d852a1024f169a019cc4fb14f93}
+
+
+Returns reference to a Singleton object of class \hyperlink{classStateFactory}{State\-Factory}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to a static object of class \hyperlink{classStateFactory}{State\-Factory}
+\end{DoxyReturn}
+Example usage\-: 
+\begin{DoxyCode}
+\hyperlink{classStateFactory}{StateFactory}& factory = \hyperlink{classStateFactory_aab530d852a1024f169a019cc4fb14f93}{StateFactory::instance}();
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+This function is implemented based on the lazy Singleton design pattern; therefore, only one \hyperlink{classStateFactory}{State\-Factory} instance is allowed in each program 
+\end{DoxyNote}
+\hypertarget{classStateFactory_a16cb7a68980baccd46c01dcafb26c3ca}{\index{State\-Factory@{State\-Factory}!register\-State@{register\-State}}
+\index{register\-State@{register\-State}!StateFactory@{State\-Factory}}
+\subsubsection[{register\-State}]{\setlength{\rightskip}{0pt plus 5cm}void State\-Factory\-::register\-State (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name, }
+\item[{{\bf State\-Create\-Func}}]{func}
+\end{DoxyParamCaption}
+)}}\label{classStateFactory_a16cb7a68980baccd46c01dcafb26c3ca}
+
+
+Registers (links) the state name {\itshape name} with the function {\itshape func} for creating objects in the \hyperlink{classState}{State} family. 
+
+After registration, {\itshape name} can be used as an argument in the create\-State member function for creating objects of the linked type in the \hyperlink{classState}{State} family
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & the state name \\
+\hline
+\mbox{\tt in}  & {\em func} & the function pointer pointing to the function that creates objects of a specific type in the \hyperlink{classState}{State} family\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Instead of using this function directly, consider using the \hyperlink{classStateRegistrar}{State\-Registrar} class for the purpose of linking a state name and a specific class in the \hyperlink{classState}{State} family. The function is kept public in case one wants to use it directly 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{state_8h}{state.\-h}\item 
+state.\-cpp\end{DoxyCompactItemize}

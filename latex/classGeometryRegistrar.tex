@@ -1,0 +1,92 @@
+\hypertarget{classGeometryRegistrar}{\section{Geometry\-Registrar$<$ Derived $>$ Class Template Reference}
+\label{classGeometryRegistrar}\index{Geometry\-Registrar$<$ Derived $>$@{Geometry\-Registrar$<$ Derived $>$}}
+}
+
+
+A template class for the registration of classes in the \hyperlink{classGeometry}{Geometry} family.  
+
+
+
+
+{\ttfamily \#include $<$registrar.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGeometryRegistrar_a1cd23887471187da1ec3ffe28ea453a1}{Geometry\-Registrar} (std\-::string name)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classGeometry}{Geometry} $\ast$ \hyperlink{classGeometryRegistrar_aa75f76e90fe8a95a4cd60b3e32092c08}{create\-Func} ()
+\begin{DoxyCompactList}\small\item\em This function creates an object of the {\itshape Derived} class and returns a pointer to the \hyperlink{classGeometry}{Geometry} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Derived$>$class Geometry\-Registrar$<$ Derived $>$}
+
+A template class for the registration of classes in the \hyperlink{classGeometry}{Geometry} family. 
+
+The purpose of this class is to have a unified place to register objects in the \hyperlink{classGeometry}{Geometry} family. Registration means linking a geometry name (given in the argument list of the constructor) and a class in the \hyperlink{classGeometry}{Geometry} family. It is implemented as a template class to accomondate various child classes in the \hyperlink{classGeometry}{Geometry} family.
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/08/08
+\end{DoxyDate}
+Created on\-: 2014/06/07 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGeometryRegistrar_a1cd23887471187da1ec3ffe28ea453a1}{\index{Geometry\-Registrar@{Geometry\-Registrar}!Geometry\-Registrar@{Geometry\-Registrar}}
+\index{Geometry\-Registrar@{Geometry\-Registrar}!GeometryRegistrar@{Geometry\-Registrar}}
+\subsubsection[{Geometry\-Registrar}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Derived $>$ {\bf Geometry\-Registrar}$<$ Derived $>$\-::{\bf Geometry\-Registrar} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name}
+\end{DoxyParamCaption}
+)}}\label{classGeometryRegistrar_a1cd23887471187da1ec3ffe28ea453a1}
+
+
+constructor 
+
+Registers the {\itshape name} given in the argument list. Registration means linking {\itshape name} to a class in the \hyperlink{classGeometry}{Geometry} family
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & a geometry name\\
+\hline
+\end{DoxyParams}
+Example usage\-: Registers {\itshape a\-\_\-name} with class {\itshape Some\-Geometry} 
+\begin{DoxyCode}
+\hyperlink{classGeometryRegistrar}{GeometryRegistrar<SomeGeometry>} g(\textcolor{stringliteral}{"a\_name"});
+\end{DoxyCode}
+ 
+
+\subsection{Member Function Documentation}
+\hypertarget{classGeometryRegistrar_aa75f76e90fe8a95a4cd60b3e32092c08}{\index{Geometry\-Registrar@{Geometry\-Registrar}!create\-Func@{create\-Func}}
+\index{create\-Func@{create\-Func}!GeometryRegistrar@{Geometry\-Registrar}}
+\subsubsection[{create\-Func}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Derived $>$ {\bf Geometry} $\ast$ {\bf Geometry\-Registrar}$<$ Derived $>$\-::create\-Func (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classGeometryRegistrar_aa75f76e90fe8a95a4cd60b3e32092c08}
+
+
+This function creates an object of the {\itshape Derived} class and returns a pointer to the \hyperlink{classGeometry}{Geometry} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Geoemtry $\ast$ pointer that points to an object of {\itshape Derived} class 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{registrar_8h}{registrar.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,121 @@
+\hypertarget{classGeometry}{\section{Geometry Class Reference}
+\label{classGeometry}\index{Geometry@{Geometry}}
+}
+
+
+An abstract class for the initialization of the geometry of fluid objects.  
+
+
+
+
+{\ttfamily \#include $<$geometry.\-h$>$}
+
+Inheritance diagram for Geometry\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGeometry}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGeometry_aedd2e92f79197c6f0671c5d14cf72578}{virtual \hyperlink{classGeometry_aedd2e92f79197c6f0671c5d14cf72578}{$\sim$\-Geometry} ()}\label{classGeometry_aedd2e92f79197c6f0671c5d14cf72578}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classGeometry_a69dbaf841341db31d0c412bcdbf50766}{operator()} (double x, double y, double z) const =0
+\begin{DoxyCompactList}\small\item\em Level set function of particle geometry. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classGeometry_aa8c0f7ecf1cfb99c4f997399ffe3fdb7}{get\-Bounding\-Box} (double \&xmin, double \&xmax, double \&ymin, double \&ymax, double \&zmin, double \&zmax)=0
+\begin{DoxyCompactList}\small\item\em Calculates the bounding box of a geometric shape. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract class for the initialization of the geometry of fluid objects. 
+
+This class can be used as a function object\-: the operator() is overloaded as the level set function of particle geometry
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/08/08
+\end{DoxyDate}
+Created on\-: 2014/06/07 
+
+\subsection{Member Function Documentation}
+\hypertarget{classGeometry_aa8c0f7ecf1cfb99c4f997399ffe3fdb7}{\index{Geometry@{Geometry}!get\-Bounding\-Box@{get\-Bounding\-Box}}
+\index{get\-Bounding\-Box@{get\-Bounding\-Box}!Geometry@{Geometry}}
+\subsubsection[{get\-Bounding\-Box}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Geometry\-::get\-Bounding\-Box (
+\begin{DoxyParamCaption}
+\item[{double \&}]{xmin, }
+\item[{double \&}]{xmax, }
+\item[{double \&}]{ymin, }
+\item[{double \&}]{ymax, }
+\item[{double \&}]{zmin, }
+\item[{double \&}]{zmax}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classGeometry_aa8c0f7ecf1cfb99c4f997399ffe3fdb7}
+
+
+Calculates the bounding box of a geometric shape. 
+
+For example, for a ball in 3\-D with center (xcen, ycen, zcen) and radius r the bounding box is calculated as (\mbox{[}xcen-\/r,xcen+r\mbox{]},\mbox{[}ycen-\/r,ycen+r\mbox{]},\mbox{[}zcen-\/r,zcen+r\mbox{]})
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em xmin} & The minimum in x-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em xmax} & The maximum in x-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em ymin} & The minimum in y-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em ymax} & The maximum in y-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em zmin} & The minimum in z-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em zmax} & The maximum in z-\/coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classDisk_a903ab97467e580b04073802cf9826369}{Disk}, \hyperlink{classDiskRight_ad11b03ddd56c39e6feb6b6704728481b}{Disk\-Right}, \hyperlink{classBall_ad9768e543e28ba727488f51eb80dc35a}{Ball}, and \hyperlink{classDiskLeft_a0aaa749c5b91d783a1fb65b5fc09ff1e}{Disk\-Left}.
+
+\hypertarget{classGeometry_a69dbaf841341db31d0c412bcdbf50766}{\index{Geometry@{Geometry}!operator()@{operator()}}
+\index{operator()@{operator()}!Geometry@{Geometry}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Geometry\-::operator() (
+\begin{DoxyParamCaption}
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{double}]{z}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classGeometry_a69dbaf841341db31d0c412bcdbf50766}
+
+
+Level set function of particle geometry. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em y} & The y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em z} & The z-\/coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if (x,y,z) is inside the level set function; {\ttfamily false} otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classDisk_a3fcfa8ff1210e7f2258dd6db44010b09}{Disk}, \hyperlink{classDiskRight_ac88e4b980a4f5ff96ffc09122b44c78a}{Disk\-Right}, \hyperlink{classBall_a3768880c8851caa9125b967c1083043c}{Ball}, and \hyperlink{classDiskLeft_a6bf1a04ca462be0549370b1e06efac6e}{Disk\-Left}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{geometry_8h}{geometry.\-h}\end{DoxyCompactItemize}

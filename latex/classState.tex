@@ -1,0 +1,153 @@
+\hypertarget{classState}{\section{State Class Reference}
+\label{classState}\index{State@{State}}
+}
+
+
+An abstract class for the initialization of the state of fluid objects.  
+
+
+
+
+{\ttfamily \#include $<$state.\-h$>$}
+
+Inheritance diagram for State\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.696970cm]{classState}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \hyperlink{classState_a74bb463fe066c9b35b33749afdd96360}{pressure} (double x, double y, double z)=0
+\begin{DoxyCompactList}\small\item\em Calculates pressure based on the Cartesian coordinate (x,y,z) of a particle. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classState_a965fc353153650d94641b3f6dc04f761}{density} (double x, double y, double z)=0
+\begin{DoxyCompactList}\small\item\em Calculates density based on the Cartesian coordinate (x,y,z) of a particle. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classState_a74515cbbfe947e2a8df9c85f06a845e4}{velocity} (double x, double y, double z, double \&v\-X, double \&v\-Y, double \&v\-Z)=0
+\begin{DoxyCompactList}\small\item\em Calculates velocity based on the Cartesian coordinate (x,y,z) of a particle. \end{DoxyCompactList}\item 
+\hypertarget{classState_a9ddc1df6f998184d6477b48fab90281c}{virtual \hyperlink{classState_a9ddc1df6f998184d6477b48fab90281c}{$\sim$\-State} ()}\label{classState_a9ddc1df6f998184d6477b48fab90281c}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract class for the initialization of the state of fluid objects. 
+
+The specified states include pressure, density, and velocity. These states are assigned based on the initial Cartesian coordinate of particles ( $x$, $y$, $z$).
+
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/08/08
+\end{DoxyDate}
+Created on\-: 2014/06/07 
+
+\subsection{Member Function Documentation}
+\hypertarget{classState_a965fc353153650d94641b3f6dc04f761}{\index{State@{State}!density@{density}}
+\index{density@{density}!State@{State}}
+\subsubsection[{density}]{\setlength{\rightskip}{0pt plus 5cm}virtual double State\-::density (
+\begin{DoxyParamCaption}
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{double}]{z}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classState_a965fc353153650d94641b3f6dc04f761}
+
+
+Calculates density based on the Cartesian coordinate (x,y,z) of a particle. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em y} & The y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em z} & The z-\/coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The calculated density value 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classUniformVelocityState_a88f7d12486116646685269a63dea0dcf}{Uniform\-Velocity\-State}, \hyperlink{classRightUniformVelocityState_abaca416f928a101f2a377305b68a6cf8}{Right\-Uniform\-Velocity\-State}, \hyperlink{classGaussianPressureState_a72005bf2a408899c05b90fa0353b60ce}{Gaussian\-Pressure\-State}, and \hyperlink{classLeftUniformVelocityState_a9622dfb041401cb5b62e3d0e326073b0}{Left\-Uniform\-Velocity\-State}.
+
+\hypertarget{classState_a74bb463fe066c9b35b33749afdd96360}{\index{State@{State}!pressure@{pressure}}
+\index{pressure@{pressure}!State@{State}}
+\subsubsection[{pressure}]{\setlength{\rightskip}{0pt plus 5cm}virtual double State\-::pressure (
+\begin{DoxyParamCaption}
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{double}]{z}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classState_a74bb463fe066c9b35b33749afdd96360}
+
+
+Calculates pressure based on the Cartesian coordinate (x,y,z) of a particle. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em y} & The y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em z} & The z-\/coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The calculated pressure value 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classUniformVelocityState_a88e71904d7b4a8307e3f051b1001b691}{Uniform\-Velocity\-State}, \hyperlink{classRightUniformVelocityState_a41ca22d5beb3fd17f886f042045ef967}{Right\-Uniform\-Velocity\-State}, \hyperlink{classGaussianPressureState_ab03eaaf1b46a20f69de5751b43695e36}{Gaussian\-Pressure\-State}, and \hyperlink{classLeftUniformVelocityState_a68e1d653f1a188e911a59bb888c08cb5}{Left\-Uniform\-Velocity\-State}.
+
+\hypertarget{classState_a74515cbbfe947e2a8df9c85f06a845e4}{\index{State@{State}!velocity@{velocity}}
+\index{velocity@{velocity}!State@{State}}
+\subsubsection[{velocity}]{\setlength{\rightskip}{0pt plus 5cm}virtual void State\-::velocity (
+\begin{DoxyParamCaption}
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{double}]{z, }
+\item[{double \&}]{v\-X, }
+\item[{double \&}]{v\-Y, }
+\item[{double \&}]{v\-Z}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classState_a74515cbbfe947e2a8df9c85f06a845e4}
+
+
+Calculates velocity based on the Cartesian coordinate (x,y,z) of a particle. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em y} & The y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em z} & The z-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em v\-X} & The calculated velocity value in x-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em v\-Y} & The calculated velocity value in y-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em v\-Z} & The calculated velocity value in z-\/coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classUniformVelocityState_a17e65d536b62d522fcbaa2175bc5cbe7}{Uniform\-Velocity\-State}, \hyperlink{classRightUniformVelocityState_add7cfe377e19f73b91cac77379770607}{Right\-Uniform\-Velocity\-State}, \hyperlink{classGaussianPressureState_a77a4372d616bb894e84de284ec386a52}{Gaussian\-Pressure\-State}, and \hyperlink{classLeftUniformVelocityState_a4495d2ca9f4d8f480e504d399b45b6f8}{Left\-Uniform\-Velocity\-State}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{state_8h}{state.\-h}\end{DoxyCompactItemize}

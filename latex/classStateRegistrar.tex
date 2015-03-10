@@ -1,0 +1,92 @@
+\hypertarget{classStateRegistrar}{\section{State\-Registrar$<$ Derived $>$ Class Template Reference}
+\label{classStateRegistrar}\index{State\-Registrar$<$ Derived $>$@{State\-Registrar$<$ Derived $>$}}
+}
+
+
+A template class for the registration of classes in the \hyperlink{classState}{State} family.  
+
+
+
+
+{\ttfamily \#include $<$registrar.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStateRegistrar_a2972e9ece50d079f090f70c3341f6126}{State\-Registrar} (std\-::string name)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classState}{State} $\ast$ \hyperlink{classStateRegistrar_ad88bb16cf3281084531dca90b907e6c8}{create\-Func} ()
+\begin{DoxyCompactList}\small\item\em This function creates an object of the {\itshape Derived} class and returns a pointer to the \hyperlink{classState}{State} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Derived$>$class State\-Registrar$<$ Derived $>$}
+
+A template class for the registration of classes in the \hyperlink{classState}{State} family. 
+
+The purpose of this class is to have a unified place to register objects in the \hyperlink{classState}{State} family. Registration means linking a state name (given in the argument list of the constructor) and a class in the \hyperlink{classState}{State} family. It is implemented as a template class to accomondate various child classes in the \hyperlink{classState}{State} family.
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/08/08
+\end{DoxyDate}
+Created on\-: 2014/06/07 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classStateRegistrar_a2972e9ece50d079f090f70c3341f6126}{\index{State\-Registrar@{State\-Registrar}!State\-Registrar@{State\-Registrar}}
+\index{State\-Registrar@{State\-Registrar}!StateRegistrar@{State\-Registrar}}
+\subsubsection[{State\-Registrar}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Derived $>$ {\bf State\-Registrar}$<$ Derived $>$\-::{\bf State\-Registrar} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name}
+\end{DoxyParamCaption}
+)}}\label{classStateRegistrar_a2972e9ece50d079f090f70c3341f6126}
+
+
+constructor 
+
+Registers the {\itshape name} given in the argument list. Registration means linking {\itshape name} to a class in the \hyperlink{classGeometry}{Geometry} family.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & a state name\\
+\hline
+\end{DoxyParams}
+Example usage\-: Registers {\itshape a\-\_\-name} with class {\itshape Some\-State} 
+\begin{DoxyCode}
+\hyperlink{classStateRegistrar}{StateRegistrar<SomeState>} s(\textcolor{stringliteral}{"a\_name"});
+\end{DoxyCode}
+ 
+
+\subsection{Member Function Documentation}
+\hypertarget{classStateRegistrar_ad88bb16cf3281084531dca90b907e6c8}{\index{State\-Registrar@{State\-Registrar}!create\-Func@{create\-Func}}
+\index{create\-Func@{create\-Func}!StateRegistrar@{State\-Registrar}}
+\subsubsection[{create\-Func}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Derived $>$ {\bf State} $\ast$ {\bf State\-Registrar}$<$ Derived $>$\-::create\-Func (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classStateRegistrar_ad88bb16cf3281084531dca90b907e6c8}
+
+
+This function creates an object of the {\itshape Derived} class and returns a pointer to the \hyperlink{classState}{State} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classState}{State} $\ast$ pointer that points to an object of {\itshape Derived} class 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{registrar_8h}{registrar.\-h}\end{DoxyCompactItemize}

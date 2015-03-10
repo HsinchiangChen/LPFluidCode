@@ -1,0 +1,211 @@
+\hypertarget{classHexagonalPacking3D}{\section{Hexagonal\-Packing3\-D Class Reference}
+\label{classHexagonalPacking3D}\index{Hexagonal\-Packing3\-D@{Hexagonal\-Packing3\-D}}
+}
+
+
+Computes the 3\-D Cartesian coordinates of a particle based on the hexagonal close packing.  
+
+
+
+
+{\ttfamily \#include $<$hexagonal\-\_\-packing.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classHexagonalPacking3D_a1ae1184b1166e0952c2de08bf44547f8}{Hexagonal\-Packing3\-D} (double xmin\-\_\-, double xmax\-\_\-, double ymin\-\_\-, double ymax\-\_\-, double zmin\-\_\-, double zmax\-\_\-, double h\-\_\-r\-\_\-)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classHexagonalPacking3D_a9a631bd408edf720655f49d6ad7aaf61}{get\-Parameters} (size\-\_\-t \&l0\-\_\-, size\-\_\-t \&l1\-\_\-, size\-\_\-t \&m0\-\_\-odd\-\_\-, size\-\_\-t \&m1\-\_\-odd\-\_\-, size\-\_\-t \&m0\-\_\-even\-\_\-, size\-\_\-t \&m1\-\_\-even\-\_\-, size\-\_\-t \&n0\-\_\-odd\-\_\-, size\-\_\-t \&n1\-\_\-odd\-\_\-, size\-\_\-t \&n0\-\_\-even\-\_\-, size\-\_\-t \&n1\-\_\-even\-\_\-, size\-\_\-t \&nn0\-\_\-odd\-\_\-, size\-\_\-t \&nn1\-\_\-odd\-\_\-, size\-\_\-t \&nn0\-\_\-even\-\_\-, size\-\_\-t \&nn1\-\_\-even\-\_\-)
+\begin{DoxyCompactList}\small\item\em Getter function to retrieve parameters of the boundaries of this hexagonal close packing. \end{DoxyCompactList}\item 
+double \hyperlink{classHexagonalPacking3D_ade5a65928e4c898a73eacd872d59f31c}{compute\-X} (int tag, size\-\_\-t k)
+\begin{DoxyCompactList}\small\item\em Computes the particle location in the x-\/coordinate. \end{DoxyCompactList}\item 
+double \hyperlink{classHexagonalPacking3D_a1ee2586dc3519f9cdba3a18be91c7588}{compute\-Y} (int tag, size\-\_\-t j)
+\begin{DoxyCompactList}\small\item\em Computes the particle location in the y-\/coordinate. \end{DoxyCompactList}\item 
+double \hyperlink{classHexagonalPacking3D_a35b1cc5dbb7a42669b5ee96bd00d8458}{compute\-Z} (size\-\_\-t i)
+\begin{DoxyCompactList}\small\item\em Computes the particle location in the z-\/coordinate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Computes the 3\-D Cartesian coordinates of a particle based on the hexagonal close packing. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/05/09
+\end{DoxyDate}
+Created on\-: 2014/05/01 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classHexagonalPacking3D_a1ae1184b1166e0952c2de08bf44547f8}{\index{Hexagonal\-Packing3\-D@{Hexagonal\-Packing3\-D}!Hexagonal\-Packing3\-D@{Hexagonal\-Packing3\-D}}
+\index{Hexagonal\-Packing3\-D@{Hexagonal\-Packing3\-D}!HexagonalPacking3D@{Hexagonal\-Packing3\-D}}
+\subsubsection[{Hexagonal\-Packing3\-D}]{\setlength{\rightskip}{0pt plus 5cm}Hexagonal\-Packing3\-D\-::\-Hexagonal\-Packing3\-D (
+\begin{DoxyParamCaption}
+\item[{double}]{xmin\-\_\-, }
+\item[{double}]{xmax\-\_\-, }
+\item[{double}]{ymin\-\_\-, }
+\item[{double}]{ymax\-\_\-, }
+\item[{double}]{zmin\-\_\-, }
+\item[{double}]{zmax\-\_\-, }
+\item[{double}]{h\-\_\-r\-\_\-}
+\end{DoxyParamCaption}
+)}}\label{classHexagonalPacking3D_a1ae1184b1166e0952c2de08bf44547f8}
+
+
+Constructor. 
+
+The constructor initializes parameters needed to compute the 3\-D Cartesian coordinate of particles based on the hexagonal close packing using the input spatial domain and the input radius of the constructing equal sphere. All particles will be located inside the input spatial domain.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em xmin\-\_\-} & The minimum value of the input spatial domain in x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em xmax\-\_\-} & The maximum value of the input spatial domain in x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em ymin\-\_\-} & The minimum value of the input spatial domain in y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em ymax\-\_\-} & The maximum value of the input spatial domain in y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em zmin\-\_\-} & The minimum value of the input spatial domain in z-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em zmax\-\_\-} & The maximum value of the input spatial domain in z-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em h\-\_\-r\-\_\-} & The radius of the constructing sphere\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The parameter h\-\_\-r\-\_\- should be set to be one half of the initial inter-\/particle distance 
+\end{DoxyNote}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classHexagonalPacking3D_ade5a65928e4c898a73eacd872d59f31c}{\index{Hexagonal\-Packing3\-D@{Hexagonal\-Packing3\-D}!compute\-X@{compute\-X}}
+\index{compute\-X@{compute\-X}!HexagonalPacking3D@{Hexagonal\-Packing3\-D}}
+\subsubsection[{compute\-X}]{\setlength{\rightskip}{0pt plus 5cm}double Hexagonal\-Packing3\-D\-::compute\-X (
+\begin{DoxyParamCaption}
+\item[{int}]{tag, }
+\item[{size\-\_\-t}]{k}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classHexagonalPacking3D_ade5a65928e4c898a73eacd872d59f31c}
+
+
+Computes the particle location in the x-\/coordinate. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tag} & Value 0 indicates\-: 1. odd layers and odd rows, or 2. even layers and even rows ; otherwise indicates\-: 1. odd layers and even rows, or 2. even layers and odd rows \\
+\hline
+\mbox{\tt in}  & {\em k} & The k-\/th column \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Particle location in the x-\/coordinate 
+\end{DoxyReturn}
+\hypertarget{classHexagonalPacking3D_a1ee2586dc3519f9cdba3a18be91c7588}{\index{Hexagonal\-Packing3\-D@{Hexagonal\-Packing3\-D}!compute\-Y@{compute\-Y}}
+\index{compute\-Y@{compute\-Y}!HexagonalPacking3D@{Hexagonal\-Packing3\-D}}
+\subsubsection[{compute\-Y}]{\setlength{\rightskip}{0pt plus 5cm}double Hexagonal\-Packing3\-D\-::compute\-Y (
+\begin{DoxyParamCaption}
+\item[{int}]{tag, }
+\item[{size\-\_\-t}]{j}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classHexagonalPacking3D_a1ee2586dc3519f9cdba3a18be91c7588}
+
+
+Computes the particle location in the y-\/coordinate. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tag} & Value 0 indicates\-: odd-\/numbered layers; otherwise indicates even-\/numbered layers \\
+\hline
+\mbox{\tt in}  & {\em j} & The j-\/th row \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Particle location in the y-\/coordinate 
+\end{DoxyReturn}
+\hypertarget{classHexagonalPacking3D_a35b1cc5dbb7a42669b5ee96bd00d8458}{\index{Hexagonal\-Packing3\-D@{Hexagonal\-Packing3\-D}!compute\-Z@{compute\-Z}}
+\index{compute\-Z@{compute\-Z}!HexagonalPacking3D@{Hexagonal\-Packing3\-D}}
+\subsubsection[{compute\-Z}]{\setlength{\rightskip}{0pt plus 5cm}double Hexagonal\-Packing3\-D\-::compute\-Z (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classHexagonalPacking3D_a35b1cc5dbb7a42669b5ee96bd00d8458}
+
+
+Computes the particle location in the z-\/coordinate. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em j} & The i-\/th layer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Particle location in the z-\/coordinate 
+\end{DoxyReturn}
+\hypertarget{classHexagonalPacking3D_a9a631bd408edf720655f49d6ad7aaf61}{\index{Hexagonal\-Packing3\-D@{Hexagonal\-Packing3\-D}!get\-Parameters@{get\-Parameters}}
+\index{get\-Parameters@{get\-Parameters}!HexagonalPacking3D@{Hexagonal\-Packing3\-D}}
+\subsubsection[{get\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Hexagonal\-Packing3\-D\-::get\-Parameters (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t \&}]{l0\-\_\-, }
+\item[{size\-\_\-t \&}]{l1\-\_\-, }
+\item[{size\-\_\-t \&}]{m0\-\_\-odd\-\_\-, }
+\item[{size\-\_\-t \&}]{m1\-\_\-odd\-\_\-, }
+\item[{size\-\_\-t \&}]{m0\-\_\-even\-\_\-, }
+\item[{size\-\_\-t \&}]{m1\-\_\-even\-\_\-, }
+\item[{size\-\_\-t \&}]{n0\-\_\-odd\-\_\-, }
+\item[{size\-\_\-t \&}]{n1\-\_\-odd\-\_\-, }
+\item[{size\-\_\-t \&}]{n0\-\_\-even\-\_\-, }
+\item[{size\-\_\-t \&}]{n1\-\_\-even\-\_\-, }
+\item[{size\-\_\-t \&}]{nn0\-\_\-odd\-\_\-, }
+\item[{size\-\_\-t \&}]{nn1\-\_\-odd\-\_\-, }
+\item[{size\-\_\-t \&}]{nn0\-\_\-even\-\_\-, }
+\item[{size\-\_\-t \&}]{nn1\-\_\-even\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classHexagonalPacking3D_a9a631bd408edf720655f49d6ad7aaf61}
+
+
+Getter function to retrieve parameters of the boundaries of this hexagonal close packing. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em l0\-\_\-} & The minimum index of layers \\
+\hline
+\mbox{\tt out}  & {\em l1\-\_\-} & The maximum index of layers \\
+\hline
+\mbox{\tt out}  & {\em m0\-\_\-odd\-\_\-} & The minimum index of rows in odd-\/numbered layers \\
+\hline
+\mbox{\tt out}  & {\em m1\-\_\-odd\-\_\-} & The maximum index of rows in odd-\/numbered layers \\
+\hline
+\mbox{\tt out}  & {\em m0\-\_\-even\-\_\-} & The minimum index of rows in even-\/numbered layers \\
+\hline
+\mbox{\tt out}  & {\em m1\-\_\-even\-\_\-} & The maximum index of rows in even-\/numbered layers \\
+\hline
+\mbox{\tt out}  & {\em n0\-\_\-odd\-\_\-} & The minimum index of columns in odd rows \& odd layers \\
+\hline
+\mbox{\tt out}  & {\em n1\-\_\-odd\-\_\-} & The maximum index of columns in odd rows \& odd layers \\
+\hline
+\mbox{\tt out}  & {\em n0\-\_\-even\-\_\-} & The minimum index of columns in even rows \& odd layers \\
+\hline
+\mbox{\tt out}  & {\em n1\-\_\-even\-\_\-} & The maximum index of columns in even rows \& odd layers \\
+\hline
+\mbox{\tt out}  & {\em nn0\-\_\-odd\-\_\-} & The minimum index of columns in odd rows \& even layers \\
+\hline
+\mbox{\tt out}  & {\em nn1\-\_\-odd\-\_\-} & The maximum index of columns in odd rows \& even layers \\
+\hline
+\mbox{\tt out}  & {\em nn0\-\_\-even\-\_\-} & The minimum index of columns in even rows \& even layers \\
+\hline
+\mbox{\tt out}  & {\em nn1\-\_\-even\-\_\-} & The maximum index of columns in even rows \& even layers\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The information is retrieved to compute the Cartesian coordinate of particles one-\/by-\/one outside this class. This enables the caller to use different criterions to screen each particle to decide if this particle should be included into the computational context or not. This will save a lot of computational time compared to if all particles within the input spatial domain is included in the computational context first, and then screen and delete unnecessary particles. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{hexagonal__packing_8h}{hexagonal\-\_\-packing.\-h}\item 
+hexagonal\-\_\-packing.\-cpp\end{DoxyCompactItemize}

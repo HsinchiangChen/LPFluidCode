@@ -1,0 +1,123 @@
+\hypertarget{classDiskLeft}{\section{Disk\-Left Class Reference}
+\label{classDiskLeft}\index{Disk\-Left@{Disk\-Left}}
+}
+
+
+Supply functions for generating a 2\-D disk geometry for the 2\-D collision simulation.  
+
+
+
+
+{\ttfamily \#include $<$geometry\-\_\-collision.\-h$>$}
+
+Inheritance diagram for Disk\-Left\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDiskLeft}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classDiskLeft_a61d761f6c1adce3f6ed71d384d105425}{\hyperlink{classDiskLeft_a61d761f6c1adce3f6ed71d384d105425}{Disk\-Left} ()}\label{classDiskLeft_a61d761f6c1adce3f6ed71d384d105425}
+
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hypertarget{classDiskLeft_a71a93d69543f8863ae4db94d855e7ea0}{virtual \hyperlink{classDiskLeft_a71a93d69543f8863ae4db94d855e7ea0}{$\sim$\-Disk\-Left} ()}\label{classDiskLeft_a71a93d69543f8863ae4db94d855e7ea0}
+
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classDiskLeft_a6bf1a04ca462be0549370b1e06efac6e}{operator()} (double x, double y, double z) const 
+\begin{DoxyCompactList}\small\item\em Level set function of a 2\-D disk. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classDiskLeft_a0aaa749c5b91d783a1fb65b5fc09ff1e}{get\-Bounding\-Box} (double \&xmin, double \&xmax, double \&ymin, double \&ymax, double \&zmin, double \&zmax)
+\begin{DoxyCompactList}\small\item\em Calculates the bounding box of 2\-D disk. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Supply functions for generating a 2\-D disk geometry for the 2\-D collision simulation. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/09/08
+\end{DoxyDate}
+Created on\-: 2014/09/07 
+
+\subsection{Member Function Documentation}
+\hypertarget{classDiskLeft_a0aaa749c5b91d783a1fb65b5fc09ff1e}{\index{Disk\-Left@{Disk\-Left}!get\-Bounding\-Box@{get\-Bounding\-Box}}
+\index{get\-Bounding\-Box@{get\-Bounding\-Box}!DiskLeft@{Disk\-Left}}
+\subsubsection[{get\-Bounding\-Box}]{\setlength{\rightskip}{0pt plus 5cm}void Disk\-Left\-::get\-Bounding\-Box (
+\begin{DoxyParamCaption}
+\item[{double \&}]{xmin, }
+\item[{double \&}]{xmax, }
+\item[{double \&}]{ymin, }
+\item[{double \&}]{ymax, }
+\item[{double \&}]{zmin, }
+\item[{double \&}]{zmax}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classDiskLeft_a0aaa749c5b91d783a1fb65b5fc09ff1e}
+
+
+Calculates the bounding box of 2\-D disk. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em xmin} & The minimum in x-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em xmax} & The maximum in x-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em ymin} & The minimum in y-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em ymax} & The maximum in y-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em zmin} & The minimum in z-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em zmax} & The maximum in z-\/coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classGeometry_aa8c0f7ecf1cfb99c4f997399ffe3fdb7}{Geometry}.
+
+\hypertarget{classDiskLeft_a6bf1a04ca462be0549370b1e06efac6e}{\index{Disk\-Left@{Disk\-Left}!operator()@{operator()}}
+\index{operator()@{operator()}!DiskLeft@{Disk\-Left}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}bool Disk\-Left\-::operator() (
+\begin{DoxyParamCaption}
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{double}]{z = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classDiskLeft_a6bf1a04ca462be0549370b1e06efac6e}
+
+
+Level set function of a 2\-D disk. 
+
+The level set function is $ (x-\mbox{xcen})^2+(y-\mbox{ycen})^2 \leq r^2 $ , where (xcen,ycen) and {\itshape r} refer to the center and the radius of the disk
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em y} & The y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em z} & The z-\/coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if (x,y,z) is inside the level set function; {\ttfamily false} otherwise 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classGeometry_a69dbaf841341db31d0c412bcdbf50766}{Geometry}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{geometry__collision_8h}{geometry\-\_\-collision.\-h}\item 
+geometry\-\_\-collision.\-cpp\end{DoxyCompactItemize}

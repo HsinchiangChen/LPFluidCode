@@ -1,0 +1,138 @@
+\hypertarget{classEOS}{\section{E\-O\-S Class Reference}
+\label{classEOS}\index{E\-O\-S@{E\-O\-S}}
+}
+
+
+An abstract class for the calculation of energy and sound speed based on different \hyperlink{classEOS}{E\-O\-S} models.  
+
+
+
+
+{\ttfamily \#include $<$eos.\-h$>$}
+
+Inheritance diagram for E\-O\-S\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classEOS}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classEOS_ae6f21ee2d4c48acbac976d8c54f520f6}{virtual \hyperlink{classEOS_ae6f21ee2d4c48acbac976d8c54f520f6}{$\sim$\-E\-O\-S} ()}\label{classEOS_ae6f21ee2d4c48acbac976d8c54f520f6}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\hypertarget{classEOS_a9eb240115a907fda4e4ded60a2045d2a}{int \hyperlink{classEOS_a9eb240115a907fda4e4ded60a2045d2a}{get\-E\-O\-S\-Choice} ()}\label{classEOS_a9eb240115a907fda4e4ded60a2045d2a}
+
+\begin{DoxyCompactList}\small\item\em Getter function of the protected data member m\-\_\-i\-E\-O\-S\-Choice. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classEOS_ae658a4cdb726da6502cc58566abe1c53}{get\-Parameters} (std\-::vector$<$ double $>$ \&params)=0
+\begin{DoxyCompactList}\small\item\em Getter function of all the parameters specified in the construtor argument list. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classEOS_acaaad3b306b042a03f5669a719588c85}{get\-Energy} (double pressure, double density)=0
+\begin{DoxyCompactList}\small\item\em Calculates energy based on this \hyperlink{classEOS}{E\-O\-S} and the input pressure and density values. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classEOS_a6afa3c018685f2100b649fd804a4f3dc}{get\-Sound\-Speed} (double pressure, double density)=0
+\begin{DoxyCompactList}\small\item\em Calculates sound speed based on this \hyperlink{classEOS}{E\-O\-S} and the input pressure and density values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classEOS_a9e02fca545fe675f1aa90d8a771c8500}{int \hyperlink{classEOS_a9e02fca545fe675f1aa90d8a771c8500}{m\-\_\-i\-E\-O\-S\-Choice}}\label{classEOS_a9e02fca545fe675f1aa90d8a771c8500}
+
+\begin{DoxyCompactList}\small\item\em The eos choice\-: 1=Polytropic gas; 2=Stiffened Polytropic gas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract class for the calculation of energy and sound speed based on different \hyperlink{classEOS}{E\-O\-S} models. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+Co-\/author\-: Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com}) on initial interface design
+
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/05/09
+\end{DoxyDate}
+Created on\-: 2014/05/01 
+
+\subsection{Member Function Documentation}
+\hypertarget{classEOS_acaaad3b306b042a03f5669a719588c85}{\index{E\-O\-S@{E\-O\-S}!get\-Energy@{get\-Energy}}
+\index{get\-Energy@{get\-Energy}!EOS@{E\-O\-S}}
+\subsubsection[{get\-Energy}]{\setlength{\rightskip}{0pt plus 5cm}virtual double E\-O\-S\-::get\-Energy (
+\begin{DoxyParamCaption}
+\item[{double}]{pressure, }
+\item[{double}]{density}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classEOS_acaaad3b306b042a03f5669a719588c85}
+
+
+Calculates energy based on this \hyperlink{classEOS}{E\-O\-S} and the input pressure and density values. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pressure} & the input pressure value \\
+\hline
+\mbox{\tt in}  & {\em density} & the input density value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the calculated energy value 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classStiffPolytropicGasEOS_a6be8bc169c83f75a9fe3a0bd98b6b689}{Stiff\-Polytropic\-Gas\-E\-O\-S}, and \hyperlink{classPolytropicGasEOS_a754b30cb17e7e112d985dd1fe9d5051f}{Polytropic\-Gas\-E\-O\-S}.
+
+\hypertarget{classEOS_ae658a4cdb726da6502cc58566abe1c53}{\index{E\-O\-S@{E\-O\-S}!get\-Parameters@{get\-Parameters}}
+\index{get\-Parameters@{get\-Parameters}!EOS@{E\-O\-S}}
+\subsubsection[{get\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}virtual void E\-O\-S\-::get\-Parameters (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ double $>$ \&}]{params}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classEOS_ae658a4cdb726da6502cc58566abe1c53}
+
+
+Getter function of all the parameters specified in the construtor argument list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em params} & All the parameters of this \hyperlink{classEOS}{E\-O\-S} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classStiffPolytropicGasEOS_a057063a50050f30de6a5793d2f56c612}{Stiff\-Polytropic\-Gas\-E\-O\-S}, and \hyperlink{classPolytropicGasEOS_adc6cca9144a7797fd78908467b4d438f}{Polytropic\-Gas\-E\-O\-S}.
+
+\hypertarget{classEOS_a6afa3c018685f2100b649fd804a4f3dc}{\index{E\-O\-S@{E\-O\-S}!get\-Sound\-Speed@{get\-Sound\-Speed}}
+\index{get\-Sound\-Speed@{get\-Sound\-Speed}!EOS@{E\-O\-S}}
+\subsubsection[{get\-Sound\-Speed}]{\setlength{\rightskip}{0pt plus 5cm}virtual double E\-O\-S\-::get\-Sound\-Speed (
+\begin{DoxyParamCaption}
+\item[{double}]{pressure, }
+\item[{double}]{density}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classEOS_a6afa3c018685f2100b649fd804a4f3dc}
+
+
+Calculates sound speed based on this \hyperlink{classEOS}{E\-O\-S} and the input pressure and density values. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pressure} & the input pressure value \\
+\hline
+\mbox{\tt in}  & {\em density} & the input density value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the calculated sound speed value 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classStiffPolytropicGasEOS_aa780e1c650fa9df18133f38d4e8fbae6}{Stiff\-Polytropic\-Gas\-E\-O\-S}, and \hyperlink{classPolytropicGasEOS_a2f562ecc76589538fd88b78d3b5497f5}{Polytropic\-Gas\-E\-O\-S}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{eos_8h}{eos.\-h}\end{DoxyCompactItemize}

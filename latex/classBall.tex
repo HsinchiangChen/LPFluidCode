@@ -1,0 +1,123 @@
+\hypertarget{classBall}{\section{Ball Class Reference}
+\label{classBall}\index{Ball@{Ball}}
+}
+
+
+Supply functions for generating a 3\-D ball geometry.  
+
+
+
+
+{\ttfamily \#include $<$geometry.\-h$>$}
+
+Inheritance diagram for Ball\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classBall}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classBall_a86a144d3dad6c953e422e32435923bbb}{\hyperlink{classBall_a86a144d3dad6c953e422e32435923bbb}{Ball} ()}\label{classBall_a86a144d3dad6c953e422e32435923bbb}
+
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classBall_a78aa1f06b39fc9f81df82bef399c475c}{virtual \hyperlink{classBall_a78aa1f06b39fc9f81df82bef399c475c}{$\sim$\-Ball} ()}\label{classBall_a78aa1f06b39fc9f81df82bef399c475c}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classBall_a3768880c8851caa9125b967c1083043c}{operator()} (double x, double y, double z) const 
+\begin{DoxyCompactList}\small\item\em Level set function of a 3\-D ball. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classBall_ad9768e543e28ba727488f51eb80dc35a}{get\-Bounding\-Box} (double \&xmin, double \&xmax, double \&ymin, double \&ymax, double \&zmin, double \&zmax)
+\begin{DoxyCompactList}\small\item\em Calculates the bounding box of 3\-D ball. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Supply functions for generating a 3\-D ball geometry. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/08/08
+\end{DoxyDate}
+Created on\-: 2014/06/07 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBall_ad9768e543e28ba727488f51eb80dc35a}{\index{Ball@{Ball}!get\-Bounding\-Box@{get\-Bounding\-Box}}
+\index{get\-Bounding\-Box@{get\-Bounding\-Box}!Ball@{Ball}}
+\subsubsection[{get\-Bounding\-Box}]{\setlength{\rightskip}{0pt plus 5cm}void Ball\-::get\-Bounding\-Box (
+\begin{DoxyParamCaption}
+\item[{double \&}]{xmin, }
+\item[{double \&}]{xmax, }
+\item[{double \&}]{ymin, }
+\item[{double \&}]{ymax, }
+\item[{double \&}]{zmin, }
+\item[{double \&}]{zmax}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classBall_ad9768e543e28ba727488f51eb80dc35a}
+
+
+Calculates the bounding box of 3\-D ball. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em xmin} & The minimum in x-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em xmax} & The maximum in x-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em ymin} & The minimum in y-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em ymax} & The maximum in y-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em zmin} & The minimum in z-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em zmax} & The maximum in z-\/coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classGeometry_aa8c0f7ecf1cfb99c4f997399ffe3fdb7}{Geometry}.
+
+\hypertarget{classBall_a3768880c8851caa9125b967c1083043c}{\index{Ball@{Ball}!operator()@{operator()}}
+\index{operator()@{operator()}!Ball@{Ball}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}bool Ball\-::operator() (
+\begin{DoxyParamCaption}
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{double}]{z}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classBall_a3768880c8851caa9125b967c1083043c}
+
+
+Level set function of a 3\-D ball. 
+
+The level set function is $ (x-\mbox{xcen})^2+(y-\mbox{ycen})^2+(z-\mbox{zcen})^2 \leq r^2 $ , where (xcen,ycen,zcen) and {\itshape r} refer to the center and the radius of the ball
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em y} & The y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em z} & The z-\/coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if (x,y,z) is inside the level set function; {\ttfamily false} otherwise 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classGeometry_a69dbaf841341db31d0c412bcdbf50766}{Geometry}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{geometry_8h}{geometry.\-h}\item 
+geometry.\-cpp\end{DoxyCompactItemize}

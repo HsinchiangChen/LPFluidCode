@@ -1,0 +1,105 @@
+\hypertarget{classVTKParticleViewer}{\section{V\-T\-K\-Particle\-Viewer Class Reference}
+\label{classVTKParticleViewer}\index{V\-T\-K\-Particle\-Viewer@{V\-T\-K\-Particle\-Viewer}}
+}
+
+
+A class that output simulations results in the .vtk format.  
+
+
+
+
+{\ttfamily \#include $<$particle\-\_\-viewer.\-h$>$}
+
+Inheritance diagram for V\-T\-K\-Particle\-Viewer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classVTKParticleViewer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classVTKParticleViewer_a3b3f367478a14d3f849e515e84cd48fb}{V\-T\-K\-Particle\-Viewer} (\hyperlink{classParticleData}{Particle\-Data} $\ast$data, const std\-::string \&particle\-Type, const std\-::string \&outputfile\-Name=\char`\"{}\char`\"{}, int num\-Digits=7)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classVTKParticleViewer_a45efc6692f3d8d7178f456cfb7779c88}{write\-Result} (double time, std\-::size\-\_\-t write\-Step)
+\begin{DoxyCompactList}\small\item\em Write simulation results to the output file in the .vtk format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A class that output simulations results in the .vtk format. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+Co-\/author\-: Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com}) on initial interface and data structure design
+
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/07/12
+\end{DoxyDate}
+Created on\-: 2014/05/23 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classVTKParticleViewer_a3b3f367478a14d3f849e515e84cd48fb}{\index{V\-T\-K\-Particle\-Viewer@{V\-T\-K\-Particle\-Viewer}!V\-T\-K\-Particle\-Viewer@{V\-T\-K\-Particle\-Viewer}}
+\index{V\-T\-K\-Particle\-Viewer@{V\-T\-K\-Particle\-Viewer}!VTKParticleViewer@{V\-T\-K\-Particle\-Viewer}}
+\subsubsection[{V\-T\-K\-Particle\-Viewer}]{\setlength{\rightskip}{0pt plus 5cm}V\-T\-K\-Particle\-Viewer\-::\-V\-T\-K\-Particle\-Viewer (
+\begin{DoxyParamCaption}
+\item[{{\bf Particle\-Data} $\ast$}]{data, }
+\item[{const std\-::string \&}]{particle\-Type, }
+\item[{const std\-::string \&}]{outputfile\-Name = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{int}]{num\-Digits = {\ttfamily 7}}
+\end{DoxyParamCaption}
+)}}\label{classVTKParticleViewer_a3b3f367478a14d3f849e515e84cd48fb}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & A pointer to the object which holds particle information and data \\
+\hline
+\mbox{\tt in}  & {\em particle\-Type} & The type of particle to output (all, fluid, boundary, ghost) \\
+\hline
+\mbox{\tt in}  & {\em outputfile\-Name} & The name of the output file \\
+\hline
+\mbox{\tt in}  & {\em num\-Digits} & The number of digits for the indexing of output file name \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classVTKParticleViewer_a45efc6692f3d8d7178f456cfb7779c88}{\index{V\-T\-K\-Particle\-Viewer@{V\-T\-K\-Particle\-Viewer}!write\-Result@{write\-Result}}
+\index{write\-Result@{write\-Result}!VTKParticleViewer@{V\-T\-K\-Particle\-Viewer}}
+\subsubsection[{write\-Result}]{\setlength{\rightskip}{0pt plus 5cm}int V\-T\-K\-Particle\-Viewer\-::write\-Result (
+\begin{DoxyParamCaption}
+\item[{double}]{time, }
+\item[{std\-::size\-\_\-t}]{write\-Step}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classVTKParticleViewer_a45efc6692f3d8d7178f456cfb7779c88}
+
+
+Write simulation results to the output file in the .vtk format. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em time} & The physical output time \\
+\hline
+\mbox{\tt in}  & {\em write\-Step} & The number of times of output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if output success; 1 otherwise 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classParticleViewer_ab30b43a09b1412934e48bcf4bdac26a5}{Particle\-Viewer}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{particle__viewer_8h}{particle\-\_\-viewer.\-h}\item 
+particle\-\_\-viewer.\-cpp\end{DoxyCompactItemize}

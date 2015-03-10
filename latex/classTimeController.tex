@@ -1,0 +1,126 @@
+\hypertarget{classTimeController}{\section{Time\-Controller Class Reference}
+\label{classTimeController}\index{Time\-Controller@{Time\-Controller}}
+}
+
+
+An abstract class for different types of simulation time controllers.  
+
+
+
+
+{\ttfamily \#include $<$time\-\_\-controller.\-h$>$}
+
+Inheritance diagram for Time\-Controller\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classTimeController}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual int \hyperlink{classTimeController_abcb9dcb68b50cac5c176595091d913d1}{solve} ()=0
+\begin{DoxyCompactList}\small\item\em Calls main solvers of the simulation and determines the time stepping between iterations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classTimeController_aeb2d0926950dc0ca0ec6d11420272d90}{adjust\-Dt\-By\-Write\-Time\-Interval} ()
+\begin{DoxyCompactList}\small\item\em Adjusts the iteration time step when current time approaches the time for results writting. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTimeController_a4a917d4256a1c17d73ed99fada14d9b0}{\hyperlink{classLPSolver}{L\-P\-Solver} $\ast$ \hyperlink{classTimeController_a4a917d4256a1c17d73ed99fada14d9b0}{m\-\_\-p\-Solver}}\label{classTimeController_a4a917d4256a1c17d73ed99fada14d9b0}
+
+\begin{DoxyCompactList}\small\item\em A pointer to the Lagrangian Particle solver. \end{DoxyCompactList}\item 
+\hypertarget{classTimeController_a5da55d4137081d3a8eb0aa291859574f}{std\-::vector$<$ \hyperlink{classParticleViewer}{Particle\-Viewer} $\ast$ $>$ \hyperlink{classTimeController_a5da55d4137081d3a8eb0aa291859574f}{m\-\_\-v\-Viewers}}\label{classTimeController_a5da55d4137081d3a8eb0aa291859574f}
+
+\begin{DoxyCompactList}\small\item\em A vector containing pointers to different types of particle viewers. \end{DoxyCompactList}\item 
+\hypertarget{classTimeController_a62ad85a4f20827517639b6cadc7bf7ad}{double \hyperlink{classTimeController_a62ad85a4f20827517639b6cadc7bf7ad}{m\-\_\-f\-Time}}\label{classTimeController_a62ad85a4f20827517639b6cadc7bf7ad}
+
+\begin{DoxyCompactList}\small\item\em Current physical time of simulation. \end{DoxyCompactList}\item 
+\hypertarget{classTimeController_a17f379516b20b762851426183c58ea1e}{double \hyperlink{classTimeController_a17f379516b20b762851426183c58ea1e}{m\-\_\-f\-End\-Time}}\label{classTimeController_a17f379516b20b762851426183c58ea1e}
+
+\begin{DoxyCompactList}\small\item\em End physical time of simulation. \end{DoxyCompactList}\item 
+\hypertarget{classTimeController_afa7ed4273d825146845a64260eef4c3c}{double \hyperlink{classTimeController_afa7ed4273d825146845a64260eef4c3c}{m\-\_\-f\-Write\-Time\-Interval}}\label{classTimeController_afa7ed4273d825146845a64260eef4c3c}
+
+\begin{DoxyCompactList}\small\item\em The physical time interval between two writting of results. \end{DoxyCompactList}\item 
+\hypertarget{classTimeController_a497f8f5542f43a7a0975bf090ad0d232}{double \hyperlink{classTimeController_a497f8f5542f43a7a0975bf090ad0d232}{m\-\_\-f\-Next\-Write\-Time}}\label{classTimeController_a497f8f5542f43a7a0975bf090ad0d232}
+
+\begin{DoxyCompactList}\small\item\em The next physical time point to write results. \end{DoxyCompactList}\item 
+\hypertarget{classTimeController_acd5be58667699b78c72210dd05425c19}{double \hyperlink{classTimeController_acd5be58667699b78c72210dd05425c19}{m\-\_\-f\-Dt}}\label{classTimeController_acd5be58667699b78c72210dd05425c19}
+
+\begin{DoxyCompactList}\small\item\em The physical time interval between two iterations of the simulation. \end{DoxyCompactList}\item 
+\hypertarget{classTimeController_ad133665c62f56e80c9c7a9d6f1820934}{std\-::size\-\_\-t \hyperlink{classTimeController_ad133665c62f56e80c9c7a9d6f1820934}{m\-\_\-i\-Write\-Step}}\label{classTimeController_ad133665c62f56e80c9c7a9d6f1820934}
+
+\begin{DoxyCompactList}\small\item\em The number of times results are written to the particle veiwer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract class for different types of simulation time controllers. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+Co-\/author\-: Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com}) on initial interface design
+
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/07/12
+\end{DoxyDate}
+Created on\-: 2014/07/02 
+
+\subsection{Member Function Documentation}
+\hypertarget{classTimeController_aeb2d0926950dc0ca0ec6d11420272d90}{\index{Time\-Controller@{Time\-Controller}!adjust\-Dt\-By\-Write\-Time\-Interval@{adjust\-Dt\-By\-Write\-Time\-Interval}}
+\index{adjust\-Dt\-By\-Write\-Time\-Interval@{adjust\-Dt\-By\-Write\-Time\-Interval}!TimeController@{Time\-Controller}}
+\subsubsection[{adjust\-Dt\-By\-Write\-Time\-Interval}]{\setlength{\rightskip}{0pt plus 5cm}bool Time\-Controller\-::adjust\-Dt\-By\-Write\-Time\-Interval (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classTimeController_aeb2d0926950dc0ca0ec6d11420272d90}
+
+
+Adjusts the iteration time step when current time approaches the time for results writting. 
+
+m\-\_\-f\-Dt will be adjusted(shrinked) when m\-\_\-f\-Time + m\-\_\-f\-Dt $>$ m\-\_\-f\-Next\-Write\-Time, to match the exact time of results writting
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if m\-\_\-f\-Dt is adjusted; {\ttfamily false} otherwise 
+\end{DoxyReturn}
+\hypertarget{classTimeController_abcb9dcb68b50cac5c176595091d913d1}{\index{Time\-Controller@{Time\-Controller}!solve@{solve}}
+\index{solve@{solve}!TimeController@{Time\-Controller}}
+\subsubsection[{solve}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Time\-Controller\-::solve (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classTimeController_abcb9dcb68b50cac5c176595091d913d1}
+
+
+Calls main solvers of the simulation and determines the time stepping between iterations. 
+
+The simulation is performed by calling the main L\-P solver for each iteration and the time length between iterations is determined by the type of time controller adopted
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the entire simulation runs successfully to the end; 1 if main solver fails during any iteration 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classDefaultTimeController_a25ac85307f49f9f304a78d648b5676d7}{Default\-Time\-Controller}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{time__controller_8h}{time\-\_\-controller.\-h}\item 
+time\-\_\-controller.\-cpp\end{DoxyCompactItemize}

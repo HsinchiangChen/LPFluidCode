@@ -1,0 +1,419 @@
+\hypertarget{classBoundingBox}{\section{Bounding\-Box Class Reference}
+\label{classBoundingBox}\index{Bounding\-Box@{Bounding\-Box}}
+}
+
+
+This class is keeps the information of the boundaries of a fluid/boundary object.  
+
+
+
+
+{\ttfamily \#include $<$initializer.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBoundingBox_a4bc1c7c4c194847a406dea3c367d427e}{Bounding\-Box} (double xmin, double xmax, double ymin, double ymax, double zmin, double zmax)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+double \hyperlink{classBoundingBox_a5f09f2bd4eae49e7fb7264027031d887}{get\-Xmin} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the minimum value in x-\/coordinate of the bounding box. \end{DoxyCompactList}\item 
+double \hyperlink{classBoundingBox_a7ebcceabd35015231631eeaff865c0ad}{get\-Xmax} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the maximum value in x-\/coordinate of the bounding box. \end{DoxyCompactList}\item 
+double \hyperlink{classBoundingBox_ab9c8264adcb6d57abf83f0629df02533}{get\-Ymin} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the minimum value in y-\/coordinate of the bounding box. \end{DoxyCompactList}\item 
+double \hyperlink{classBoundingBox_ae99a1b8ae26d6463211abe47e2f25fd8}{get\-Ymax} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the maximum value in y-\/coordinate of the bounding box. \end{DoxyCompactList}\item 
+double \hyperlink{classBoundingBox_ade1dbb2ee5c33fdc58c086cac4341ef7}{get\-Zmin} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the minimum value in z-\/coordinate of the bounding box. \end{DoxyCompactList}\item 
+double \hyperlink{classBoundingBox_ad3e816149aa631521a8709da7aefcb9d}{get\-Zmax} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the maximum value in z-\/coordinate of the bounding box. \end{DoxyCompactList}\item 
+size\-\_\-t \hyperlink{classBoundingBox_aeb37fff91fa78a62d83917f458f8c73a}{get\-Start\-Index} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the start index in the particle arrays of the fluid/boundary object inside this bounding box. \end{DoxyCompactList}\item 
+size\-\_\-t \hyperlink{classBoundingBox_a52416bd9fb7b39b7a8fbe96702cb40b9}{get\-Number} ()
+\begin{DoxyCompactList}\small\item\em Getter function of the number of particles of the fluid/boundary object inside this bounding box. \end{DoxyCompactList}\item 
+void \hyperlink{classBoundingBox_a410a30a654c13c2a8c0d5b1f160a1ce9}{set\-Xmin} (double xmin)
+\begin{DoxyCompactList}\small\item\em Setter function of the minimum value in x-\/coordinate of the bounding box. \end{DoxyCompactList}\item 
+void \hyperlink{classBoundingBox_a118f709267cbd30afbae6e8a73bccea5}{set\-Xmax} (double xmax)
+\begin{DoxyCompactList}\small\item\em Setter function of the maximum value in x-\/coordinate of the bounding box. \end{DoxyCompactList}\item 
+void \hyperlink{classBoundingBox_afab5bd9f22d342dc75c07e49d0a937ba}{set\-Ymin} (double ymin)
+\begin{DoxyCompactList}\small\item\em Setter function of the minimum value in y-\/coordinate of the bounding box. \end{DoxyCompactList}\item 
+void \hyperlink{classBoundingBox_a19a5c056016c30f58a56340707ac397f}{set\-Ymax} (double ymax)
+\begin{DoxyCompactList}\small\item\em Setter function of the maximum value in y-\/coordinate of the bounding box. \end{DoxyCompactList}\item 
+void \hyperlink{classBoundingBox_abef069da4413d58cd06d4341bf3a1f28}{set\-Zmin} (double zmin)
+\begin{DoxyCompactList}\small\item\em Setter function of the minimum value in z-\/coordinate of the bounding box. \end{DoxyCompactList}\item 
+void \hyperlink{classBoundingBox_abe3df56e595019f72dcd384e7af6d994}{set\-Zmax} (double zmax)
+\begin{DoxyCompactList}\small\item\em Setter function of the maximum value in z-\/coordinate of the bounding box. \end{DoxyCompactList}\item 
+void \hyperlink{classBoundingBox_ad01b30ce8c0812d2ecb3ca864879a6bd}{set\-Start\-Index} (size\-\_\-t index)
+\begin{DoxyCompactList}\small\item\em Setter function of the start index in the particle arrays of the fluid/boundary object inside this bounding box. \end{DoxyCompactList}\item 
+void \hyperlink{classBoundingBox_a639f258e55b76ff434ec9c38389b5d95}{set\-Number} (size\-\_\-t num)
+\begin{DoxyCompactList}\small\item\em Setter function of the number of particles of the fluid/boundary object inside this bounding box. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is keeps the information of the boundaries of a fluid/boundary object. 
+
+The bounding box can be updated by the setter member methods
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/06/09
+\end{DoxyDate}
+Created on\-: 2014/06/01 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBoundingBox_a4bc1c7c4c194847a406dea3c367d427e}{\index{Bounding\-Box@{Bounding\-Box}!Bounding\-Box@{Bounding\-Box}}
+\index{Bounding\-Box@{Bounding\-Box}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{Bounding\-Box}]{\setlength{\rightskip}{0pt plus 5cm}Bounding\-Box\-::\-Bounding\-Box (
+\begin{DoxyParamCaption}
+\item[{double}]{xmin, }
+\item[{double}]{xmax, }
+\item[{double}]{ymin, }
+\item[{double}]{ymax, }
+\item[{double}]{zmin, }
+\item[{double}]{zmax}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_a4bc1c7c4c194847a406dea3c367d427e}
+
+
+Constructor. 
+
+Initializes the bounding box using the parameters in the argument list
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em xmin} & The minimum value in the x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em xmax} & The maximum value in the x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em ymin} & The minimum value in the y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em ymax} & The maximum value in the y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em zmin} & The minimum value in the z-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em zmax} & The maximum value in the z-\/coordinate \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBoundingBox_a52416bd9fb7b39b7a8fbe96702cb40b9}{\index{Bounding\-Box@{Bounding\-Box}!get\-Number@{get\-Number}}
+\index{get\-Number@{get\-Number}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{get\-Number}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t Bounding\-Box\-::get\-Number (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_a52416bd9fb7b39b7a8fbe96702cb40b9}
+
+
+Getter function of the number of particles of the fluid/boundary object inside this bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of particles of the fluid/boundary object inside this bounding box 
+\end{DoxyReturn}
+\hypertarget{classBoundingBox_aeb37fff91fa78a62d83917f458f8c73a}{\index{Bounding\-Box@{Bounding\-Box}!get\-Start\-Index@{get\-Start\-Index}}
+\index{get\-Start\-Index@{get\-Start\-Index}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{get\-Start\-Index}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t Bounding\-Box\-::get\-Start\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_aeb37fff91fa78a62d83917f458f8c73a}
+
+
+Getter function of the start index in the particle arrays of the fluid/boundary object inside this bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The start index in the particle arrays of the fluid/boundary object inside this bounding box 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The particle arrays refer to the major arrays like the x, y, z-\/coordinates of the \hyperlink{classParticleData}{Particle\-Data} class 
+\end{DoxyNote}
+\hypertarget{classBoundingBox_a7ebcceabd35015231631eeaff865c0ad}{\index{Bounding\-Box@{Bounding\-Box}!get\-Xmax@{get\-Xmax}}
+\index{get\-Xmax@{get\-Xmax}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{get\-Xmax}]{\setlength{\rightskip}{0pt plus 5cm}double Bounding\-Box\-::get\-Xmax (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_a7ebcceabd35015231631eeaff865c0ad}
+
+
+Getter function of the maximum value in x-\/coordinate of the bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The maximum value in x-\/coordinate of the bounding box 
+\end{DoxyReturn}
+\hypertarget{classBoundingBox_a5f09f2bd4eae49e7fb7264027031d887}{\index{Bounding\-Box@{Bounding\-Box}!get\-Xmin@{get\-Xmin}}
+\index{get\-Xmin@{get\-Xmin}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{get\-Xmin}]{\setlength{\rightskip}{0pt plus 5cm}double Bounding\-Box\-::get\-Xmin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_a5f09f2bd4eae49e7fb7264027031d887}
+
+
+Getter function of the minimum value in x-\/coordinate of the bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The minimum value in x-\/coordinate of the bounding box 
+\end{DoxyReturn}
+\hypertarget{classBoundingBox_ae99a1b8ae26d6463211abe47e2f25fd8}{\index{Bounding\-Box@{Bounding\-Box}!get\-Ymax@{get\-Ymax}}
+\index{get\-Ymax@{get\-Ymax}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{get\-Ymax}]{\setlength{\rightskip}{0pt plus 5cm}double Bounding\-Box\-::get\-Ymax (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_ae99a1b8ae26d6463211abe47e2f25fd8}
+
+
+Getter function of the maximum value in y-\/coordinate of the bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The maximum value in y-\/coordinate of the bounding box 
+\end{DoxyReturn}
+\hypertarget{classBoundingBox_ab9c8264adcb6d57abf83f0629df02533}{\index{Bounding\-Box@{Bounding\-Box}!get\-Ymin@{get\-Ymin}}
+\index{get\-Ymin@{get\-Ymin}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{get\-Ymin}]{\setlength{\rightskip}{0pt plus 5cm}double Bounding\-Box\-::get\-Ymin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_ab9c8264adcb6d57abf83f0629df02533}
+
+
+Getter function of the minimum value in y-\/coordinate of the bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The minimum value in y-\/coordinate of the bounding box 
+\end{DoxyReturn}
+\hypertarget{classBoundingBox_ad3e816149aa631521a8709da7aefcb9d}{\index{Bounding\-Box@{Bounding\-Box}!get\-Zmax@{get\-Zmax}}
+\index{get\-Zmax@{get\-Zmax}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{get\-Zmax}]{\setlength{\rightskip}{0pt plus 5cm}double Bounding\-Box\-::get\-Zmax (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_ad3e816149aa631521a8709da7aefcb9d}
+
+
+Getter function of the maximum value in z-\/coordinate of the bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The maximum value in z-\/coordinate of the bounding box 
+\end{DoxyReturn}
+\hypertarget{classBoundingBox_ade1dbb2ee5c33fdc58c086cac4341ef7}{\index{Bounding\-Box@{Bounding\-Box}!get\-Zmin@{get\-Zmin}}
+\index{get\-Zmin@{get\-Zmin}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{get\-Zmin}]{\setlength{\rightskip}{0pt plus 5cm}double Bounding\-Box\-::get\-Zmin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_ade1dbb2ee5c33fdc58c086cac4341ef7}
+
+
+Getter function of the minimum value in z-\/coordinate of the bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The minimum value in z-\/coordinate of the bounding box 
+\end{DoxyReturn}
+\hypertarget{classBoundingBox_a639f258e55b76ff434ec9c38389b5d95}{\index{Bounding\-Box@{Bounding\-Box}!set\-Number@{set\-Number}}
+\index{set\-Number@{set\-Number}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{set\-Number}]{\setlength{\rightskip}{0pt plus 5cm}void Bounding\-Box\-::set\-Number (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{num}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_a639f258e55b76ff434ec9c38389b5d95}
+
+
+Setter function of the number of particles of the fluid/boundary object inside this bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & number of particles of the fluid/boundary object inside this bounding box \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\hypertarget{classBoundingBox_ad01b30ce8c0812d2ecb3ca864879a6bd}{\index{Bounding\-Box@{Bounding\-Box}!set\-Start\-Index@{set\-Start\-Index}}
+\index{set\-Start\-Index@{set\-Start\-Index}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{set\-Start\-Index}]{\setlength{\rightskip}{0pt plus 5cm}void Bounding\-Box\-::set\-Start\-Index (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_ad01b30ce8c0812d2ecb3ca864879a6bd}
+
+
+Setter function of the start index in the particle arrays of the fluid/boundary object inside this bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & start index in the particle arrays of the fluid/boundary object inside this bounding box \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The particle arrays refer to the major arrays like the x, y, z-\/coordinates of the \hyperlink{classParticleData}{Particle\-Data} class 
+\end{DoxyNote}
+\hypertarget{classBoundingBox_a118f709267cbd30afbae6e8a73bccea5}{\index{Bounding\-Box@{Bounding\-Box}!set\-Xmax@{set\-Xmax}}
+\index{set\-Xmax@{set\-Xmax}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{set\-Xmax}]{\setlength{\rightskip}{0pt plus 5cm}void Bounding\-Box\-::set\-Xmax (
+\begin{DoxyParamCaption}
+\item[{double}]{xmax}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_a118f709267cbd30afbae6e8a73bccea5}
+
+
+Setter function of the maximum value in x-\/coordinate of the bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xmax} & The maximum value in x-\/coordinate of the bounding box \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\hypertarget{classBoundingBox_a410a30a654c13c2a8c0d5b1f160a1ce9}{\index{Bounding\-Box@{Bounding\-Box}!set\-Xmin@{set\-Xmin}}
+\index{set\-Xmin@{set\-Xmin}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{set\-Xmin}]{\setlength{\rightskip}{0pt plus 5cm}void Bounding\-Box\-::set\-Xmin (
+\begin{DoxyParamCaption}
+\item[{double}]{xmin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_a410a30a654c13c2a8c0d5b1f160a1ce9}
+
+
+Setter function of the minimum value in x-\/coordinate of the bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xmin} & The minimum value in x-\/coordinate of the bounding box \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\hypertarget{classBoundingBox_a19a5c056016c30f58a56340707ac397f}{\index{Bounding\-Box@{Bounding\-Box}!set\-Ymax@{set\-Ymax}}
+\index{set\-Ymax@{set\-Ymax}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{set\-Ymax}]{\setlength{\rightskip}{0pt plus 5cm}void Bounding\-Box\-::set\-Ymax (
+\begin{DoxyParamCaption}
+\item[{double}]{ymax}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_a19a5c056016c30f58a56340707ac397f}
+
+
+Setter function of the maximum value in y-\/coordinate of the bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ymax} & The maximum value in y-\/coordinate of the bounding box \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\hypertarget{classBoundingBox_afab5bd9f22d342dc75c07e49d0a937ba}{\index{Bounding\-Box@{Bounding\-Box}!set\-Ymin@{set\-Ymin}}
+\index{set\-Ymin@{set\-Ymin}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{set\-Ymin}]{\setlength{\rightskip}{0pt plus 5cm}void Bounding\-Box\-::set\-Ymin (
+\begin{DoxyParamCaption}
+\item[{double}]{ymin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_afab5bd9f22d342dc75c07e49d0a937ba}
+
+
+Setter function of the minimum value in y-\/coordinate of the bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ymin} & The minimum value in y-\/coordinate of the bounding box \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\hypertarget{classBoundingBox_abe3df56e595019f72dcd384e7af6d994}{\index{Bounding\-Box@{Bounding\-Box}!set\-Zmax@{set\-Zmax}}
+\index{set\-Zmax@{set\-Zmax}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{set\-Zmax}]{\setlength{\rightskip}{0pt plus 5cm}void Bounding\-Box\-::set\-Zmax (
+\begin{DoxyParamCaption}
+\item[{double}]{zmax}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_abe3df56e595019f72dcd384e7af6d994}
+
+
+Setter function of the maximum value in z-\/coordinate of the bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zmax} & The maximum value in z-\/coordinate of the bounding box \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\hypertarget{classBoundingBox_abef069da4413d58cd06d4341bf3a1f28}{\index{Bounding\-Box@{Bounding\-Box}!set\-Zmin@{set\-Zmin}}
+\index{set\-Zmin@{set\-Zmin}!BoundingBox@{Bounding\-Box}}
+\subsubsection[{set\-Zmin}]{\setlength{\rightskip}{0pt plus 5cm}void Bounding\-Box\-::set\-Zmin (
+\begin{DoxyParamCaption}
+\item[{double}]{zmin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoundingBox_abef069da4413d58cd06d4341bf3a1f28}
+
+
+Setter function of the minimum value in z-\/coordinate of the bounding box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zmin} & The minimum value in z-\/coordinate of the bounding box \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{initializer_8h}{initializer.\-h}\end{DoxyCompactItemize}

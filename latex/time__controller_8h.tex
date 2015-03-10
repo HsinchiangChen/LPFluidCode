@@ -1,0 +1,34 @@
+\hypertarget{time__controller_8h}{\section{time\-\_\-controller.\-h File Reference}
+\label{time__controller_8h}\index{time\-\_\-controller.\-h@{time\-\_\-controller.\-h}}
+}
+
+
+This header file contains classes for simulation time controls.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classTimeController}{Time\-Controller}
+\begin{DoxyCompactList}\small\item\em An abstract class for different types of simulation time controllers. \end{DoxyCompactList}\item 
+class \hyperlink{classDefaultTimeController}{Default\-Time\-Controller}
+\begin{DoxyCompactList}\small\item\em This time controller calculates the time stepping based on the C\-F\-L condition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This header file contains classes for simulation time controls. The task of time controllers is to determine the length of time between any two iterations of the simulation and call the main solver. For example, a time controller which uses a constant time stepping independent of the results of the main solver, or a time stepping calculated by the C\-F\-L condition, can be constructed by inheriting the \hyperlink{classTimeController}{Time\-Controller} class.
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+Co-\/author\-: Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com}) on initial interface design
+
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/07/12
+\end{DoxyDate}
+Created on\-: 2014/07/02 

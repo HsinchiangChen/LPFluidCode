@@ -1,0 +1,170 @@
+\hypertarget{classNeighbourSearcher}{\section{Neighbour\-Searcher Class Reference}
+\label{classNeighbourSearcher}\index{Neighbour\-Searcher@{Neighbour\-Searcher}}
+}
+
+
+An abstract class for the family of classes that performs the task of nearest neighbour search for particles.  
+
+
+
+
+{\ttfamily \#include $<$neighbour\-\_\-searcher.\-h$>$}
+
+Inheritance diagram for Neighbour\-Searcher\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classNeighbourSearcher}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeighbourSearcher_aa91ff4cc83209848f9318b82f73fe6d3}{virtual \hyperlink{classNeighbourSearcher_aa91ff4cc83209848f9318b82f73fe6d3}{$\sim$\-Neighbour\-Searcher} ()}\label{classNeighbourSearcher_aa91ff4cc83209848f9318b82f73fe6d3}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classNeighbourSearcher_a8bc715cc108edbe1be3fcaacaef3958f}{build\-Search\-Structure} (const double $\ast$x, const double $\ast$y, const double $\ast$z, size\-\_\-t num\-Particles)=0
+\begin{DoxyCompactList}\small\item\em Build the data structure for the nearest neighbour search, based on the input particle location ayyays in the x, y, and z-\/coordinates and the number of particles. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classNeighbourSearcher_a5268534d8a08622f66760202e12cbd07}{build\-Search\-Structure} (const double $\ast$x, const double $\ast$y, const double $\ast$z, size\-\_\-t begin, size\-\_\-t num\-Particles)=0
+\begin{DoxyCompactList}\small\item\em Build the data structure for the nearest neighbour search, based on the input particle location arrays in the x, y, and z-\/coordinates, the starting point in the arrays and the number of particles. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classNeighbourSearcher_aeb7a7ca7e97680b159f1fc3f6e467764}{search\-Neighbour} (const double x, const double y, const double z, const double radius, int $\ast$result, double $\ast$distance, size\-\_\-t \&result\-\_\-length, int index=-\/1)=0
+\begin{DoxyCompactList}\small\item\em Searches the nearest neighbours for a particle on the built search data structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract class for the family of classes that performs the task of nearest neighbour search for particles. 
+
+\begin{DoxyAuthor}{Author}
+Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/10/14
+\end{DoxyDate}
+Created on\-: 2014/8/22 
+
+\subsection{Member Function Documentation}
+\hypertarget{classNeighbourSearcher_a8bc715cc108edbe1be3fcaacaef3958f}{\index{Neighbour\-Searcher@{Neighbour\-Searcher}!build\-Search\-Structure@{build\-Search\-Structure}}
+\index{build\-Search\-Structure@{build\-Search\-Structure}!NeighbourSearcher@{Neighbour\-Searcher}}
+\subsubsection[{build\-Search\-Structure}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Neighbour\-Searcher\-::build\-Search\-Structure (
+\begin{DoxyParamCaption}
+\item[{const double $\ast$}]{x, }
+\item[{const double $\ast$}]{y, }
+\item[{const double $\ast$}]{z, }
+\item[{size\-\_\-t}]{num\-Particles}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classNeighbourSearcher_a8bc715cc108edbe1be3fcaacaef3958f}
+
+
+Build the data structure for the nearest neighbour search, based on the input particle location ayyays in the x, y, and z-\/coordinates and the number of particles. 
+
+The function uses the information of the input arrays in the range \mbox{[}0,{\itshape num\-Particles})
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The particle location array in the x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em y} & The particle location array in the y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em z} & The particle location array in the z-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em num\-Particles} & The number of particles used in the particle location arrays \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0, if success 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classOctreeSearcher_acc585c4f280f453930f0d1e33f8ed040}{Octree\-Searcher}.
+
+\hypertarget{classNeighbourSearcher_a5268534d8a08622f66760202e12cbd07}{\index{Neighbour\-Searcher@{Neighbour\-Searcher}!build\-Search\-Structure@{build\-Search\-Structure}}
+\index{build\-Search\-Structure@{build\-Search\-Structure}!NeighbourSearcher@{Neighbour\-Searcher}}
+\subsubsection[{build\-Search\-Structure}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Neighbour\-Searcher\-::build\-Search\-Structure (
+\begin{DoxyParamCaption}
+\item[{const double $\ast$}]{x, }
+\item[{const double $\ast$}]{y, }
+\item[{const double $\ast$}]{z, }
+\item[{size\-\_\-t}]{begin, }
+\item[{size\-\_\-t}]{num\-Particles}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classNeighbourSearcher_a5268534d8a08622f66760202e12cbd07}
+
+
+Build the data structure for the nearest neighbour search, based on the input particle location arrays in the x, y, and z-\/coordinates, the starting point in the arrays and the number of particles. 
+
+The function uses the information of the input arrays in the range \mbox{[}{\itshape begin},{\itshape num\-Particles})
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The particle location array in the x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em y} & The particle location array in the y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em z} & The particle location array in the z-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em begin} & The starting point in the particle array to use to build the search structure \\
+\hline
+\mbox{\tt in}  & {\em num\-Particles} & The number of particles used in the particle location arrays \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0, if success 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classOctreeSearcher_a3fd644ff4fe22f3fc5d2ab154449d839}{Octree\-Searcher}.
+
+\hypertarget{classNeighbourSearcher_aeb7a7ca7e97680b159f1fc3f6e467764}{\index{Neighbour\-Searcher@{Neighbour\-Searcher}!search\-Neighbour@{search\-Neighbour}}
+\index{search\-Neighbour@{search\-Neighbour}!NeighbourSearcher@{Neighbour\-Searcher}}
+\subsubsection[{search\-Neighbour}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Neighbour\-Searcher\-::search\-Neighbour (
+\begin{DoxyParamCaption}
+\item[{const double}]{x, }
+\item[{const double}]{y, }
+\item[{const double}]{z, }
+\item[{const double}]{radius, }
+\item[{int $\ast$}]{result, }
+\item[{double $\ast$}]{distance, }
+\item[{size\-\_\-t \&}]{result\-\_\-length, }
+\item[{int}]{index = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classNeighbourSearcher_aeb7a7ca7e97680b159f1fc3f6e467764}
+
+
+Searches the nearest neighbours for a particle on the built search data structure. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The location in the x-\/coordinate of the target particle \\
+\hline
+\mbox{\tt in}  & {\em y} & The location in the y-\/coordinate of the target particle \\
+\hline
+\mbox{\tt in}  & {\em z} & The location in the z-\/coordinate of the target particle \\
+\hline
+\mbox{\tt in}  & {\em radius} & The neighbour search radius \\
+\hline
+\mbox{\tt out}  & {\em result} & An array saving the results of neighbour search (the neighbour list), which is sorted based on the the {\itshape distance} (in the {\bfseries ascending} order of {\itshape distance}) \\
+\hline
+\mbox{\tt out}  & {\em distance} & An array saving the distance between the target particle and its neighbours \\
+\hline
+\mbox{\tt out}  & {\em result\-\_\-length} & The number of neighbours obtained for the target particle \\
+\hline
+\mbox{\tt in}  & {\em index} & The index of target particle; this index is used to remove the target particle itself from its own neighbour list. The default argument is -\/1, which should only be used when the target particle itself is {\bfseries not} in the search structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0, if success
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This is the {\bfseries single-\/thread} version of this function 
+\end{DoxyNote}
+
+
+Implemented in \hyperlink{classOctreeSearcher_a30a8a3fc13649be5640f599721f2526a}{Octree\-Searcher}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{neighbour__searcher_8h}{neighbour\-\_\-searcher.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,113 @@
+\hypertarget{classParticleViewer}{\section{Particle\-Viewer Class Reference}
+\label{classParticleViewer}\index{Particle\-Viewer@{Particle\-Viewer}}
+}
+
+
+An abstract class for classes that output simulations results.  
+
+
+
+
+{\ttfamily \#include $<$particle\-\_\-viewer.\-h$>$}
+
+Inheritance diagram for Particle\-Viewer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classParticleViewer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual int \hyperlink{classParticleViewer_ab30b43a09b1412934e48bcf4bdac26a5}{write\-Result} (double time, std\-::size\-\_\-t write\-Step)=0
+\begin{DoxyCompactList}\small\item\em Write simulation results to the output file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\-::string \hyperlink{classParticleViewer_ab323188b9272afa2ad133de69b5fedd2}{right\-Flush} (std\-::size\-\_\-t write\-Step, std\-::size\-\_\-t num\-Digits)
+\begin{DoxyCompactList}\small\item\em A small helper function that organizes the format of output filename. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classParticleViewer_a9e81687c52b104ed42c9daeb8ba1169c}{\hyperlink{classParticleData}{Particle\-Data} $\ast$ \hyperlink{classParticleViewer_a9e81687c52b104ed42c9daeb8ba1169c}{m\-\_\-p\-Particle\-Data}}\label{classParticleViewer_a9e81687c52b104ed42c9daeb8ba1169c}
+
+\begin{DoxyCompactList}\small\item\em A pointer to the object which holds particle information and data. \end{DoxyCompactList}\item 
+\hypertarget{classParticleViewer_aa1aac6307294cfedf9fd1ceedc56709a}{std\-::string \hyperlink{classParticleViewer_aa1aac6307294cfedf9fd1ceedc56709a}{m\-\_\-s\-Outputfile\-Name}}\label{classParticleViewer_aa1aac6307294cfedf9fd1ceedc56709a}
+
+\begin{DoxyCompactList}\small\item\em The name of the output file. \end{DoxyCompactList}\item 
+\hypertarget{classParticleViewer_a537f17422635f011d54cc577a4710c88}{int \hyperlink{classParticleViewer_a537f17422635f011d54cc577a4710c88}{m\-\_\-i\-Num\-Digits}}\label{classParticleViewer_a537f17422635f011d54cc577a4710c88}
+
+\begin{DoxyCompactList}\small\item\em The number of digits for the indexing of output file name. \end{DoxyCompactList}\item 
+\hypertarget{classParticleViewer_aca59927807bc54a5b7c5ea227c8fe82f}{std\-::string \hyperlink{classParticleViewer_aca59927807bc54a5b7c5ea227c8fe82f}{m\-\_\-s\-Particle\-Type}}\label{classParticleViewer_aca59927807bc54a5b7c5ea227c8fe82f}
+
+\begin{DoxyCompactList}\small\item\em The type of particle data to output (all, fluid, boundary, etc) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract class for classes that output simulations results. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+Co-\/author\-: Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com}) on initial interface and data structure design
+
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/07/12
+\end{DoxyDate}
+Created on\-: 2014/05/23 
+
+\subsection{Member Function Documentation}
+\hypertarget{classParticleViewer_ab323188b9272afa2ad133de69b5fedd2}{\index{Particle\-Viewer@{Particle\-Viewer}!right\-Flush@{right\-Flush}}
+\index{right\-Flush@{right\-Flush}!ParticleViewer@{Particle\-Viewer}}
+\subsubsection[{right\-Flush}]{\setlength{\rightskip}{0pt plus 5cm}string Particle\-Viewer\-::right\-Flush (
+\begin{DoxyParamCaption}
+\item[{std\-::size\-\_\-t}]{write\-Step, }
+\item[{std\-::size\-\_\-t}]{num\-Digits}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classParticleViewer_ab323188b9272afa2ad133de69b5fedd2}
+
+
+A small helper function that organizes the format of output filename. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em write\-Step} & The number of times of output \\
+\hline
+\mbox{\tt in}  & {\em num\-Digits} & The number of digits for the indexing of output file name \\
+\hline
+\end{DoxyParams}
+\hypertarget{classParticleViewer_ab30b43a09b1412934e48bcf4bdac26a5}{\index{Particle\-Viewer@{Particle\-Viewer}!write\-Result@{write\-Result}}
+\index{write\-Result@{write\-Result}!ParticleViewer@{Particle\-Viewer}}
+\subsubsection[{write\-Result}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Particle\-Viewer\-::write\-Result (
+\begin{DoxyParamCaption}
+\item[{double}]{time, }
+\item[{std\-::size\-\_\-t}]{write\-Step}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classParticleViewer_ab30b43a09b1412934e48bcf4bdac26a5}
+
+
+Write simulation results to the output file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em time} & The physical output time \\
+\hline
+\mbox{\tt in}  & {\em write\-Step} & The number of times of output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if output success; 1 otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classVTKParticleViewer_a45efc6692f3d8d7178f456cfb7779c88}{V\-T\-K\-Particle\-Viewer}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{particle__viewer_8h}{particle\-\_\-viewer.\-h}\item 
+particle\-\_\-viewer.\-cpp\end{DoxyCompactItemize}

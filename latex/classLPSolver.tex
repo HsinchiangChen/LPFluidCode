@@ -1,0 +1,153 @@
+\hypertarget{classLPSolver}{\section{L\-P\-Solver Class Reference}
+\label{classLPSolver}\index{L\-P\-Solver@{L\-P\-Solver}}
+}
+
+
+An abstract class for the family of Lagrangian Particle solvers.  
+
+
+
+
+{\ttfamily \#include $<$lp\-\_\-solver.\-h$>$}
+
+Inheritance diagram for L\-P\-Solver\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLPSolver}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLPSolver_a9fbbdc7648d046971c74ff7ca458433e}{virtual \hyperlink{classLPSolver_a9fbbdc7648d046971c74ff7ca458433e}{$\sim$\-L\-P\-Solver} ()}\label{classLPSolver_a9fbbdc7648d046971c74ff7ca458433e}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classLPSolver_a5cac44bfd7d885abab818841471b457a}{solve} (double dt)=0
+\begin{DoxyCompactList}\small\item\em The black box main Lagrangian particle solver for one iteration step. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classLPSolver_ac0c1a883511a0cb36d5e87db2749f1f7}{get\-Min\-Particle\-Spacing} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the minimum inter-\/particle distance among all fluid particles. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classLPSolver_a1f8a8c7fee212b55e6c4fbb8a2f5213b}{get\-Max\-Sound\-Speed} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the maximum sound speed among all fluid particles. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classLPSolver_a1b6395ab3455bfb747bb3fd55301ddce}{get\-Max\-Fluid\-Velocity} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the maximum absolute value velocity among all fluid particles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLPSolver_a340b02b362cffd269af3e11a5b5880db}{double \hyperlink{classLPSolver_a340b02b362cffd269af3e11a5b5880db}{m\-\_\-f\-Min\-Particle\-Spacing}}\label{classLPSolver_a340b02b362cffd269af3e11a5b5880db}
+
+\begin{DoxyCompactList}\small\item\em Minimum inter-\/particle spacing among fluid particles at a time step. \end{DoxyCompactList}\item 
+\hypertarget{classLPSolver_a788fe64d779808fd4d57c41336bf604d}{double \hyperlink{classLPSolver_a788fe64d779808fd4d57c41336bf604d}{m\-\_\-f\-Max\-Sound\-Speed}}\label{classLPSolver_a788fe64d779808fd4d57c41336bf604d}
+
+\begin{DoxyCompactList}\small\item\em Maximum sound speed of fluid particles at a time step. \end{DoxyCompactList}\item 
+\hypertarget{classLPSolver_ac1107221647c560b5133225491b682bd}{double \hyperlink{classLPSolver_ac1107221647c560b5133225491b682bd}{m\-\_\-f\-Max\-Fluid\-Velocity}}\label{classLPSolver_ac1107221647c560b5133225491b682bd}
+
+\begin{DoxyCompactList}\small\item\em Maximum absolute value velocity of fluid particles at a time step. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract class for the family of Lagrangian Particle solvers. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+Co-\/author\-: Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com}) on initial interface design
+
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/10/09
+\end{DoxyDate}
+Created on\-: 2014/09/20 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLPSolver_a1b6395ab3455bfb747bb3fd55301ddce}{\index{L\-P\-Solver@{L\-P\-Solver}!get\-Max\-Fluid\-Velocity@{get\-Max\-Fluid\-Velocity}}
+\index{get\-Max\-Fluid\-Velocity@{get\-Max\-Fluid\-Velocity}!LPSolver@{L\-P\-Solver}}
+\subsubsection[{get\-Max\-Fluid\-Velocity}]{\setlength{\rightskip}{0pt plus 5cm}virtual double L\-P\-Solver\-::get\-Max\-Fluid\-Velocity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classLPSolver_a1b6395ab3455bfb747bb3fd55301ddce}
+
+
+Getter function of the maximum absolute value velocity among all fluid particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The maximum absolute value velocity among all fluid particles 
+\end{DoxyReturn}
+\hypertarget{classLPSolver_a1f8a8c7fee212b55e6c4fbb8a2f5213b}{\index{L\-P\-Solver@{L\-P\-Solver}!get\-Max\-Sound\-Speed@{get\-Max\-Sound\-Speed}}
+\index{get\-Max\-Sound\-Speed@{get\-Max\-Sound\-Speed}!LPSolver@{L\-P\-Solver}}
+\subsubsection[{get\-Max\-Sound\-Speed}]{\setlength{\rightskip}{0pt plus 5cm}virtual double L\-P\-Solver\-::get\-Max\-Sound\-Speed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classLPSolver_a1f8a8c7fee212b55e6c4fbb8a2f5213b}
+
+
+Getter function of the maximum sound speed among all fluid particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The maximum sound speed among all fluid particles 
+\end{DoxyReturn}
+\hypertarget{classLPSolver_ac0c1a883511a0cb36d5e87db2749f1f7}{\index{L\-P\-Solver@{L\-P\-Solver}!get\-Min\-Particle\-Spacing@{get\-Min\-Particle\-Spacing}}
+\index{get\-Min\-Particle\-Spacing@{get\-Min\-Particle\-Spacing}!LPSolver@{L\-P\-Solver}}
+\subsubsection[{get\-Min\-Particle\-Spacing}]{\setlength{\rightskip}{0pt plus 5cm}virtual double L\-P\-Solver\-::get\-Min\-Particle\-Spacing (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classLPSolver_ac0c1a883511a0cb36d5e87db2749f1f7}
+
+
+Getter function of the minimum inter-\/particle distance among all fluid particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The minimum inter-\/particle distance among all fluid particles 
+\end{DoxyReturn}
+\hypertarget{classLPSolver_a5cac44bfd7d885abab818841471b457a}{\index{L\-P\-Solver@{L\-P\-Solver}!solve@{solve}}
+\index{solve@{solve}!LPSolver@{L\-P\-Solver}}
+\subsubsection[{solve}]{\setlength{\rightskip}{0pt plus 5cm}virtual int L\-P\-Solver\-::solve (
+\begin{DoxyParamCaption}
+\item[{double}]{dt}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classLPSolver_a5cac44bfd7d885abab818841471b457a}
+
+
+The black box main Lagrangian particle solver for one iteration step. 
+
+The method should be called in the context of \hyperlink{classTimeController}{Time\-Controller}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em dt} & The length of physical time for this iteration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the iteration is success 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The function should always return 0 because all exceptions should be handled inside this class 
+\end{DoxyWarning}
+
+
+Implemented in \hyperlink{classHyperbolicLPSolver_a8f8cbda5f22f052208cdc4d4d03dc567}{Hyperbolic\-L\-P\-Solver}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{lp__solver_8h}{lp\-\_\-solver.\-h}\end{DoxyCompactItemize}

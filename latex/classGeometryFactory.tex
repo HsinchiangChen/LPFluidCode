@@ -1,0 +1,127 @@
+\hypertarget{classGeometryFactory}{\section{Geometry\-Factory Class Reference}
+\label{classGeometryFactory}\index{Geometry\-Factory@{Geometry\-Factory}}
+}
+
+
+The abstract factory class for creating objects in the \hyperlink{classGeometry}{Geometry} family.  
+
+
+
+
+{\ttfamily \#include $<$geometry.\-h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGeometryFactory_a4ad9d8a8411443e6915d2e0b5f1b0397}{typedef \hyperlink{classGeometry}{Geometry} $\ast$($\ast$ \hyperlink{classGeometryFactory_a4ad9d8a8411443e6915d2e0b5f1b0397}{Geo\-Create\-Func} )()}\label{classGeometryFactory_a4ad9d8a8411443e6915d2e0b5f1b0397}
+
+\begin{DoxyCompactList}\small\item\em Defines a function pointer pointing to a function which creates objects in the \hyperlink{classGeometry}{Geometry} family. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGeometryFactory_a6f722977cce9ea9a3cb3ef1e469178de}{register\-Geometry} (std\-::string name, \hyperlink{classGeometryFactory_a4ad9d8a8411443e6915d2e0b5f1b0397}{Geo\-Create\-Func} func)
+\begin{DoxyCompactList}\small\item\em Registers (links) the geometry name {\itshape name} with the function {\itshape func} for creating objects in the \hyperlink{classGeometry}{Geometry} family. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classGeometryFactory}{Geometry\-Factory} \& \hyperlink{classGeometryFactory_a13a3c88c7f915f7e07e3de9078098acd}{instance} ()
+\begin{DoxyCompactList}\small\item\em Returns reference to a Singleton object of class \hyperlink{classGeometryFactory}{Geometry\-Factory}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\label{_amgrp01747264fe7bf50731df0522c351974e}%
+This function creates an object of the class linked to the
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & the name linked to a specific class in the \hyperlink{classGeometry}{Geometry} family via the registrer\-Geometry member function\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classGeometry}{Geometry} $\ast$ pointer pointing to an object of a specific class in the \hyperlink{classGeometry}{Geometry} family
+\end{DoxyReturn}
+Example usage\-: 
+\begin{DoxyCode}
+\hyperlink{classGeometryFactory}{GeometryFactory}& factory = \hyperlink{classGeometryFactory_a13a3c88c7f915f7e07e3de9078098acd}{GeometryFactory::instance}();
+\hyperlink{classGeometry}{Geometry}* newGeometry = factory.createGeometry(name);
+\end{DoxyCode}
+ \begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGeometryFactory_a9c1803d0eea227f9884bb3862030e6c5}{\hyperlink{classGeometry}{Geometry} $\ast$ {\bfseries create\-Geometry} (std\-::string name)}\label{classGeometryFactory_a9c1803d0eea227f9884bb3862030e6c5}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The abstract factory class for creating objects in the \hyperlink{classGeometry}{Geometry} family. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/08/08
+\end{DoxyDate}
+Created on\-: 2014/06/07 
+
+\subsection{Member Function Documentation}
+\hypertarget{classGeometryFactory_a13a3c88c7f915f7e07e3de9078098acd}{\index{Geometry\-Factory@{Geometry\-Factory}!instance@{instance}}
+\index{instance@{instance}!GeometryFactory@{Geometry\-Factory}}
+\subsubsection[{instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Geometry\-Factory} \& Geometry\-Factory\-::instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classGeometryFactory_a13a3c88c7f915f7e07e3de9078098acd}
+
+
+Returns reference to a Singleton object of class \hyperlink{classGeometryFactory}{Geometry\-Factory}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to a static object of class \hyperlink{classGeometryFactory}{Geometry\-Factory}
+\end{DoxyReturn}
+Example usage\-: 
+\begin{DoxyCode}
+\hyperlink{classGeometryFactory}{GeometryFactory}& factory = \hyperlink{classGeometryFactory_a13a3c88c7f915f7e07e3de9078098acd}{GeometryFactory::instance}();
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+This function is implemented based on the lazy Singleton design pattern; therefore, only one \hyperlink{classGeometryFactory}{Geometry\-Factory} instance is allowed in each program 
+\end{DoxyNote}
+\hypertarget{classGeometryFactory_a6f722977cce9ea9a3cb3ef1e469178de}{\index{Geometry\-Factory@{Geometry\-Factory}!register\-Geometry@{register\-Geometry}}
+\index{register\-Geometry@{register\-Geometry}!GeometryFactory@{Geometry\-Factory}}
+\subsubsection[{register\-Geometry}]{\setlength{\rightskip}{0pt plus 5cm}void Geometry\-Factory\-::register\-Geometry (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name, }
+\item[{{\bf Geo\-Create\-Func}}]{func}
+\end{DoxyParamCaption}
+)}}\label{classGeometryFactory_a6f722977cce9ea9a3cb3ef1e469178de}
+
+
+Registers (links) the geometry name {\itshape name} with the function {\itshape func} for creating objects in the \hyperlink{classGeometry}{Geometry} family. 
+
+After registration, {\itshape name} can be used as an argument in the create\-Geometry member function for creating objects of the linked type in the \hyperlink{classGeometry}{Geometry} family
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & the geometry name \\
+\hline
+\mbox{\tt in}  & {\em func} & the function pointer pointing to the function that creates objects of a specific type in the \hyperlink{classGeometry}{Geometry} family\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Instead of using this function directly, consider using the \hyperlink{classGeometryRegistrar}{Geometry\-Registrar} class for the purpose of linking a geometry name and a specific class in the \hyperlink{classGeometry}{Geometry} family. The function is kept public in case one wants to use it directly 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{geometry_8h}{geometry.\-h}\item 
+geometry.\-cpp\end{DoxyCompactItemize}

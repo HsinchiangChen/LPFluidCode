@@ -1,0 +1,112 @@
+\hypertarget{classLSSolver}{\section{L\-S\-Solver Class Reference}
+\label{classLSSolver}\index{L\-S\-Solver@{L\-S\-Solver}}
+}
+
+
+An abstract class for the family of solvers for the least squares problem.  
+
+
+
+
+{\ttfamily \#include $<$ls\-\_\-solver.\-h$>$}
+
+Inheritance diagram for L\-S\-Solver\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLSSolver}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classLSSolver_ad52195d34383f38d85568be604c1fa3e}{$\sim$\-L\-S\-Solver} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classLSSolver_a82b3ec289e811512b8dadc933a0637fc}{solve} (double $\ast$result, double $\ast$b)=0
+\begin{DoxyCompactList}\small\item\em Solves the least squares problem Ax = b. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLSSolver_accba7e985f2f74ec9581f1e1ad185b75}{std\-::size\-\_\-t \hyperlink{classLSSolver_accba7e985f2f74ec9581f1e1ad185b75}{m\-\_\-i\-Num\-Row}}\label{classLSSolver_accba7e985f2f74ec9581f1e1ad185b75}
+
+\begin{DoxyCompactList}\small\item\em The number of rows in matrix A. \end{DoxyCompactList}\item 
+\hypertarget{classLSSolver_ad6c84ba57573c4a0834423489abc6775}{std\-::size\-\_\-t \hyperlink{classLSSolver_ad6c84ba57573c4a0834423489abc6775}{m\-\_\-i\-Num\-Col}}\label{classLSSolver_ad6c84ba57573c4a0834423489abc6775}
+
+\begin{DoxyCompactList}\small\item\em The number of columns in matrix A. \end{DoxyCompactList}\item 
+\hypertarget{classLSSolver_a4e0d7d2d24bd961999f205c37734ea5c}{double $\ast$ \hyperlink{classLSSolver_a4e0d7d2d24bd961999f205c37734ea5c}{m\-\_\-v\-A}}\label{classLSSolver_a4e0d7d2d24bd961999f205c37734ea5c}
+
+\begin{DoxyCompactList}\small\item\em The matrix A. \end{DoxyCompactList}\item 
+\hypertarget{classLSSolver_a68d9e90d326f9a50713ff37a0ffe1683}{double $\ast$ \hyperlink{classLSSolver_a68d9e90d326f9a50713ff37a0ffe1683}{m\-\_\-vb}}\label{classLSSolver_a68d9e90d326f9a50713ff37a0ffe1683}
+
+\begin{DoxyCompactList}\small\item\em The vector b (the right-\/hand-\/side) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract class for the family of solvers for the least squares problem. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+Co-\/author\-: Yu, Kwangmin (\href{mailto:yukwangmin@gmail.com}{\tt yukwangmin@gmail.\-com}) on initial interface design
+
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/10/09
+\end{DoxyDate}
+Created on\-: 2014/09/20 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLSSolver_ad52195d34383f38d85568be604c1fa3e}{\index{L\-S\-Solver@{L\-S\-Solver}!$\sim$\-L\-S\-Solver@{$\sim$\-L\-S\-Solver}}
+\index{$\sim$\-L\-S\-Solver@{$\sim$\-L\-S\-Solver}!LSSolver@{L\-S\-Solver}}
+\subsubsection[{$\sim$\-L\-S\-Solver}]{\setlength{\rightskip}{0pt plus 5cm}virtual L\-S\-Solver\-::$\sim$\-L\-S\-Solver (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classLSSolver_ad52195d34383f38d85568be604c1fa3e}
+
+
+Destructor. 
+
+\begin{DoxyNote}{Note}
+The data members {\itshape m\-\_\-v\-A} and {\itshape m\-\_\-vb} will point to some memory outside this class , as a result no memory should be deleted in this destructor 
+\end{DoxyNote}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classLSSolver_a82b3ec289e811512b8dadc933a0637fc}{\index{L\-S\-Solver@{L\-S\-Solver}!solve@{solve}}
+\index{solve@{solve}!LSSolver@{L\-S\-Solver}}
+\subsubsection[{solve}]{\setlength{\rightskip}{0pt plus 5cm}virtual int L\-S\-Solver\-::solve (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{result, }
+\item[{double $\ast$}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classLSSolver_a82b3ec289e811512b8dadc933a0637fc}
+
+
+Solves the least squares problem Ax = b. 
+
+A is a mxn matrix, b is a mx1 vector, and x is the solution which is a nx1 vector.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em result} & The {\itshape x} in Ax = b, which is a nx1 vector \\
+\hline
+\mbox{\tt in}  & {\em b} & The right-\/hand-\/size, which is a mx1 vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if success; otherwise if failure 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The input array {\itshape b} {\bfseries may} be modified in this method 
+\end{DoxyWarning}
+
+
+Implemented in \hyperlink{classQRSolver_a23ab430c142684c6906793511d81c3de}{Q\-R\-Solver}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{ls__solver_8h}{ls\-\_\-solver.\-h}\end{DoxyCompactItemize}

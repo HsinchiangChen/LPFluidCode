@@ -1,0 +1,154 @@
+\hypertarget{classLeftUniformVelocityState}{\section{Left\-Uniform\-Velocity\-State Class Reference}
+\label{classLeftUniformVelocityState}\index{Left\-Uniform\-Velocity\-State@{Left\-Uniform\-Velocity\-State}}
+}
+
+
+A class that implements the left uniform velocity state.  
+
+
+
+
+{\ttfamily \#include $<$state\-\_\-collision.\-h$>$}
+
+Inheritance diagram for Left\-Uniform\-Velocity\-State\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLeftUniformVelocityState}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLeftUniformVelocityState_a8d8468781815d8f842537b8b69412f73}{\hyperlink{classLeftUniformVelocityState_a8d8468781815d8f842537b8b69412f73}{Left\-Uniform\-Velocity\-State} ()}\label{classLeftUniformVelocityState_a8d8468781815d8f842537b8b69412f73}
+
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hypertarget{classLeftUniformVelocityState_a3df71d7b95da2f4a889e24e9158eaab9}{virtual \hyperlink{classLeftUniformVelocityState_a3df71d7b95da2f4a889e24e9158eaab9}{$\sim$\-Left\-Uniform\-Velocity\-State} ()}\label{classLeftUniformVelocityState_a3df71d7b95da2f4a889e24e9158eaab9}
+
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+virtual double \hyperlink{classLeftUniformVelocityState_a68e1d653f1a188e911a59bb888c08cb5}{pressure} (double x, double y, double z)
+\begin{DoxyCompactList}\small\item\em Specifies constant pressure as specified in construtor implementation. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classLeftUniformVelocityState_a9622dfb041401cb5b62e3d0e326073b0}{density} (double x, double y, double z)
+\begin{DoxyCompactList}\small\item\em Specifies a constant value as specified in constructor implementation. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classLeftUniformVelocityState_a4495d2ca9f4d8f480e504d399b45b6f8}{velocity} (double x, double y, double z, double \&v\-X, double \&v\-Y, double \&v\-Z)
+\begin{DoxyCompactList}\small\item\em Specifies constant velocity to the right-\/hand-\/side along the x-\/coordinate with magnitude specified in constructor implementation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that implements the left uniform velocity state. 
+
+This state specifies a uniform velocity toward the {\bfseries right} hand side along the x-\/coordinate, with uniform density and uniform zero pressure. The keyword {\bfseries Left} in the name indicates it is for the object on the left in the collision simulation
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2014/09/08
+\end{DoxyDate}
+Created on\-: 2014/09/07 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLeftUniformVelocityState_a9622dfb041401cb5b62e3d0e326073b0}{\index{Left\-Uniform\-Velocity\-State@{Left\-Uniform\-Velocity\-State}!density@{density}}
+\index{density@{density}!LeftUniformVelocityState@{Left\-Uniform\-Velocity\-State}}
+\subsubsection[{density}]{\setlength{\rightskip}{0pt plus 5cm}double Left\-Uniform\-Velocity\-State\-::density (
+\begin{DoxyParamCaption}
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{double}]{z}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classLeftUniformVelocityState_a9622dfb041401cb5b62e3d0e326073b0}
+
+
+Specifies a constant value as specified in constructor implementation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em y} & The y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em z} & The z-\/coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A constant density value 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_a965fc353153650d94641b3f6dc04f761}{State}.
+
+\hypertarget{classLeftUniformVelocityState_a68e1d653f1a188e911a59bb888c08cb5}{\index{Left\-Uniform\-Velocity\-State@{Left\-Uniform\-Velocity\-State}!pressure@{pressure}}
+\index{pressure@{pressure}!LeftUniformVelocityState@{Left\-Uniform\-Velocity\-State}}
+\subsubsection[{pressure}]{\setlength{\rightskip}{0pt plus 5cm}double Left\-Uniform\-Velocity\-State\-::pressure (
+\begin{DoxyParamCaption}
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{double}]{z}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classLeftUniformVelocityState_a68e1d653f1a188e911a59bb888c08cb5}
+
+
+Specifies constant pressure as specified in construtor implementation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em y} & The y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em z} & The z-\/coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A constnat pressure value 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_a74bb463fe066c9b35b33749afdd96360}{State}.
+
+\hypertarget{classLeftUniformVelocityState_a4495d2ca9f4d8f480e504d399b45b6f8}{\index{Left\-Uniform\-Velocity\-State@{Left\-Uniform\-Velocity\-State}!velocity@{velocity}}
+\index{velocity@{velocity}!LeftUniformVelocityState@{Left\-Uniform\-Velocity\-State}}
+\subsubsection[{velocity}]{\setlength{\rightskip}{0pt plus 5cm}void Left\-Uniform\-Velocity\-State\-::velocity (
+\begin{DoxyParamCaption}
+\item[{double}]{x, }
+\item[{double}]{y, }
+\item[{double}]{z, }
+\item[{double \&}]{v\-X, }
+\item[{double \&}]{v\-Y, }
+\item[{double \&}]{v\-Z}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classLeftUniformVelocityState_a4495d2ca9f4d8f480e504d399b45b6f8}
+
+
+Specifies constant velocity to the right-\/hand-\/side along the x-\/coordinate with magnitude specified in constructor implementation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & The x-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em y} & The y-\/coordinate \\
+\hline
+\mbox{\tt in}  & {\em z} & The z-\/coordinate \\
+\hline
+\mbox{\tt out}  & {\em v\-X} & A constant value ($>$0) \\
+\hline
+\mbox{\tt out}  & {\em v\-Y} & zero \\
+\hline
+\mbox{\tt out}  & {\em v\-Z} & zero \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_a74515cbbfe947e2a8df9c85f06a845e4}{State}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{state__collision_8h}{state\-\_\-collision.\-h}\item 
+state\-\_\-collision.\-cpp\end{DoxyCompactItemize}
