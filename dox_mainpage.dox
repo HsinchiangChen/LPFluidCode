@@ -83,7 +83,10 @@
  * The following simulation snapshots demonstrates the results of a 2D disk 
  * with a Gaussian-profile pressure initialization with the center of Gaussian being
  * the center of the disk. 
- * 
+ *
+ * \image html muon_collider1.gif
+ * \image html muon_collider2.gif
+ * \image html thimble_splash2.gif
  * 
  * \image html gauss.gif
  *
