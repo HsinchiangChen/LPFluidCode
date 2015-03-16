@@ -23,6 +23,7 @@
 
 #include <cstddef>
 #include <vector>
+#include <string>
 
 class LPSolver;
 class Initializer;
@@ -240,9 +241,51 @@ public:
 	const int* const getObjectTag() const {return m_vObjectTag;}
 	
 
+	/**
+	 * \brief   Getter function of the array of divided difference of order 1   
+	 * \param   None
+	 * \return  Pointer pointing to the array of divided difference of order 1
+	 *
+	 */
+	const double* const getDD1() const {return m_vDD1;}
+	
+	/**
+	 * \brief   Getter function of the array of divided difference of order 2   
+	 * \param   None
+	 * \return  Pointer pointing to the array of divided difference of order 2
+	 *
+	 */
+	const double* const getDD2Left() const {return m_vDD2Left;}
+	
+	/**
+	 * \brief   Getter function of the array of divided difference of order 2   
+	 * \param   None
+	 * \return  Pointer pointing to the array of divided difference of order 2
+	 *
+	 */
+	const double* const getDD2Right() const {return m_vDD2Right;}
+	
+	/**
+	 * \brief   Getter function of the array of divided difference of order 3   
+	 * \param   None
+	 * \return  Pointer pointing to the array of divided difference of order 3
+	 *
+	 */
+	const double* const getDD3Left() const {return m_vDD3Left;}
+	
+	/**
+	 * \brief   Getter function of the array of divided difference of order 3   
+	 * \param   None
+	 * \return  Pointer pointing to the array of divided difference of order 3
+	 *
+	 */
+	const double* const getDD3Right() const {return m_vDD3Right;}
+
+
 private:
 	
 	friend class HyperbolicLPSolver; ///< To facilitate access of data in this class for HyperbolicLPSolver
+	friend class HyperbolicLPSolver1D; ///< To facilitate access of data in this class for HyperbolicLPSolver1D
 
 	int m_iDimension; ///< dimension
 	std::size_t m_iCapacity;///< Maximum length of particle arrays (> the total number of all particles)
@@ -308,6 +351,15 @@ private:
 	int* m_vObjectTag;///< tag=1,2,3,...:fluid objects; otherwise: boundary or ghost particles
 
 	std::vector<BoundingBox*> m_vFluidBoundingBox;///< The vector containing all bounding box of fluid objects	
+	std::vector<std::string> m_vBoundaryObjTypes; ///< The vector containing all boundary particle types
+
+	double* m_vDD1; ///< divided difference order 1 (for 1D limiter)
+	double* m_vDD2Left;///< divided difference order 2 (for 1D limiter)
+	double* m_vDD2Right;///< divided difference order 2 (for 1D limiter)
+	double* m_vDD3Left;///< divided difference order 3 (for 1D limiter)
+	double* m_vDD3Right;///< divided difference order 3 (for 1D limiter)
+	double* m_vCumP;///< cumulative pressure (for 1D limiter)
+	double* m_vPositionXm;/// middle of positionX (for 1D limiter)
 
 };
 

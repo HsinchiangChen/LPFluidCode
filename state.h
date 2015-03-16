@@ -140,7 +140,7 @@ public:
 private:
 	double m_fDen; ///< density
 	double m_fVelX, m_fVelY, m_fVelZ; ///< velocities
-	double m_fPCenX, m_fPCenY, m_fPCenZ; ///< center of disk/sphere
+	double m_fPCenX, m_fPCenY, m_fPCenZ; ///< center of the Gaussian pressure profile
 	double m_fPPeak; ///< peak of pressure value
 	double m_fPCoeff; ///< Gaussian coefficient	
 };

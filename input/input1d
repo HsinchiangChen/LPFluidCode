@@ -1,0 +1,22 @@
+1					number of threads
+0					start time
+2					end time
+0.01				write time interval
+0.999				CFL coefficient
+1					dimension
+1					how many fluid objects
+line				geoemtry for fluid object0
+1d_gauss_pressure	state for fluid object0
+2					how many boundary objects  (if>0 specify the geometry name and boundary type below; in 1D case just specify the boundary type (just one type is allowed) and this number of boundary objects is not relevant)
+solid				type of boundary object (periodic, free, solid)
+1					use random order for direction splittig? 1:yes 0:no
+2					order of local polynomial fitting
+1					EOS choice: 1:POLY 2:Stiffened POLY
+1.6666666666666667	EOS param: gamma
+100.				EOS param: pinf
+0.					EOS param: einf
+0.01				initial particle spacing
+0.					gravity
+0					use a moving box for ghost particle generation? 1:yes 0:no
+1					use limiter? 1:yes 0:no (Now only 1D has this option)
+10					Threshold value on pressure if limiter is used

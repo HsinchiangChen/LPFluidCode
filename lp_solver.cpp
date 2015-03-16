@@ -12,6 +12,8 @@
 #include <cassert>
 #include <vector>
 #include <iostream>
+#include <memory> // shared_ptr
+#include <iomanip> // setw
 using namespace std;
 
 
@@ -47,6 +49,10 @@ HyperbolicLPSolver::HyperbolicLPSolver(const Initializer& init, ParticleData* pD
 	m_iNumParticleWithinSearchRadius = init.getNumParticleWithinSearchRadius(); 
 	m_fContactLength = init.getContactLength();
 	
+	m_iIfDebug = init.getIfDebug();
+	debug.open(init.getDebugfileName(), std::ofstream::out | std::ofstream::app);	
+	
+
 	// all fluid objects should be distant at initialization
 	// this variable should always be false in the single fluid object case
 	m_iContactAlert = false; 
@@ -79,7 +85,9 @@ HyperbolicLPSolver::HyperbolicLPSolver(const Initializer& init, ParticleData* pD
 	// for completeness initialize to zero
 	m_iDirSplitOrder = 0;
 	m_fDt = 0;
+		
 	
+
 	computeSetupsForNextIteration();
 		
 
@@ -1357,9 +1365,9 @@ void HyperbolicLPSolver::computeMinParticleSpacing() {
 	// the corner case when no fluid particle has a fluid neighbour
 	assert(m_fMinParticleSpacing != numeric_limits<double>::max());
 	
-	cout<<"-------HyperbolicLPSolver::computeMinParticleSpacing()-------"<<endl;
-	cout<<"m_fMinParticleSpacing="<<m_fMinParticleSpacing<<endl;
-	cout<<"-------------------------------------------------------------"<<endl;
+	debug<<"-------HyperbolicLPSolver::computeMinParticleSpacing()-------"<<endl;
+	debug<<"m_fMinParticleSpacing="<<m_fMinParticleSpacing<<endl;
+	debug<<"-------------------------------------------------------------"<<endl;
 }
 
 
@@ -1375,8 +1383,7 @@ void HyperbolicLPSolver::computeMaxSoundSpeed() {
 	size_t endIndex = startIndex + m_pParticleData->getFluidNum();	
 	for(size_t index=startIndex; index<endIndex; index++) // for each fluid particle
 		m_fMaxSoundSpeed = max(m_fMaxSoundSpeed,soundSpeed[index]);
-	
-	//assert(m_fMaxSoundSpeed != numeric_limits<double>::min());	
+		
 	assert(m_fMaxSoundSpeed != -1);
 
 	cout<<"-------HyperbolicLPSolver::computeMaxSoundSpeed()-------"<<endl;
@@ -3241,4 +3248,820 @@ int HyperbolicLPSolver::writeResult(double time, size_t writeStep, size_t startI
 
 
 
+////////////////////////////////////////////////////////////////////////////////////////
+// Start of HyperbolicLPSolver1D
+////////////////////////////////////////////////////////////////////////////////////////
 
+
+HyperbolicLPSolver1D::HyperbolicLPSolver1D(const Initializer& init, ParticleData* pData) {
+	
+	srand(time(0));
+	
+	// from arg list
+	m_pParticleData = pData; 
+	m_pEOS = init.getEOS();
+	
+	// get parameters from init
+	m_iDimension = init.getDimension();
+	m_iLPFOrder = init.getLPFOrder();  
+	m_iNumRow1stOrder = init.getNumRow1stOrder(); // NOT USED
+	m_iNumRow2ndOrder = init.getNumRow2ndOrder(); // NOT USED
+	m_iNumCol1stOrder = init.getNumCol1stOrder(); // NOT USED
+	m_iNumCol2ndOrder = init.getNumCol2ndOrder(); // NOT USED
+	m_fInitParticleSpacing = init.getInitParticleSpacing(); 
+	m_fInvalidPressure = init.getInvalidPressure(); 
+	m_fInvalidVolume = init.getInvalidVolume();
+	
+	m_iIfDebug = init.getIfDebug();
+	debug.open(init.getDebugfileName(), std::ofstream::out | std::ofstream::app);
+
+	m_sBoundaryType = init.getBoundaryObjTypes()[0]; // 1D ONLY
+	m_iUseLimiter = init.getUseLimiter(); // 1D ONLY 
+	m_fThresholdP = init.getThresholdP(); // 1D ONLY
+
+	if(m_iLPFOrder == 1) m_iUseLimiter = false;
+	if(m_sBoundaryType == "periodic") { // 1D ONLY
+		m_fPeriodicLeftBoundary =  m_pParticleData->m_vPositionX[0] 
+		                           - 0.5*m_fInitParticleSpacing;
+		m_fPeriodicRightBoundary = m_pParticleData->m_vPositionX[m_pParticleData->m_iTotalNum-1] 
+		                           + 0.5*m_fInitParticleSpacing;
+		m_fDisBetweenPeriodicBoundaries = m_fPeriodicRightBoundary - m_fPeriodicLeftBoundary;
+	}
+	else {
+		m_fPeriodicLeftBoundary = 0; 
+		m_fPeriodicRightBoundary = 0;
+		m_fDisBetweenPeriodicBoundaries = 0;	
+	}
+
+	if(m_iIfDebug) {
+		debug<<"m_fThresholdP="<<m_fThresholdP<<endl;	
+		debug<<"m_fPeriodicLeftBoundary="<<m_fPeriodicLeftBoundary<<endl;
+		debug<<"m_fPeriodicRightBoundary="<<m_fPeriodicRightBoundary<<endl;
+		debug<<"m_fDisBetweenPeriodicBoundaries="<<m_fDisBetweenPeriodicBoundaries<<endl;
+	}
+
+	// for completeness initialize to zero	
+	m_fDt = 0;
+	
+	computeSetupsForNextIteration();
+		
+
+}
+
+void HyperbolicLPSolver1D::computeSetupsForNextIteration() {	
+	
+	// update boundary particles
+	if(m_sBoundaryType == "free") {
+		updateFreeBoundaryLocation();
+		updateFreeBoundaryPressureAndVelocity();
+	}
+	else if(m_sBoundaryType == "solid") {
+		updateSolidBoundaryPressureAndVelocity();	
+	}
+	
+	
+	// to determine the dt for next step
+	computeMinParticleSpacing();
+	computeMaxSoundSpeed();
+	computeMaxFluidVelocity();
+
+	// update values of divided difference for limiter
+	if(m_iUseLimiter) 
+		updateLimiter();
+}
+
+int HyperbolicLPSolver1D::solve(double dt) {
+	
+	if(m_iIfDebug) debug<<"--------------HyperbolicLPSolver1D::solve()--------------"<<endl;
+	
+	// dt for this time step 
+	m_fDt = dt;
+
+	//alias	
+	double* up_old = m_pParticleData->m_vVelocityU;
+	double* V_old  = m_pParticleData->m_vVolume;
+	double* p_old  = m_pParticleData->m_vPressure;
+	double* cs_old = m_pParticleData->m_vSoundSpeed;
+	double* up     = m_pParticleData->m_vTemp1VelocityU;
+	double* V      = m_pParticleData->m_vTemp1Volume;
+	double* p      = m_pParticleData->m_vTemp1Pressure;
+	double* cs     = m_pParticleData->m_vTemp1SoundSpeed;
+	double* xp     = m_pParticleData->m_vPositionX;
+	
+	size_t np      = m_pParticleData->m_iTotalNum;
+	//cout<<"np="<<np<<endl;
+
+	size_t begin, end;
+	if(m_sBoundaryType == "free" || m_sBoundaryType == "solid") { 
+		begin = 1;
+		end = np-2;
+	}	
+	else if(m_sBoundaryType == "periodic") {
+		begin = 0;
+		end = np-1;
+	}
+	else {
+		cout<<"ERROR: Invalid boundary type!"<<endl;	
+		exit(1);
+	} 
+	
+	// update inner particles
+	for(size_t i=begin; i<=end; i++) {
+		
+		int left_order=0, right_order=0;
+		computeLPFOrder(i, left_order, right_order);
+		if(m_iIfDebug) {assert(left_order!=0); assert(right_order!=0);}
+		
+		//cout<<"i="<<i<<"	left_order="<<left_order<<"	right_order="<<right_order<<endl;
+
+		double ux_right=0, ux_left=0, px_right=0, px_left=0;
+		double uxx_right=0, uxx_left=0, pxx_right=0, pxx_left=0;
+		computeSpatialDer(left_order,  0,  i,  up_old, xp, ux_left,  uxx_left); // 0:left nei
+		computeSpatialDer(left_order,  0,  i,  p_old,  xp, px_left,  pxx_left); // 0:left nei
+		computeSpatialDer(right_order, 1,  i,  up_old, xp, ux_right, uxx_right); // 1: right nei
+		computeSpatialDer(right_order, 1,  i,  p_old,  xp, px_right, pxx_right); // 1: right nei
+		
+		//cout<<"i="<<i<<"	ux_left="<<px_left<<"	uxx_left="<<pxx_left<<endl;
+		//cout<<"i="<<i<<"	px_left="<<px_left<<"	pxx_left="<<pxx_left<<endl;
+		//cout<<"i="<<i<<"	ux_right="<<px_left<<"	uxx_right="<<pxx_left<<endl;
+		//cout<<"i="<<i<<"	px_right="<<px_left<<"	pxx_right="<<pxx_left<<endl;
+		
+		// update V, up, p
+		timeIntegration(i, V_old, up_old, p_old, cs_old, 
+		                ux_left, uxx_left, px_left, pxx_left, ux_right, uxx_right, px_right, pxx_right,
+						V, up, p); // output
+		
+		// check if there is invalid state
+		bool isInvalid = (p[i] < m_fInvalidPressure || V[i] < m_fInvalidVolume);
+		if(isInvalid) {	
+			printInvalidState(i, ux_left, uxx_left, px_left, pxx_left, ux_right, uxx_right, px_right, pxx_right);
+			cout<<"ERROR: Invalid state occurs!"<<endl;
+			exit(1);
+		}
+		
+		// update sound speed
+		cs[i] = m_pEOS->getSoundSpeed(p[i],1./V[i]);
+
+	}	
+	
+	updateFluidState();
+	moveFluidParticle();
+
+	computeSetupsForNextIteration();
+	
+	if(m_iIfDebug) debug<<"-------------------------------------------------------"<<endl;
+	return 0;
+}
+
+
+void HyperbolicLPSolver1D::computeLPFOrder(size_t index, int& left_order, int& right_order) {
+	
+	if(m_iLPFOrder == 1) {
+		left_order = 1, right_order = 1; 
+	}
+	else if(m_iLPFOrder == 2) {
+		// alias
+		const double* dd3_left  = m_pParticleData->m_vDD3Left;
+		const double* dd3_right = m_pParticleData->m_vDD3Right;
+		size_t  np              = m_pParticleData->m_iTotalNum;  
+
+		left_order = 2, right_order = 2; // default
+
+		if(m_iUseLimiter) {
+			
+			//double thres = 10;
+			if(fabs(dd3_left[index])  > m_fThresholdP) // If the left 2 cells contain discontinuity, use 1st order GFD
+				left_order = 1;
+			if(fabs(dd3_right[index]) > m_fThresholdP) // If the right 2 cells contain discontinuity, use 1st order GFD
+				right_order = 1;
+		
+			/*
+			//double thres1 = 1, thres2 = 10, thres;
+			//thres = xp[i]>0? thres2:thres1;
+			double dd3left = xp[i]>0? dd3_left[i]:fabs(dd3_left[i]);
+			double dd3right = xp[i]>0? dd3_right[i]:fabs(dd3_right[i]);
+			if(dd3left > thres) // If the left 2 cells contain discontinuity, use 1st order GFD
+				left_order = 1;
+			if(dd3right > thres) // If the right 2 cells contain discontinuity, use 1st order GFD
+				right_order = 1;
+			*/
+			//if(fabs(dd3_left[i]) > thres) // If the left 2 cells contain discontinuity, use 1st order GFD
+			//	left_order = 1;
+			//if(fabs(dd3_right[i]) > thres) // If the right 2 cells contain discontinuity, use 1st order GFD
+			//	right_order = 1;
+		}
+		
+		if(m_sBoundaryType == "free" || m_sBoundaryType == "solid") {
+			if(index == 1) left_order = 1;
+			else if(index == np-2) right_order = 1;
+		}
+
+	}
+	else {
+		cout<<"ERROR: m_iLPFOrder!=1 && m_iLPFOrder!=2!"<<endl;
+		exit(1);
+	}
+
+}
+
+
+void HyperbolicLPSolver1D::computeSpatialDer(int order, int direction, int i, 
+											 const double *local_u, const double *local_x,
+											 double& dudx, double& dudxx) { //output
+	
+	//alias
+	int np = (int)m_pParticleData->m_iTotalNum;
+
+	int num_nei = order;
+	
+	//double *u_nei, *xp_nei;
+	//u_nei = new double[num_nei+1];
+	//xp_nei = new double[num_nei+1];
+	double u_nei[num_nei+1];
+	double xp_nei[num_nei+1];
+	
+	// First element must be itself
+	u_nei[0]  = local_u[i];
+	xp_nei[0] = local_x[i];
+
+	// Find neighbors - assuming periodic boundary
+	if(direction == 0) //Wave propagating to the right, find neighbors on the left 
+	{ 
+		for(int j=0; j<num_nei; j++) 
+		{
+			if(i-j-1 >= 0) // if there are num_nei neighbors on the left
+			{
+				xp_nei[j+1] = local_x[i-j-1];
+				u_nei[j+1] = local_u[i-j-1];
+			}
+			else // else take those rightmost particles as neighbors
+			{
+				int index_temp = np + (i-j-1); //Corresponding particle on the rightmost
+				double xp_temp = local_x[index_temp] - m_fDisBetweenPeriodicBoundaries;
+				if(xp_temp >= local_x[i]) assert(false);
+				xp_nei[j+1] = xp_temp;
+				u_nei[j+1] = local_u[index_temp];
+			}
+		}
+	}
+	else if(direction == 1) //Wave propagating to the left, find neighbors on the right
+	{
+		for(int j=0; j<num_nei; j++) 
+		{
+			if(i+j+1 <= np-1) // if there are num_nei neighbors on the right
+			{
+				xp_nei[j+1] = local_x[i+j+1];
+				u_nei[j+1] = local_u[i+j+1];
+			}
+			else // else take those leftmost particles as neighbors
+			{
+				int index_temp = (i+j+1) - np; //Corresponding particle on the leftmost
+				double xp_temp = local_x[index_temp] + m_fDisBetweenPeriodicBoundaries;
+				if(xp_temp <= local_x[i]) assert(false);
+				xp_nei[j+1] = xp_temp;
+				u_nei[j+1] = local_u[index_temp];
+			}
+		}
+	}
+
+	//for(int k=0; k<=num_nei; k++) {
+	//	cout<<"xp_nei["<<k<<"]="<<xp_nei[k]<<endl;
+	//	cout<<"u_nei["<<k<<"]="<<u_nei[k]<<endl;
+	//}
+
+	if(order == 1) {
+		if(direction == 0)
+			dudx = (u_nei[0] - u_nei[1]) / (xp_nei[0] - xp_nei[1]);
+		else if(direction == 1)
+			dudx = (u_nei[1] - u_nei[0]) / (xp_nei[1] - xp_nei[0]);
+		dudxx = 0;
+	}
+	else if(order == 2 || order == 3){
+		//solveByCramer(order, num_nei, u_nei, xp_nei, dudx, dudxx);
+		solveByQR(order, num_nei, u_nei, xp_nei, dudx, dudxx); 
+	}
+		
+
+	//delete[] u_nei;
+	//delete[] xp_nei;
+}
+
+
+void HyperbolicLPSolver1D::solveByQR(int order, int num_nei, const double *local_u, const double *local_x, 
+									double &dudx, double &dudxx) { //output
+	using std::isnan; // avoid ambiguity
+	
+	int num_row = num_nei;
+    int num_col = order;
+    
+    if(order == 2) { // 2nd order GFD
+		
+		//double* A = new double[num_row*num_col];
+		//double* b = new double[num_row];
+		double A[num_row*num_col];
+		double b[num_row];
+		for(int k=1; k<num_nei+1 ; k++) {
+			double h = (local_x[k] - local_x[0]);
+		    A[(k-1)] = h;
+		    A[(k-1)+1*(num_row)] = 0.5 * h * h;
+		    b[k-1] = local_u[k] - local_u[0];
+		}
+		shared_ptr<LSSolver> solver(new QRSolver(num_row,num_col,A));
+		double result[num_col];
+		int info = solver->solve(result,b);
+		if(info == 0) { // QR succeeds
+			dudx  = result[0];
+			dudxx = result[1];	
+			if(isnan(dudx) || isnan(dudxx)) {
+				cout<<"ERROR: nan derivatives!"<<endl;
+				exit(1);
+			}
+		}
+		else { // QR fails
+			cout<<"ERROR: QR decomposition has insufficient rank!"<<endl;
+			exit(1);
+		}
+
+		//Lapack_qr solver(num_row, num_col, A);
+		//int status = solver.QR_decomposition();
+		//if(status == 0) { // QR succeeds
+		//	double* der_results = new double[num_col];
+		//	solver.solve_ls(b, der_results);
+		//	dudx = der_results[0];
+		//	dudxx = der_results[1];
+		//	delete[] der_results;
+		//	// Check point
+		//	if(isnan(dudx) || isnan(dudxx)) {
+		//		cout<<"CHECK POINT: Lapack_qr::solve_ls() gets nan derivatives!!!"<<endl;
+		//		assert(false);
+		//	}
+		//}
+		//else {
+		//	// Check point
+		//	cout<<"CHECK POINT: QR fails (status != 0)!!!"<<endl;
+		//	assert(false);
+		//}
+		//
+		//delete[] A;
+		//delete[] b;
+		
+	}
+	else if (order == 3) { // 3rd order GFD
+		
+		//double* A = new double[num_row*num_col];
+		//double* b = new double[num_row];
+		double A[num_row*num_col];
+		double b[num_row];
+		for(int k=1; k<num_nei+1 ; k++) {
+			double h = (local_x[k] - local_x[0]);
+		  A[(k-1)] = h;
+		  A[(k-1)+1*(num_row)] = 0.5 * h * h;
+		  A[(k-1)+2*(num_row)] = 1. / 6. * h * h * h;
+		  b[k-1] = local_u[k] - local_u[0];
+		}
+		shared_ptr<LSSolver> solver(new QRSolver(num_row,num_col,A));
+		double result[num_col];
+		int info = solver->solve(result,b);
+		if(info == 0) { // QR succeeds
+			dudx  = result[0];
+			dudxx = result[1];	
+			if(isnan(dudx) || isnan(dudxx)) {
+				cout<<"ERROR: nan derivatives!"<<endl;
+				exit(1);
+			}
+		}
+		else { // QR fails
+			cout<<"ERROR: QR decomposition has insufficient rank!"<<endl;
+			exit(1);
+		}
+		
+		
+		//Lapack_qr solver(num_row, num_col, A);
+		//int status = solver.QR_decomposition();
+		//if(status == 0) { // QR succeeds
+		//	double* der_results = new double[num_col];
+		//	solver.solve_ls(b, der_results);
+		//	dudx = der_results[0];
+		//	dudxx = der_results[1];
+		//	delete[] der_results;
+		//	// Check point
+		//	if(isnan(dudx) || isnan(dudxx)) {
+		//		cout<<"CHECK POINT: Lapack_qr::solve_ls() gets nan derivatives!!!"<<endl;
+		//		assert(false);
+		//	}
+		//}
+		//else {
+		//	// Check point
+		//	cout<<"CHECK POINT: QR fails (status != 0)!!!"<<endl;
+		//	assert(false);
+		//}
+		//
+		//delete[] A;
+		//delete[] b;
+			
+	}													
+
+	
+}
+
+
+double HyperbolicLPSolver1D::constantWeight(double h) {
+	return 1;
+}
+
+void HyperbolicLPSolver1D::solveByCramer(int order, int num_nei, const double *local_u, const double *local_x, 
+									     double &dudx, double &dudxx) { //output
+	
+	// set up a function pointer to the weight function
+	double (HyperbolicLPSolver1D::*weight)(double) = &HyperbolicLPSolver1D::constantWeight;
+
+	if(order == 2) { // 2nd order GFD
+		
+		//-------------  | a11  a12 | |   du/dx   | = b1 -------------------
+		//-------------  | a21  a22 | |d^2 u/d x^2| = b2 -------------------
+		double a11=0; double a12=0;
+		double a21=0; double a22=0;
+		double b1=0;  double b2=0;
+
+		for(int k=1; k<num_nei+1 ; k++) {
+			double qq = (local_x[k] - local_x[0]);
+			//double ww = weight(qq); // weight
+		    double ww = (this->*weight)(qq); // weight	
+			ww *= ww;
+		  
+			a11 += qq*qq*ww;
+			a21 += qq*qq*qq*ww/2.;
+			a22 += qq*qq*qq*qq*ww/4.;
+		
+			double uu = local_u[k] - local_u[0];
+			b1 += uu*qq*ww;	
+			b2 += uu*qq*qq*ww/2.;
+
+			//cout<<"ww="<<ww<<endl;
+			//cout<<"qq="<<qq<<endl;
+			//cout<<"uu="<<uu<<endl;
+		}
+		
+		a12 = a21;
+		double delta = a11*a22 - a12*a21;
+		dudx  = (a22*b1 - a12 *b2)/delta;
+		dudxx = (a11*b2 - a21 *b1)/delta;
+		
+//		if (time-dt == 0) {
+//			printf("%.16g %.16g %.16g %.16g\n",local_x[0],delta,dudx,dudxx);
+//		}
+		
+	}
+	else if (order == 3) { // 3rd order GFD
+		
+		//-------------  | a11  a12 a13 | |   du/dx   | = b1 -------------------
+		//-------------  | a21  a22 a23 | |d^2 u/d x^2| = b2 -------------------
+		//-------------  | a31  a32 a33 | |d^3 u/d x^3| = b3 -------------------
+		double a11=0; double a12=0; double a13=0;
+		double a21=0; double a22=0; double a23=0;
+		double a31=0; double a32=0; double a33=0;
+		double b1 =0; double b2 =0; double b3 =0;
+
+		for(int k=1; k<num_nei+1 ; k++) {
+			double qq = (local_x[k] - local_x[0]); 
+		    //double ww = weight(qq); // weight
+		    double ww = (this->*weight)(qq); // weight
+			ww *= ww;
+		  
+			a11 += qq*qq*ww;
+			a12 += qq*qq*qq*ww/2.;
+			a13 += qq*qq*qq*qq*ww/6.;
+			a22 += qq*qq*qq*qq*ww/4.;
+			a23 += qq*qq*qq*qq*qq*ww/12.;
+			a33 += qq*qq*qq*qq*qq*qq*ww/36.;
+			
+			double uu = local_u[k] - local_u[0];
+			b1 += uu*qq*ww;	
+			b2 += uu*qq*qq*ww/2.;
+			b3 += uu*qq*qq*qq*ww/6.;
+		}
+		
+		a21 = a12;
+		a31 = a13;
+		a32 = a23;
+		double delta = a11*a22*a33 + a21*a32*a13 + a12*a23*a31 - a13*a22*a31 - a23*a32*a11 - a12*a21*a33;
+		dudx  = (b1*a22*a33 + b2*a32*a13 + a12*a23*b3 - a13*a22*b3 - a23*a32*b1 - a12*b2*a33)/delta;
+		dudxx = (a11*b2*a33 + a21*b3*a13 + b1*a23*a31 - a13*b2*a31 - a23*b3*a11 - b1*a21*a33)/delta;
+	}
+	
+	using std::isnan; // avoid ambiguity
+	if(isnan(dudx) || isnan(dudxx)) {
+		cout<<"ERROR: nan derivatives!"<<endl;
+		exit(1);
+	}
+
+}
+
+void HyperbolicLPSolver1D::timeIntegration(int i, const double* V_old, const double* up_old,
+										   const double* p_old, const double* cs_old,	
+										   double ux_left,  double uxx_left,
+										   double px_left,  double pxx_left,
+										   double ux_right, double uxx_right,
+										   double px_right, double pxx_right,
+										   double* V, double* up, double* p) { // output
+	//alias
+	double dt = m_fDt;
+
+	double eosCoeff;
+	//if(eos_choice == poly || eos_choice == spoly) // poly || spoly
+		eosCoeff = cs_old[i]*cs_old[i] / (V_old[i]*V_old[i]);
+	//else assert(false);
+		
+	double tmp1 = 0.5*V_old[i];
+	double tmp2 = -0.5*V_old[i]/sqrt(eosCoeff);
+	double tmp3 = 0.25*V_old[i]*V_old[i]*sqrt(eosCoeff);
+	double tmp4 = -0.25*V_old[i]*V_old[i];
+	V[i]  = V_old[i]  + dt * (tmp1*(ux_left+ux_right)+tmp2*(px_right-px_left)) +
+			dt * dt * (tmp3*(uxx_right-uxx_left)+tmp4*(pxx_right+pxx_left));
+	
+	tmp1 = 0.5*V_old[i]*sqrt(eosCoeff);
+	tmp2 = -0.5*V_old[i];
+	tmp3 = 0.25*V_old[i]*V_old[i]*eosCoeff;
+	tmp4 = -0.25*V_old[i]*V_old[i]*sqrt(eosCoeff);
+	up[i] = up_old[i] + dt * (tmp1*(ux_right-ux_left)+tmp2*(px_right+px_left)) +
+			dt * dt * (tmp3*(uxx_right+uxx_left)+tmp4*(pxx_right-pxx_left));
+	
+	tmp1 = -0.5*V_old[i]*eosCoeff;
+	tmp2 = 0.5*V_old[i]*sqrt(eosCoeff);
+	tmp3 = -0.25*V_old[i]*V_old[i]*pow(eosCoeff,1.5);
+	tmp4 = 0.25*V_old[i]*V_old[i]*eosCoeff;
+	p[i]  = p_old[i] + dt * (tmp1*(ux_left+ux_right)+tmp2*(px_right-px_left)) +
+			dt * dt * (tmp3*(uxx_right-uxx_left)+tmp4*(pxx_right+pxx_left));
+	
+
+	//cout<<"dt="<<dt<<"	eosCoeff="<<eosCoeff<<endl;
+	//cout<<"V_old="<<V_old[i]<<"	V="<<V[i]<<endl;
+	//cout<<"up_old="<<up_old[i]<<" up="<<up[i]<<endl;
+	//cout<<"p_old="<<p_old[i]<<"	p="<<p[i]<<endl;
+
+}
+
+
+void HyperbolicLPSolver1D::printInvalidState(int i, 
+					   double ux_left, double uxx_left, double px_left, double pxx_left, 
+					   double ux_right, double uxx_right, double px_right, double pxx_right) {
+	
+	debug<<"-----------------HyperbolicLPSolver1D::printInvalidState()------------------"<<endl;
+	debug<<"index="<<i<<"  x="<<m_pParticleData->m_vPositionX[i]<<endl;
+	debug<<"p_old = "<<m_pParticleData->m_vPressure[i]
+	     <<"  p = "<<m_pParticleData->m_vTemp1Pressure[i]<<endl;
+	debug<<"V_old = "<<m_pParticleData->m_vVolume[i]
+	     <<"  V = "<<m_pParticleData->m_vTemp1Volume[i]<<endl;
+	debug<<"up_old = "<<m_pParticleData->m_vVelocityU[i]
+	     <<"  up = "<<m_pParticleData->m_vTemp1VelocityU[i]<<endl;
+	debug<<"ux_left = "<<ux_left<<setw(15)<<"ux_right = "<<ux_right<<setw(15)<<endl;
+	debug<<"px_left = "<<px_left<<setw(15)<<"px_right = "<<px_right<<setw(15)<<endl;
+	debug<<"uxx_left = "<<uxx_left<<setw(15)<<"uxx_right = "<<uxx_right<<setw(15)<<endl;
+	debug<<"pxx_left = "<<pxx_left<<setw(15)<<"pxx_right = "<<pxx_right<<setw(15)<<endl;
+	debug<<"----------------------------------------------------------------------------"<<endl;
+
+}
+
+
+void HyperbolicLPSolver1D::updateFluidState() {
+		
+	swap(m_pParticleData->m_vTemp1Volume,     m_pParticleData->m_vVolume);
+	swap(m_pParticleData->m_vTemp1Pressure,   m_pParticleData->m_vPressure);
+	swap(m_pParticleData->m_vTemp1SoundSpeed, m_pParticleData->m_vSoundSpeed);	
+	swap(m_pParticleData->m_vTemp1VelocityU,  m_pParticleData->m_vVelocityU);
+}
+
+
+void HyperbolicLPSolver1D::moveFluidParticle() {
+	
+	for(size_t index=0; index<m_pParticleData->m_iTotalNum; index++)
+		m_pParticleData->m_vPositionX[index] += 0.5 * m_fDt * 
+			(m_pParticleData->m_vVelocityU[index] + m_pParticleData->m_vTemp1VelocityU[index]); // 0.5 (old + new)
+}
+
+
+void HyperbolicLPSolver1D::updateFreeBoundaryLocation() {
+	
+	// alias
+	double* positionX = m_pParticleData->m_vPositionX;
+	size_t totalNum = m_pParticleData->m_iTotalNum;
+	
+	// update location for free boundary by reconstruction using density
+	double dis = (positionX[2] - positionX[1]) * 1.5;
+	positionX[0] = positionX[1] - dis;
+	dis = (positionX[totalNum-2] - positionX[totalNum-3]) * 1.5;
+	positionX[totalNum-1] = positionX[totalNum-2] + dis;	
+
+}
+
+
+void HyperbolicLPSolver1D::updateFreeBoundaryPressureAndVelocity() {
+	
+	// alias
+	double* pressure = m_pParticleData->m_vPressure;
+	double* velocityU = m_pParticleData->m_vVelocityU;
+	double* volume = m_pParticleData->m_vVolume;
+	double* soundSpeed = m_pParticleData->m_vSoundSpeed;
+	
+	size_t totalNum = m_pParticleData->m_iTotalNum;
+	
+	// Assign pressure and velocity for computation of spatial derivatives
+	pressure[0] = pressure[totalNum-1] = 1e-9; // 1e-9 is the pressure of vacuum
+	velocityU[0] = velocityU[1];
+	velocityU[totalNum-1] = velocityU[totalNum-2];	
+	
+	// Assign the following not for computation; just for consistent values for plotting
+	volume[0] = volume[1];
+	volume[totalNum-1] = volume[totalNum-2];
+	soundSpeed[0] = soundSpeed[1];
+	soundSpeed[totalNum-1] = soundSpeed[totalNum-2];	
+
+}
+
+
+void HyperbolicLPSolver1D::updateSolidBoundaryPressureAndVelocity() {
+
+	// alias
+	double* pressure = m_pParticleData->m_vPressure;
+	double* velocityU = m_pParticleData->m_vVelocityU;
+	double* volume = m_pParticleData->m_vVolume;
+	double* soundSpeed = m_pParticleData->m_vSoundSpeed;
+	
+	size_t totalNum = m_pParticleData->m_iTotalNum;
+	
+	// Assign pressure and velocity for computation of spatial derivatives
+	pressure[0] = pressure[1];
+	pressure[totalNum-1] = pressure[totalNum-2];
+	velocityU[0] = -velocityU[1];
+	velocityU[totalNum-1] = -velocityU[totalNum-2];	
+	
+	// Assign the following not for computation; just for consistent values for plotting
+	volume[0] = volume[1];
+	volume[totalNum-1] = volume[totalNum-2];
+	soundSpeed[0] = soundSpeed[1];
+	soundSpeed[totalNum-1] = soundSpeed[totalNum-2];
+
+}
+
+
+void HyperbolicLPSolver1D::computeMinParticleSpacing() {
+	
+	// alias
+	const double *positionX = m_pParticleData->m_vPositionX;	
+	size_t totalNum = m_pParticleData->m_iTotalNum;
+
+	// initial value
+	m_fMinParticleSpacing = numeric_limits<double>::max();	
+	
+	for(size_t i=1; i<totalNum; i++) {
+		double dis = fabs(positionX[i]-positionX[i-1]);
+		m_fMinParticleSpacing = min(m_fMinParticleSpacing, dis);
+	}			
+	
+	if(m_fMinParticleSpacing == numeric_limits<double>::max()) {
+		cout<<"ERROR: Cannot find valid minimum inter-particle distance!"<<endl;
+		exit(1);
+	}
+	
+	if(m_iIfDebug) {
+		debug.precision(16);
+		//debug<<"-------HyperbolicLPSolver1D::computeMinParticleSpacing()-------"<<endl;
+		debug<<"m_fMinParticleSpacing="<<m_fMinParticleSpacing<<endl;
+		//debug<<"---------------------------------------------------------------"<<endl;
+	}
+
+}
+
+
+void HyperbolicLPSolver1D::computeMaxSoundSpeed() {
+	
+	// alias
+	const double* soundSpeed = m_pParticleData->m_vSoundSpeed;
+	size_t totalNum = m_pParticleData->m_iTotalNum;
+
+	//initial value
+	m_fMaxSoundSpeed = -1;
+	
+	size_t startIndex = m_sBoundaryType=="periodic"? 0:1;
+	size_t endIndex = m_sBoundaryType=="periodic"? totalNum:totalNum-1;
+	for(size_t i=startIndex; i<endIndex; i++) 
+		m_fMaxSoundSpeed = max(m_fMaxSoundSpeed, soundSpeed[i]);	
+		
+	if(m_fMaxSoundSpeed == -1) {
+		cout<<"ERROR: Cannot find valid maximum sound speed!"<<endl;
+		exit(1);	
+	}
+	
+	if(m_iIfDebug) {
+		debug.precision(16);
+		//debug<<"-------HyperbolicLPSolver1D::computeMaxSoundSpeed()-------"<<endl;
+		debug<<"m_fMaxSoundSpeed="<<m_fMaxSoundSpeed<<endl;
+		//debug<<"----------------------------------------------------------"<<endl;
+	}
+}
+
+
+
+void HyperbolicLPSolver1D::computeMaxFluidVelocity() {
+	
+	// alias
+	const double* velocityU = m_pParticleData->m_vVelocityU;
+	size_t totalNum = m_pParticleData->m_iTotalNum;
+
+	// initial value
+	m_fMaxFluidVelocity = -1;
+
+	size_t startIndex = m_sBoundaryType=="periodic"? 0:1;
+	size_t endIndex = m_sBoundaryType=="periodic"? totalNum:totalNum-1;
+	for(size_t i=startIndex; i<endIndex; i++) 
+		m_fMaxFluidVelocity = max(m_fMaxFluidVelocity, fabs(velocityU[i]));	
+		
+	if(m_fMaxFluidVelocity == -1) {
+		cout<<"ERROR: Cannot find valid maximum fluid velocity!"<<endl;
+		exit(1);	
+	}
+	
+	if(m_iIfDebug) {
+		debug.precision(16);
+		//debug<<"-------HyperbolicLPSolver1D::computeMaxFluidVelocity()-------"<<endl;
+		debug<<"m_fMaxFluidVelocity="<<m_fMaxFluidVelocity<<endl;
+		//debug<<"-------------------------------------------------------------"<<endl;
+	}
+
+}
+
+
+void HyperbolicLPSolver1D::updateLimiter() {
+	
+	// alias so that do not need to modify original 1D code
+	double* xp        = m_pParticleData->m_vPositionX;
+	double* p         = m_pParticleData->m_vPressure;
+	double* dd1       = m_pParticleData->m_vDD1;
+	double* dd2_left  = m_pParticleData->m_vDD2Left;
+	double* dd2_right = m_pParticleData->m_vDD2Right;
+	double* dd3_left  = m_pParticleData->m_vDD3Left;
+	double* dd3_right = m_pParticleData->m_vDD3Right;
+	double* cumP      = m_pParticleData->m_vCumP;
+	double* xp_m      = m_pParticleData->m_vPositionXm;	
+	int     np        = m_pParticleData->m_iTotalNum;
+
+	// Calculate middle values for xp's 
+	// and their corresponding cumulative pressure cumP
+	double dis   = 0.5*(xp[1]-xp[0]);
+	double xp05  = xp[0] + dis;
+	double xp_05 = xp[0] - dis;
+	//double xp05  = 0.5*(xp[0]+xp[1]);
+	//double xp_05 = 0.5*(xp[0]+(xp[np-1]-dis_between_periodic_boundaries)); 
+	xp_m[0] = xp05;
+	cumP[0] = p[0]*(xp05-xp_05);
+
+	for(int i=1; i<np-1; i++) {
+		xp05  = 0.5*(xp[i]+xp[i+1]);
+		xp_05 = 0.5*(xp[i]+xp[i-1]);
+		xp_m[i] = xp05;
+		cumP[i] = cumP[i-1] + p[i]*(xp05-xp_05);
+	}
+	dis = 0.5*(xp[np-1]-xp[np-2]);
+	xp05 = xp[np-1] + dis;
+	xp_05 = xp[np-1] - dis;
+	//xp05  = 0.5*(xp[np-1]+(xp[0]+dis_between_periodic_boundaries)); 
+	//xp_05 = 0.5*(xp[np-1]+xp[np-2]);
+	xp_m[np-1] = xp05;
+	cumP[np-1] = cumP[np-2] + p[np-1]*(xp05-xp_05);
+	
+	// compute dd1
+	for(int i=1; i<np; i++) 
+		dd1[i] = (cumP[i] - cumP[i-1]) / (xp_m[i] - xp_m[i-1]);  
+	dd1[0] = dd1[1];
+	
+	// compute dd2_left
+	for(int i=2; i<np; i++) 
+		dd2_left[i] = (dd1[i]-dd1[i-1]) / (xp_m[i]-xp_m[i-2]);		
+	dd2_left[0] = dd2_left[2];
+	dd2_left[1] = dd2_left[2];
+	
+	// compute dd2_right
+	for(int i=1; i<np-1; i++) 
+		dd2_right[i] = (dd1[i+1]-dd1[i]) / (xp_m[i+1]-xp_m[i-1]);
+	dd2_right[0] = dd2_right[1];
+	dd2_right[np-1] = dd2_right[np-2];
+	
+	// compute dd3_left
+	for(int i=3; i<np; i++) 
+		dd3_left[i] = (dd2_left[i]-dd2_left[i-1]) / (xp_m[i]-xp_m[i-3]);
+	dd3_left[0] = dd3_left[3];
+	dd3_left[1] = dd3_left[3];
+	dd3_left[2] = dd3_left[3];
+	
+	// compute dd3_right
+	for(int i=1; i<np-2; i++) 
+		dd3_right[i] = (dd2_right[i+1]-dd2_right[i]) / (xp_m[i+2]-xp_m[i-1]);
+	dd3_right[0] = dd3_right[1];
+	dd3_right[np-1] = dd3_right[np-3];
+	dd3_right[np-2] = dd3_right[np-3];
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+// End of HyperbolicLPSolver1D
+////////////////////////////////////////////////////////////////////////////////////////

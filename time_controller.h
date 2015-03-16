@@ -26,6 +26,7 @@
 
 #include <cstddef>
 #include <vector>
+#include <fstream>
 
 class LPSolver; 
 class ParticleViewer; 
@@ -67,6 +68,9 @@ protected:
 	double m_fNextWriteTime; ///< The next physical time point to write results
 	double m_fDt; ///< The physical time interval between two iterations of the simulation
 	std::size_t m_iWriteStep; ///< The number of times results are written to the particle veiwer
+	bool m_iIfDebug;///< if true then print debug info
+	std::ofstream debug;///< output information for debugging
+
 	/**
 	 * \brief   Adjusts the iteration time step when current time approaches the time for results writting 
 	 *

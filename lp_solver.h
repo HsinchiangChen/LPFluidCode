@@ -25,7 +25,7 @@
 #include <cstddef>
 #include <vector>
 #include <string>
-
+#include <fstream>
 
 class Initializer;
 class ParticleData;
@@ -59,7 +59,7 @@ public:
 	/**
 	 * \brief         The black box main Lagrangian particle solver for one iteration step
 	 * 
-	 * The method should be called in the context of TimeController
+	 * The method should be called by TimeController repeated at every time step
 	 *
 	 * \param [in] dt The length of physical time for this iteration
 	 * \return        0 if the iteration is success 
@@ -93,13 +93,15 @@ protected:
 	double m_fMinParticleSpacing; ///< Minimum inter-particle spacing among fluid particles at a time step		
 	double m_fMaxSoundSpeed; ///< Maximum sound speed of fluid particles at a time step	
 	double m_fMaxFluidVelocity; ///< Maximum absolute value velocity of fluid particles at a time step
+	bool m_iIfDebug;///< if true then print debug info
+	std::ofstream debug;///< output information for debugging	
 };
 
 
 /**
  * \class HyperbolicLPSolver
  * 
- * \brief The default Lagrangian Particle solver for the compressible Euler's equation
+ * \brief The default Lagrangian Particle solver for the compressible Euler's equation in 2D and 3D
  *
  * \author Chen, Hsin-Chiang (morrischen2008@gmail.com)
  *
@@ -130,7 +132,7 @@ public:
 	/**
 	 * \brief         The Lagrangian particle solver for the compressible Euler's equations for one iteration step
 	 * 
-	 * The method should be called in the context of TimeController
+	 * The method should be called by TimeController repeated at every time step
 	 *
 	 * \param [in] dt The length of physical time for this iteration
 	 * \return        0 if the iteration is success 
@@ -186,7 +188,9 @@ private:
 	double m_fDt; ///< the time length of this iteration 
 	
 	int m_iContactAlert; ///< If true two or more fluid objects may soon in contact with each other; the value is determined by whether the bounding boxes of these fluid objects are overlap or not
-
+	
+	//std::ofstream debug;///< output information for debugging
+	//bool m_iIfDebug;///< if true then print debug info
 	//-------------------------------------------------------------------------------------
 
 
@@ -404,11 +408,7 @@ private:
 		double vel_d_0, double vel_dd_0, double p_d_0, double p_dd_0, 
 		double vel_d_1, double vel_dd_1, double p_d_1, double p_dd_1);
 	
-	/*!
-	\brief lower the order the LPF in a direction if get invalid state
-		   then see if all LPFOrder are zero, if it is the case, return false and go back to phase 0
-		   otherwise, return true and go to next phase
-	*/
+	
 	
 	/**  
 	 * \brief Lower the order of local polynomial fitting for a particle in a specific direction (x,y, or z)
@@ -561,6 +561,308 @@ private:
 	 */
 	int writeResult(double time, size_t writeStep, size_t startIndex, size_t numParticle);
 };
+
+
+
+
+
+/**
+ * \class HyperbolicLPSolver1D
+ * 
+ * \brief The default Lagrangian Particle solver for the compressible Euler's equation in 1D
+ *
+ * \author Chen, Hsin-Chiang (morrischen2008@gmail.com)
+ *          
+ *
+ * \version 1.0 
+ *
+ * \date 2015/03/13 
+ *
+ * Created on: 2015/03/13 
+ *
+ */
+class HyperbolicLPSolver1D : public LPSolver {
+
+public:
+	/**
+	 * \brief Constructor
+	 * 
+	 * Get and set up parameters and obtain access to objects needed for the main solver 
+	 *
+	 * \param [in] init   To retrieve information from \e init   
+	 * \param [in] pData  To obtain access to an object of the PaticleData clas
+	 * 
+	 */
+	HyperbolicLPSolver1D(const Initializer& init, ParticleData* pData);
+	
+	/**
+	 * \brief The 1D Lagrangian particle solver for the compressible Euler's equations for one iteration step
+	 * 
+	 * The method should be called by TimeController repeated at every time step
+	 *
+	 * \param [in] dt The length of physical time for this iteration
+	 * \return        0 if the iteration is success 
+	 * \warning       The function should always return 0 because all exceptions should be handled inside this class
+	 */
+	virtual int solve(double dt);	
+
+private:
+
+	//-----------------------------------------Data----------------------------------------
+
+	//--------------------------Info got from input argument list---------------------------
+
+	ParticleData* m_pParticleData; ///< Pointer to the object containing major particle data arrays 		
+	
+	//--------------------------------------------------------------------------------------	
+
+	//--------------------------Info get from Initializer class------------------------------
+	
+	EOS* m_pEOS; ///< Pointer to the object for computing eos
+	int m_iDimension; ///< dimension
+	int m_iLPFOrder; ///< the order of Local Polynomial Fitting (LPF)
+	std::size_t m_iNumRow2ndOrder; ///< the smallest number of rows of A to solve 2nd order LPF
+	std::size_t m_iNumRow1stOrder; ///< the smallest number of rows of A to solve 1st order LPF
+	std::size_t m_iNumCol2ndOrder; ///< the number of columns of A when solving 2nd order LPF
+	std::size_t m_iNumCol1stOrder; ///< the number of columns of A when solving 1st order LPF		
+	double m_fInitParticleSpacing; ///< the initial particle spacing 
+	double m_fInvalidPressure; ///< if p < invalid pressure => invalid state
+	double m_fInvalidVolume; ///< volume cannot be negative: if volume < invalid volume => invalid state
+	
+	std::string m_sBoundaryType; ///< ONLY 1D 
+	bool m_iUseLimiter;///< If use limiter or not; ONLY 1D
+	double m_fThresholdP;///< Threshold value on pressure if limiter is used 
+	//--------------------------------------------------------------------------------------
+	
+	//---------------------------------Other parameters-------------------------------------
+	
+	double m_fPeriodicLeftBoundary; ///< left periodic boundary; ONLY 1D
+	double m_fPeriodicRightBoundary; ///< right periodic boundary; ONLY 1D
+	double m_fDisBetweenPeriodicBoundaries; ///< distance between left and right periodic boundaries; ONLY 1D
+	
+	double m_fDt; ///< the time length of this iteration
+	//bool m_iIfDebug;///< if true then print debug info
+	//std::ofstream debug;///< output information for debugging		
+	//-------------------------------------------------------------------------------------
+
+
+
+	//-------------------------------------Methods-----------------------------------------
+	
+	/**  
+	 * \brief A composite function that calls a bunch of other methods in order to set up
+	 *        the environment for the next iteration based on the update of this iteration
+	 *
+	 * This function calls the following methods (names only for clarity)\n
+	 * 
+	 * updateFreeBoundaryLocation();\n
+	 * updateFreeBoundaryPressureAndVelocity();\n
+	 * updateSolidBoundaryPressureAndVelocity();\n
+	 * updateLimiter();\n 
+	 * computeMinParticleSpacing();\n
+	 * computeMaxSoundSpeed();\n
+	 * computeMaxFluidVelocity();\n 
+	 */	
+	void computeSetupsForNextIteration(); 
+
+
+	/**  
+	 * \brief Update the location of free boundary particle (the two with index 0 and total_num_particle - 1) 
+	 *        by reconstruction based on desnity 
+	 */		
+	void updateFreeBoundaryLocation();
+
+
+	/**  
+	 * \brief Assign the pressure and velocity of free boundary particle (index 0 and totalNum-1)
+	 *
+	 * pressure = 1e-9 (pressure of vacuum)
+	 * velocity = velocity of the particle next to it
+	 *
+	 */		
+	void updateFreeBoundaryPressureAndVelocity();
+
+
+	/**  
+	 * \brief Assign the pressure and velocity of solid boundary particle (index 0 and totalNum-1) 
+	 *  
+	 * pressure = pressure of the particle next to it
+	 * velocity = negate the velocity of the particle next to it   
+	 *
+	 */		
+	void updateSolidBoundaryPressureAndVelocity();
+	
+	
+	/**  
+	 * \brief Compute the minimum inter-particle spacing among fluid particles
+	 *
+	 * For the computation of next dt  
+	 *
+	 * \note Computation includes the distance of fluid particle to boundary particles (solid, free boundary particles)
+	 *
+	 */
+	void computeMinParticleSpacing();
+
+
+	/**  
+	 * \brief Computes the maximum sound speed of fluid particles
+	 *
+	 * For the computation of next dt 
+	 *
+	 * \note For periodic boundary all particles are used; For free and solid boundary, the leftmost and rightmost
+	 *       particles are not used
+	 *
+	 */
+	void computeMaxSoundSpeed();
+
+
+	/**  
+	 * \brief Computes the maximum absolute value velocity of fluid particles
+	 *
+	 * For the computation of next dt 
+	 *
+	 */
+	void computeMaxFluidVelocity();
+
+	
+	/**  
+	 * \brief Update the values of divided difference for limiter
+	 * 
+	 *
+	 */
+	void updateLimiter();
+
+	/**
+	 * \brief Computes the order of LPF based on 
+	 *        m_iLPFOrder (default), limiter (if used), and location (if near boundary)
+	 *
+	 *
+	 */
+	void computeLPFOrder(std::size_t index, int& left_order, int& right_order); 
+
+	
+	/**  
+	 * \brief Compute the spatial derivatives by solving least squares problem 
+	 *
+	 *
+	 */
+	void computeSpatialDer(int order, int direction, int i, 
+                           const double *local_u, const double *local_x,
+                           double& dudx, double& dudxx); //output 
+	
+	/**  
+	 * \brief Solving least squares problem by QR decomposition 
+	 *
+	 * \note The matrix A is always recomputed even though px_left and ux_left use same neighbour particles.
+	 *       This is fine in 1D but still can be optimised. 
+	 * \warning This function will exit the program if either\n 
+	 *          1. QR do not have sufficient rank, or\n
+	 *          2. QR get nan derivatives
+	 */
+	void solveByQR(int order, int num_nei, const double *local_u, const double *local_x, 
+                  double &dudx, double &dudxx);	//output
+
+	
+	/**  
+	 * \brief Solving \b weighted least squares problem by using Cramer's rule 
+	 *
+	 * \note The matrix A is always recomputed even though px_left and ux_left use same neighbour particles.
+	 *       This is fine in 1D but still can be optimised.\n
+	 *       A const weight function is called and one could use other weight functions if necessary 
+	 *       (but needs to write a weight function in this class and make the corresponding function pointer)
+	 * \warning This function will exit the program if get nan derivatives
+	 */
+	void solveByCramer(int order, int num_nei, const double *local_u, const double *local_x, 
+					   double &dudx, double &dudxx);	//output
+	
+
+	/*
+	 * \brief returns a constant weight independent of the input
+	 *
+	 * \note A helper function for solveByCramer(), which always returns 1 
+	 */
+	double constantWeight(double h);
+
+	/**  
+	 * \brief Performs time integration for this time step
+	 *
+	 * 
+	 */
+	void timeIntegration(int i, const double* V_old, const double* up_old,
+						 const double* p_old, const double* cs_old,
+						 double ux_left,  double uxx_left,
+						 double px_left,  double pxx_left,
+						 double ux_right, double uxx_right,
+						 double px_right, double pxx_right,
+						 double* V, double* up, double* p); // output
+	
+	
+	/**  
+	 * \brief Print out info about the particle which evolve into invalid states 
+	 *
+	 *
+	 */
+	void printInvalidState(int i, 
+						   double ux_left, double uxx_left, double px_left, double pxx_left, 
+						   double ux_right, double uxx_right, double px_right, double pxx_right);
+	
+			
+	/**  
+	 * \brief Updates the states of fluid particles at the end of one iteration by swapping pointers 
+	 *
+	 *
+	 */
+	void updateFluidState(); 
+	
+	
+	/**  
+	 * \brief Updates the location of fluid particles based on velocities at the end of one iteration
+	 *
+	 * Based on a combination of forward and backward Euler's method
+	 */
+	void moveFluidParticle(); 
+	
+	
+	/**  
+	 * \brief Update the velocities of fluid particles at the end of one iteration by swapping pointers
+	 *
+	 * 
+	 */
+	//void updateFluidVelocity(double*& up, double*& up_old);
+	
+
+	/**  
+	 * \brief Lower the order of local polynomial fitting for a particle in a specific direction (x,y, or z)
+	 *
+	 * \return \c true if at least one of the LPFOrder array for this particle in a direction is not zero;
+	 *         \c false otherwise
+	 *
+	 * \note   If return \c then we will redo this particle with the lowered order of local polynomial fitting;
+	 *         if return \c false we will go back to phase for all particles, with this particle basically not 
+	 *         updated for the following one entirew iteration
+	 *
+	 */
+//	bool lowerLPFOrder(int index, const std::vector<int*>& LPFOrderOther, // input
+//		int* LPFOrder0, int* LPFOrder1); // output
+	
+	/**  
+	 * \brief helper function of writeResult()
+	 *
+	 * \note This is a function for testing the validity of methods in this class
+	 */
+//	std::string rightFlush(size_t writeStep, size_t numDigits);	
+	
+	/**  
+	 * \brief Writes results for debugging purposes
+	 *
+	 * \note This is a function for testing the validity of methods in this class
+	 */
+//	int writeResult(double time, size_t writeStep, size_t startIndex, size_t numParticle);
+
+
+};
+
+
 
 
 

@@ -234,13 +234,27 @@ public:
      * 3. Initializes the state of fluid objects\n
      * 4. Specifies some pre-determined parameters and calculate some parameters 
 	 */	
-	Initializer(const std::string& inputFileName);	
+	Initializer(const std::string& inputfileName, const std::string& debugfileName="debug", bool ifDebug=false);	
 	/**
 	 * \brief Destructor 
 	 *
 	 */
 	~Initializer();
 	
+	/**
+	 * \brief   Getter function of the boolean value on whether to print debug information
+	 * \param   None
+	 * \return  The boolean value on whether to print debug information
+	 */
+	bool getIfDebug() const {return m_iIfDebug;}
+	
+	/**
+	 * \brief   Getter function of the filename for printing debug information 
+	 * \param   None
+	 * \return  The filename for printing debug information
+	 */
+	std::string getDebugfileName() const {return m_sDebugfileName;}
+
 	/**
 	 * \brief   Getter function of the specified number of threads 
 	 * \param   None
@@ -325,6 +339,23 @@ public:
 	 */
 	bool getMovingBoxForGhostParticle() const {return m_iMovingBoxForGhostParticle;}
 	
+	/**
+	 * \brief   Getter function of the specified boolean value on whether to use limiter or not 
+	 * \param   None
+	 * \return  The specified boolean value on whether to use limiter or not
+	 * \note    We only have 1D limiter now
+	 */
+	bool getUseLimiter() const {return m_iUseLimiter;}
+	
+	/**
+	 * \brief   Getter function of the specified threshold value on pressure if limiter is used
+	 * \param   None
+	 * \return  The specified threshold value on pressure if limiter is used
+	 * \note    We only have 1D limiter now
+	 */
+	double getThresholdP() const {return m_fThresholdP;}
+
+
 	/**
 	 * \brief   Getter function of the specified maximum number of neighbours of a particle  
 	 * \param   None
@@ -623,9 +654,20 @@ public:
 	 */
 	const std::vector<BoundingBox*>& getFluidBoundingBox() const {return m_vFluidBoundingBox;}	
 	
-
+	/**
+	 * \brief   Getter function of the types of the initialized boundary objects  
+	 * \param   None
+	 * \return  Vector of strings of boundary object types
+	 */
+	const std::vector<std::string>& getBoundaryObjTypes() const {return m_vBoundaryObjTypes;}
 private:
 	
+	//--------------------------Data from arg list--------------------------------
+	const std::string m_sDebugfileName; ///< filename for printing debug info
+	bool m_iIfDebug; ///< if true then print debug info
+
+	//----------------------------------------------------------------------------
+
 	//--------------------------Data from the inputfile---------------------------	
 	
 	int m_iNumThreads;///< Number of threads 
@@ -636,7 +678,7 @@ private:
 	int m_iDimension;///< dimension
 	int m_iFluidObjNum;///< number of fluid objects		
 	int m_iBoundaryObjNum;///< number of boundary objects
-	bool m_iRandomDirSplitOrder;///< if true then the order of directional splitting is randomly set	
+	bool m_iRandomDirSplitOrder;///< if true then the order of directional splitting is randomly set 1:yes 0:no	
 	int m_iLPFOrder;///< the order of Local Polynomial Fitting (LPF)  	
 	int m_iEOSChoice;///< choice of eos
 	double m_fGamma;///< eos parameter gamma
@@ -644,8 +686,9 @@ private:
 	double m_fEinf;///<eos parameter einf (stiffened poly gas) 	
 	double m_fInitParticleSpacing;///< the initial particle spacing	
 	double m_fGravity;///< gravity
-	bool m_iMovingBoxForGhostParticle;///< if true then the fluid box will be updated 
-
+	bool m_iMovingBoxForGhostParticle;///< if true then the fluid box will be updated 1:yes 0:no
+	bool m_iUseLimiter;///< if use limiter or not 1:yes 0:no
+	double m_fThresholdP;///< Threshold value on pressure if limiter is used 
 	//-----------------------------------------------------------------------------
 
 	
@@ -681,6 +724,11 @@ private:
 	std::vector<BoundingBox*> m_vBoundaryBoundingBox;///< Initial bounding box of the initialized boundary objects
 	std::vector<Geometry*> m_vBoundaryObj;///< Vector of boundary objects 
 	std::vector<State*> m_vFluidObjState;///< Vector of objects of fluid state
+	std::vector<std::string> m_vFluidObjNames; ///< Vector of fluid object names 	
+	std::vector<std::string> m_vFluidObjStateNames; ///< Vector of fluid object state names 	
+	std::vector<std::string> m_vBoundaryObjNames; ///< Vector of boundary object names
+	std::vector<std::string> m_vBoundaryObjTypes; ///< Vector of boundary object types 
+
 	size_t m_iNumParticleWithinSearchRadius;///< the number of particles within the search radius at initialization time
 
 	//----------------------------------------------------------------------------
@@ -702,7 +750,7 @@ private:
 	//-----------------------------------------------------------------------------
 	
 	EOS* m_pEOS;///< pointer to the EOS object
-	std::ofstream ofs;///< output the input data and other computed data
+	std::ofstream debug;///< output information for debugging
 
 private:
 	//--------------------------------Methods--------------------------------------
@@ -719,8 +767,11 @@ private:
 	/// Initialize fluid and boundary object geoemtry and state (calls initGeometryAndStateOnHexPacking())
 	void initGeometryAndState();		
 	
+	/// Build fluid object geoemtry and assign state in 1D 
+	size_t initGeometryAndState1D(bool saveData);
+
 	/// Build fluid object geoemtry and assign state on hexagonal packing 
-	size_t initGeometryAndStateOnHexPacking(bool saveData, const std::string& kind);///<
+	size_t initGeometryAndStateOnHexPacking(bool saveData, const std::string& kind);
 	
 	/// Compute number of particles within search radius at initialization 
 	void computeNumParticleWithinSearchRadius();

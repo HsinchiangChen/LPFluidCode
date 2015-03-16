@@ -6,10 +6,10 @@ INCS   = -I ~/Software/lapack-3.4.2/lapacke/include
 LIBS   = -L ~/Software/lapack-3.4.2
 CFLAGS = -Wall -c -std=c++11 $(DEBUG) $(OMP)
 LFLAGS = -Wall $(DEBUG) $(INCS) $(LIBS) $(OMP)
-OBJS   = eos.o geometry.o geometry_collision.o hexagonal_packing.o\
+OBJS   = eos.o geometry.o geometry_1d.o geometry_collision.o hexagonal_packing.o\
 		 initializer.o lp_main.o lp_solver.o ls_solver.o\
          neighbour_searcher.o octree.o particle_data.o\
-		 particle_viewer.o registrar.o state.o state_collision.o\
+		 particle_viewer.o registrar.o state.o state_1d.o state_collision.o\
 	     time_controller.o
 
 all: lp
@@ -22,6 +22,9 @@ eos.o: eos.h eos.cpp
 
 geometry.o: geometry.h geometry.cpp
 	$(CC) $(CFLAGS) geometry.cpp
+
+geometry_1d.o: geometry.h geometry_1d.h geometry_1d.cpp
+	$(CC) $(CFLAGS) geometry_1d.cpp
 
 geometry_collision.o: geometry.h geometry_collision.h geometry_collision.cpp
 	$(CC) $(CFLAGS) geometry_collision.cpp
@@ -60,6 +63,9 @@ registrar.o: registrar.h registrar.cpp geometry.h state.h geometry_collision.h s
 
 state.o: state.h state.cpp
 	$(CC) $(CFLAGS) state.cpp
+
+state_1d.o: state.h state_1d.h state_1d.cpp
+	$(CC) $(CFLAGS) state_1d.cpp
 
 state_collision.o: state.h state_collision.h state_collision.cpp
 	$(CC) $(CFLAGS) state_collision.cpp

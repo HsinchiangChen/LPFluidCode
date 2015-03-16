@@ -1,6 +1,9 @@
 #include "registrar.h" 
 #include "geometry_collision.h"
 #include "state_collision.h"
+#include "geometry_1d.h"
+#include "state_1d.h"
+
 
 namespace 
 {
@@ -17,4 +20,9 @@ namespace
 	StateRegistrar<RightUniformVelocityState> s3("right_uniform_velocity");
 
 	StateRegistrar<UniformVelocityState> s4("uniform_velocity");
+
+
+	// for 1d
+	GeometryRegistrar<Line> r5("line");
+	StateRegistrar<GaussianPressure1DState> s5("1d_gauss_pressure");
 }

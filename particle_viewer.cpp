@@ -1,24 +1,10 @@
-/*!
- * \author Yu, Kwangmin <yukwangmin@gmail.com> 
- * \date Mon Oct. 22 2014
- * 
- *      
- */
-/*! 
- * \author Chen, Hsin-Chiang <morrischen2008@gmail.com> 
- * \date Mon Nov. 03 2014 
- * 
- * \brief 
- *      
- */
-
-
-
 #include "particle_viewer.h"
 #include "particle_data.h"
 #include <cassert>
 #include <cmath>
-//#include <fstream>
+#include <iostream>
+#include <fstream>
+#include <iomanip> //setw
 
 using namespace std;
 
@@ -48,6 +34,11 @@ string ParticleViewer::rightFlush(size_t writeStep, size_t numDigits) {
 ////////////////////////////////////////////////////////////////////////////////////////
 // End of ParticleViewer
 ////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -85,7 +76,7 @@ int VTKParticleViewer::writeResult(double time, size_t writeStep) {
 	FILE *outfile;
 	outfile = fopen(filename.c_str(), "w");
 	if(outfile==nullptr) {
-		printf("Error opening file: %s\n",filename.c_str()); 
+		printf("Unable to open file: %s\n",filename.c_str()); 
 		return 1;
 	}
 	size_t startIndex, numParticle;
@@ -276,4 +267,97 @@ int VTKParticleViewer::writeResult(double time, size_t writeStep, size_t startIn
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // End of VTKParticleViewer
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+// Start of TXTParticleViewer1D
+////////////////////////////////////////////////////////////////////////////////////////
+
+TXTParticleViewer1D::TXTParticleViewer1D(ParticleData* data, const std::string& particleType, 
+const string& outputfileName, int numDigits) {
+	m_pParticleData = data;
+	m_sOutputfileName = outputfileName;
+	m_iNumDigits = numDigits; 
+	m_sParticleType = particleType;
+}
+
+
+int TXTParticleViewer1D::writeResult(double time, size_t writeStep) {
+	 
+	// alias pointers
+	const double* positionX  = m_pParticleData->getPositionX();	
+	const double* velocityU  = m_pParticleData->getVelocityU();	
+	const double* volume     = m_pParticleData->getVolume();
+	const double* pressure   = m_pParticleData->getPressure();
+	const double* soundSpeed = m_pParticleData->getSoundSpeed();
+	const double* dd1        = m_pParticleData->getDD1();
+	const double* dd2_left   = m_pParticleData->getDD2Left();
+	const double* dd2_right  = m_pParticleData->getDD2Right();
+	const double* dd3_left   = m_pParticleData->getDD3Left();
+	const double* dd3_right  = m_pParticleData->getDD3Right();
+	
+	
+	// Create an output file with the name "filename"
+	string filename = m_sOutputfileName + rightFlush(writeStep, m_iNumDigits) + ".txt";
+	ofstream outfile;
+	outfile.open(filename.c_str());
+	
+	size_t startIndex, numParticle;
+	if(m_sParticleType=="all") {
+		startIndex = 0;
+		numParticle = m_pParticleData->getTotalNum();
+	}
+	else if(m_sParticleType=="fluid") {
+		startIndex = 1;
+		numParticle = m_pParticleData->getTotalNum()-1;
+	}
+	size_t endIndex = startIndex + numParticle;
+
+
+	if(outfile.is_open()) {
+		outfile<<"x"<<setw(24)
+			   <<"V"<< setw(24) 
+			   <<"vel"<< setw(24) 
+			   <<"p"<<setw(24)
+			   <<"cs"<<setw(24)
+			   <<"dd1[i]"<<setw(24)
+			   <<"dd2_left[i]"<<setw(24)
+			   <<"dd2_right[i]"<<setw(24)
+			   <<"dd3_left[i]"<<setw(24)
+			   <<"dd3_right[i]"<<setw(24)
+			   <<endl;
+		for(size_t i=startIndex; i<endIndex; i++) {	
+			outfile.precision(15);
+			outfile<<left<<setw(24) 
+			<<positionX[i]<<setw(24)
+			<<volume[i] <<setw(24) 
+			<<velocityU[i]<<setw(24) 
+			<<pressure[i]<<setw(24)  
+			<<soundSpeed[i]<<setw(24)
+			<<dd1[i]<<setw(24)
+			<<dd2_left[i]<<setw(24)
+			<<dd2_right[i]<<setw(24)
+			<<dd3_left[i]<<setw(24)
+			<<dd3_right[i]<<setw(24)
+			<<endl;
+		}
+		
+	}
+	else {
+		cout<<"Unable to open file: "<<filename<<endl;
+		return 1; // ERROR
+	}
+
+	outfile.close();	
+	return 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+// End of TXTParticleViewer1D
 ////////////////////////////////////////////////////////////////////////////////////////

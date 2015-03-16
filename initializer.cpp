@@ -18,144 +18,175 @@ using namespace std;
 // Start of Initializer
 ////////////////////////////////////////////////////////////////////////////////////////
 
-Initializer::Initializer(const string& inputFileName) {
+Initializer::Initializer(const string& inputfileName, const string& debugfileName, bool ifDebug)
+: m_sDebugfileName(debugfileName), m_iIfDebug(ifDebug) {
 	
-	ifstream ifs(inputFileName);
-	this->ofs.open("inputdata_verification");
+	ifstream ifs(inputfileName);
+	this->debug.open(m_sDebugfileName);
 
 	vector<string> lines;
 	string s;
+	debug<<"--------------The original input file-------------------"<<endl;
 	while(getline(ifs, s)) {
-		cout<<s<<endl;
+		debug<<s<<endl;
 		lines.push_back(s);
 	}
+	debug<<"--------------End of original input file----------------"<<endl<<endl;
 
 	istringstream iss;
 	size_t i = 0; // input file line number
 	
+	debug<<"--------------Variables assigned by input file-------------------"<<endl;
 	iss.str(lines[i++]);
 	iss>>m_iNumThreads;
-	ofs<<"m_iNumThreads = "<<m_iNumThreads<<endl;
+	debug<<"m_iNumThreads = "<<m_iNumThreads<<endl;
 
 	iss.str(lines[i++]);
 	iss>>m_fStartTime;
-	ofs<<"m_fStartTime = "<<m_fStartTime<<endl;
+	debug<<"m_fStartTime = "<<m_fStartTime<<endl;
 	
 	iss.str(lines[i++]);
 	iss>>m_fEndTime;
-	ofs<<"m_fEndTime = "<<m_fEndTime<<endl;
+	debug<<"m_fEndTime = "<<m_fEndTime<<endl;
 
 	iss.str(lines[i++]);
 	iss>>m_fWriteTimeInterval;
-	ofs<<"m_fWriteTimeInterval = "<<m_fWriteTimeInterval<<endl;
+	debug<<"m_fWriteTimeInterval = "<<m_fWriteTimeInterval<<endl;
 
 	iss.str(lines[i++]);
 	iss>>m_fCFLCoeff;
-	ofs<<"m_fCFLCoeff = "<<m_fCFLCoeff<<endl;
+	debug<<"m_fCFLCoeff = "<<m_fCFLCoeff<<endl;
 
 	iss.str(lines[i++]);
 	iss>>m_iDimension;
-	ofs<<"m_iDimension = "<<m_iDimension<<endl;
+	debug<<"m_iDimension = "<<m_iDimension<<endl;
 
 	iss.str(lines[i++]);
 	iss>>m_iFluidObjNum;
-	ofs<<"m_iFluidObjNum= "<<m_iFluidObjNum<<endl;
-
-	vector<string> fluidObjNames; // temp vector
+	debug<<"m_iFluidObjNum= "<<m_iFluidObjNum<<endl;
+ 
 	for(int j=0; j<m_iFluidObjNum; j++) {
 		string tmpS;
 		iss.str(lines[i++]);
 		iss>>tmpS;
-		fluidObjNames.push_back(tmpS);
-		ofs<<"fluidObjectName"<<j<<"="<<fluidObjNames[j]<<endl;
+		m_vFluidObjNames.push_back(tmpS);
+		debug<<"m_vFluidObjectNames"<<j<<"="<<m_vFluidObjNames[j]<<endl;
 	}
 	
-	vector<string> fluidObjStateNames; // temp vector
 	for(int j=0; j<m_iFluidObjNum; j++) {
 		string tmpS;
 		iss.str(lines[i++]);
 		iss>>tmpS;
-		fluidObjStateNames.push_back(tmpS);
-		ofs<<"fluidObjectStateName"<<j<<"="<<fluidObjStateNames[j]<<endl;
+		m_vFluidObjStateNames.push_back(tmpS);
+		debug<<"m_vFluidObjectStateNames"<<j<<"="<<m_vFluidObjStateNames[j]<<endl;
 	}
 
 	iss.str(lines[i++]);
 	iss>>m_iBoundaryObjNum;
-	ofs<<"m_iBoundaryObjNum= "<<m_iBoundaryObjNum<<endl;
-
-	vector<string> boundaryObjNames; // temp vector
-	for(int j=0; j<m_iBoundaryObjNum; j++) {
+	debug<<"m_iBoundaryObjNum= "<<m_iBoundaryObjNum<<endl;
+	
+	if(m_iDimension == 1) { // In the 1D case only boundary type is relevant (only one type is allowed)
 		string tmpS;
 		iss.str(lines[i++]);
 		iss>>tmpS;
-		boundaryObjNames.push_back(tmpS);
-		ofs<<"boundaryObjectName"<<j<<"="<<boundaryObjNames[j]<<endl;
+		m_vBoundaryObjTypes.push_back(tmpS);
+		debug<<"m_vBoundaryObjectTypes[0]="<<m_vBoundaryObjTypes[0]<<endl;
+	}
+	else { // In 2D & 3D both boundary geometry name and boundary type should be specified
+		for(int j=0; j<m_iBoundaryObjNum; j++) {
+			string tmpS;
+		
+			iss.str(lines[i++]);
+			iss>>tmpS;
+			m_vBoundaryObjNames.push_back(tmpS);
+			debug<<"m_vBoundaryObjectNames"<<j<<"="<<m_vBoundaryObjNames[j]<<endl;
+			
+			iss.str(lines[i++]);
+			iss>>tmpS;
+			m_vBoundaryObjTypes.push_back(tmpS);
+			debug<<"m_vBoundaryObjectTypes"<<j<<"="<<m_vBoundaryObjTypes[j]<<endl;
+		}
 	}
 
 	iss.str(lines[i++]);
 	iss>>m_iRandomDirSplitOrder;
-	ofs<<"m_iRandomDirSplitOrder = "<<m_iRandomDirSplitOrder<<endl;
+	debug<<"m_iRandomDirSplitOrder = "<<m_iRandomDirSplitOrder<<endl;
 
 	iss.str(lines[i++]);
 	iss>>m_iLPFOrder;
-	ofs<<"m_iLPFOrder = "<<m_iLPFOrder<<endl;
+	debug<<"m_iLPFOrder = "<<m_iLPFOrder<<endl;
 
 	iss.str(lines[i++]);
 	iss>>m_iEOSChoice;
-	ofs<<"m_iEOSChoice = "<<m_iEOSChoice<<endl;
+	debug<<"m_iEOSChoice = "<<m_iEOSChoice<<endl;
 
 	iss.str(lines[i++]);
 	iss>>m_fGamma;
-	ofs<<"m_fGamma = "<<m_fGamma<<endl;
+	debug<<"m_fGamma = "<<m_fGamma<<endl;
 
 	iss.str(lines[i++]);
 	iss>>m_fPinf;
-	ofs<<"m_fPinf = "<<m_fPinf<<endl;
+	debug<<"m_fPinf = "<<m_fPinf<<endl;
 
 	iss.str(lines[i++]);
 	iss>>m_fEinf;
-	ofs<<"m_fEinf = "<<m_fEinf<<endl;
+	debug<<"m_fEinf = "<<m_fEinf<<endl;
 	
 	iss.str(lines[i++]);
 	iss>>m_fInitParticleSpacing;
-	ofs<<"m_fInitParticleSpacing = "<<m_fInitParticleSpacing<<endl;	
+	debug<<"m_fInitParticleSpacing = "<<m_fInitParticleSpacing<<endl;	
 
 	iss.str(lines[i++]);
 	iss>>m_fGravity;
-	ofs<<"m_fGravity = "<<m_fGravity<<endl;
+	debug<<"m_fGravity = "<<m_fGravity<<endl;
 
 	iss.str(lines[i++]);
 	iss>>m_iMovingBoxForGhostParticle;
-	ofs<<"m_iMovingBoxForGhostParticle = "<<m_iMovingBoxForGhostParticle<<endl;	
+	debug<<"m_iMovingBoxForGhostParticle = "<<m_iMovingBoxForGhostParticle<<endl;	
 	
-	ofs<<"-------------------Input Data as verified above-----------------------"<<endl;
+	iss.str(lines[i++]);
+	iss>>m_iUseLimiter;
+	debug<<"m_iUseLimiter = "<<m_iUseLimiter<<endl;
+	
+	iss.str(lines[i++]);
+	iss>>m_fThresholdP;
+	debug<<"m_fThresholdP = "<<m_fThresholdP<<endl;
+
+	debug<<"--------------End Variables assigned by input file----------------"<<endl<<endl;
 
 
 	// create EOS object and get a pointer to it
 	if(m_iEOSChoice==1) m_pEOS = new PolytropicGasEOS(m_fGamma);
 	else if(m_iEOSChoice==2) m_pEOS = new StiffPolytropicGasEOS(m_fGamma,m_fPinf,m_fEinf);
-	else assert(false);
+	else {
+		debug<<"The EOS does not exist!!!"<<endl;
+		assert(false);
+	}
 
 	// create fluid objects and get pointers to them
 	for(int j=0; j<m_iFluidObjNum; j++) 
-		m_vFluidObj.push_back(GeometryFactory::instance().createGeometry(fluidObjNames[j]));
+		m_vFluidObj.push_back(GeometryFactory::instance().createGeometry(m_vFluidObjNames[j]));
 	
 	// create fluid state objects and get pointers to them
 	for(int j=0; j<m_iFluidObjNum; j++) 
-		m_vFluidObjState.push_back(StateFactory::instance().createState(fluidObjStateNames[j]));
+		m_vFluidObjState.push_back(StateFactory::instance().createState(m_vFluidObjStateNames[j]));
 
-	// create boundary objects and get pointers to them
-	for(int j=0; j<m_iBoundaryObjNum; j++) 
-		m_vBoundaryObj.push_back(GeometryFactory::instance().createGeometry(boundaryObjNames[j]));
 	
-	// bounding box of fluid and boundary objects
-	computeInitBoundingBox();	
+	if(m_iDimension != 1) { // Only do these when in 2D & 3D	
+		// create boundary objects and get pointers to them
+		for(int j=0; j<m_iBoundaryObjNum; j++) 
+			m_vBoundaryObj.push_back(GeometryFactory::instance().createGeometry(m_vBoundaryObjNames[j]));
+		
+		// bounding box of fluid and boundary objects
+		computeInitBoundingBox();
+	}	
 	
 	initGeometryAndState();	
 	
-	setBoundingBoxStartIndex();
-
-	setObjectTag();
+	if(m_iDimension != 1) { // Only do these when in 2D & 3D
+		setBoundingBoxStartIndex();
+		setObjectTag();
+	}
 
 	setParams();	
 
@@ -187,14 +218,14 @@ void Initializer::computeInitBoundingBox() {
 		BoundingBox* box = new BoundingBox(xmin, xmax, ymin, ymax, zmin, zmax);
 		m_vFluidBoundingBox.push_back(box);
 
-		ofs<<"m_vFluidBoundingBox("<<i<<"):"<<endl;
-		ofs<<"m_fXmin="<<m_vFluidBoundingBox[i]->getXmin()<<endl;
-		ofs<<"m_fXmax="<<m_vFluidBoundingBox[i]->getXmax()<<endl;
-		ofs<<"m_fYmin="<<m_vFluidBoundingBox[i]->getYmin()<<endl;
-		ofs<<"m_fYmax="<<m_vFluidBoundingBox[i]->getYmax()<<endl;
-		ofs<<"m_fZmin="<<m_vFluidBoundingBox[i]->getZmin()<<endl;
-		ofs<<"m_fZmax="<<m_vFluidBoundingBox[i]->getZmax()<<endl;
-		ofs<<"-----------------"<<endl;
+		debug<<"m_vFluidBoundingBox("<<i<<"):"<<endl;
+		debug<<"m_fXmin="<<m_vFluidBoundingBox[i]->getXmin()<<endl;
+		debug<<"m_fXmax="<<m_vFluidBoundingBox[i]->getXmax()<<endl;
+		debug<<"m_fYmin="<<m_vFluidBoundingBox[i]->getYmin()<<endl;
+		debug<<"m_fYmax="<<m_vFluidBoundingBox[i]->getYmax()<<endl;
+		debug<<"m_fZmin="<<m_vFluidBoundingBox[i]->getZmin()<<endl;
+		debug<<"m_fZmax="<<m_vFluidBoundingBox[i]->getZmax()<<endl;
+		debug<<"-----------------"<<endl;
 	}
 
 	for(size_t i=0; i<m_vBoundaryObj.size(); i++) {
@@ -213,20 +244,21 @@ void Initializer::computeInitBoundingBox() {
 		BoundingBox* box = new BoundingBox(xmin, xmax, ymin, ymax, zmin, zmax);
 		m_vBoundaryBoundingBox.push_back(box);
 
-		ofs<<"m_vBoundaryBoundingBox("<<i<<"):"<<endl;
-		ofs<<"m_fXmin="<<m_vBoundaryBoundingBox[i]->getXmin()<<endl;
-		ofs<<"m_fXmax="<<m_vBoundaryBoundingBox[i]->getXmax()<<endl;
-		ofs<<"m_fYmin="<<m_vBoundaryBoundingBox[i]->getYmin()<<endl;
-		ofs<<"m_fYmax="<<m_vBoundaryBoundingBox[i]->getYmax()<<endl;
-		ofs<<"m_fZmin="<<m_vBoundaryBoundingBox[i]->getZmin()<<endl;
-		ofs<<"m_fZmax="<<m_vBoundaryBoundingBox[i]->getZmax()<<endl;
-		ofs<<"-----------------"<<endl;
+		debug<<"m_vBoundaryBoundingBox("<<i<<"):"<<endl;
+		debug<<"m_fXmin="<<m_vBoundaryBoundingBox[i]->getXmin()<<endl;
+		debug<<"m_fXmax="<<m_vBoundaryBoundingBox[i]->getXmax()<<endl;
+		debug<<"m_fYmin="<<m_vBoundaryBoundingBox[i]->getYmin()<<endl;
+		debug<<"m_fYmax="<<m_vBoundaryBoundingBox[i]->getYmax()<<endl;
+		debug<<"m_fZmin="<<m_vBoundaryBoundingBox[i]->getZmin()<<endl;
+		debug<<"m_fZmax="<<m_vBoundaryBoundingBox[i]->getZmax()<<endl;
+		debug<<"-----------------"<<endl;
 	}
 	
 }
 
 void Initializer::setParams() {
-		
+	debug<<"-------------------Initializer::setParams()-----------------------"<<endl;	
+	
 	if(m_iLPFOrder==2)	
 		m_fNeiSearchRadius = 2.2*m_fInitParticleSpacing;
 	else if(m_iLPFOrder==1)
@@ -241,8 +273,8 @@ void Initializer::setParams() {
 		m_iMaxNeighbourNum = 2*m_iNumParticleWithinSearchRadius;
 		m_iMaxNeighbourNumInOneDir = m_iMaxNeighbourNum/3;
 				
-		m_iNumRow2ndOrder = 20; //TODO
-		m_iNumRow1stOrder = 5; //TODO
+		m_iNumRow2ndOrder = 20; 
+		m_iNumRow1stOrder = 5; 
 		m_iNumCol2ndOrder = 9; 
 		m_iNumCol1stOrder = 3; 
 	}
@@ -255,6 +287,16 @@ void Initializer::setParams() {
 		m_iNumCol2ndOrder = 5; 
 		m_iNumCol1stOrder = 2;	
 	}
+	else { // 1D
+		m_iMaxNeighbourNum = m_iLPFOrder==1? 2:4; 
+		m_iMaxNeighbourNumInOneDir = m_iLPFOrder==1? 1:2;
+				
+		m_iNumRow2ndOrder = 2; 
+		m_iNumRow1stOrder = 1; 
+		m_iNumCol2ndOrder = 2; 
+		m_iNumCol1stOrder = 1;	
+	
+	}
 
 	// (eos chocie=1:poly 2:spoly)	
 	if(m_iEOSChoice==1) 
@@ -265,67 +307,86 @@ void Initializer::setParams() {
 	
 	m_iTreeDepth = 5;
 	
-	ofs<<"m_fNeiSearchRadius = "<<m_fNeiSearchRadius<<endl;
-	ofs<<"m_iNumParticleWithinSearchRadius = "<<m_iNumParticleWithinSearchRadius<<endl;
-	ofs<<"m_iMaxNeighbourNum = "<<m_iMaxNeighbourNum<<endl;
-	ofs<<"m_iMaxNeighbourNumInOneDir = "<<m_iMaxNeighbourNumInOneDir<<endl;
-	ofs<<"m_iNumRow2ndOrder = "<<m_iNumRow2ndOrder<<endl;
-	ofs<<"m_iNumRow1stOrder = "<<m_iNumRow1stOrder<<endl;
-	ofs<<"m_iNumCol2ndOrder = "<<m_iNumCol2ndOrder<<endl;
-	ofs<<"m_iNumCol1stOrder = "<<m_iNumCol1stOrder<<endl;	
-	ofs<<"m_fInvalidPressure = "<<m_fInvalidPressure<<endl;
-	ofs<<"m_fInvalidVolume = "<<m_fInvalidVolume<<endl;
-	ofs<<"m_iTreeDepth = "<<m_iTreeDepth<<endl;	
-	ofs<<"-------------------Prespecified params as above-----------------------"<<endl;
+	debug<<"m_fNeiSearchRadius = "<<m_fNeiSearchRadius<<endl;
+	debug<<"m_iNumParticleWithinSearchRadius = "<<m_iNumParticleWithinSearchRadius<<endl;
+	debug<<"m_iMaxNeighbourNum = "<<m_iMaxNeighbourNum<<endl;
+	debug<<"m_iMaxNeighbourNumInOneDir = "<<m_iMaxNeighbourNumInOneDir<<endl;
+	debug<<"m_iNumRow2ndOrder = "<<m_iNumRow2ndOrder<<endl;
+	debug<<"m_iNumRow1stOrder = "<<m_iNumRow1stOrder<<endl;
+	debug<<"m_iNumCol2ndOrder = "<<m_iNumCol2ndOrder<<endl;
+	debug<<"m_iNumCol1stOrder = "<<m_iNumCol1stOrder<<endl;	
+	debug<<"m_fInvalidPressure = "<<m_fInvalidPressure<<endl;
+	debug<<"m_fInvalidVolume = "<<m_fInvalidVolume<<endl;
+	debug<<"m_iTreeDepth = "<<m_iTreeDepth<<endl;		
+	debug<<"-------------------End Initializer::setParams()-------------------"<<endl<<endl;
 	
 }
 
 
 void Initializer::initGeometryAndState() {
 	
-	bool saveData = false;
-	m_iFluidNum = initGeometryAndStateOnHexPacking(saveData, "fluid");
-	m_iBoundaryNum = initGeometryAndStateOnHexPacking(saveData, "boundary");
+	debug<<"-----------------Initializer::initGeometryAndState()-------------------"<<endl;
 
-	m_iCapacity = (size_t)(1.5*(m_iFluidNum+m_iBoundaryNum));
-	
-	// use m_iCapacity to create memory
-	initParticleDataMemory();
-	
-	saveData = true;
-	initGeometryAndStateOnHexPacking(saveData, "fluid");
-	initGeometryAndStateOnHexPacking(saveData, "boundary");
+	if(m_iDimension == 1) {
+		
+		bool saveData = false;
+		// Compute the number of particles to initialize the particle array	
+		m_iBoundaryNum = 0; 
+		m_iFluidNum = initGeometryAndState1D(saveData);
+		
+		m_iCapacity = m_iFluidNum;
+		
+		// use m_iCapacity to create memory
+		initParticleDataMemory();
+		
+		saveData = true;
+		// Really initialize particle location and state this time	
+		initGeometryAndState1D(saveData);	
+		
+		// NOT relevant in 1D; In 1D only m_iFluidNum is used
+		m_iFluidStartIndex = 0;
+		m_iBoundaryStartIndex = 0;
+		m_iGhostStartIndex = 0;
 
-	// assign the start index of fluid, boundary, and ghost particles
-	m_iFluidStartIndex = 0;
-	m_iBoundaryStartIndex = m_iFluidStartIndex + m_iFluidNum;
-	m_iGhostStartIndex = m_iFluidStartIndex + m_iFluidNum + m_iBoundaryNum;
-	
-	/* // TO DELETE
-	size_t tmp=0;
-	for(size_t index=0; index<m_iCapacity; index++) m_vObjectTag[index] = -1; // init object tag
-	for(size_t p=0; p<m_vFluidBoundingBox.size(); p++) {
-		// set the start index of fluid bound box
-		m_vFluidBoundingBox[p]->setStartIndex(m_iFluidStartIndex+tmp); 
-		size_t num = m_vFluidBoundingBox[p]->getNumber();
-		// set the fluid object tag
-		for(size_t index=m_iFluidStartIndex+tmp; index<m_iFluidStartIndex+tmp+num; index++) {
-			m_vObjectTag[index] = p;
-		}
-		tmp += num;
-		ofs<<"m_vFluidBoundingBox["<<p<<"]->m_iStartIndex="<<m_vFluidBoundingBox[p]->getStartIndex()<<endl;
-		ofs<<"m_vFluidBoundingBox["<<p<<"]->m_iNumber="<<num<<endl;
-	}		
-	*/
+		debug<<"m_iFluidNum = "<<m_iFluidNum<<endl;
+		//debug<<"m_iBoundaryNum = "<<m_iBoundaryNum<<endl;
+		debug<<"m_iCapacity = "<<m_iCapacity<<endl;
+		//debug<<"m_iFluidStartIndex = "<<m_iFluidStartIndex<<endl;
+		//debug<<"m_iBoundaryStartIndex = "<<m_iBoundaryStartIndex<<endl;
+		//debug<<"m_iGhostStartIndex = "<<m_iGhostStartIndex<<endl;
 
-	ofs<<"m_iFluidNum = "<<m_iFluidNum<<endl;
-	ofs<<"m_iBoundaryNum = "<<m_iBoundaryNum<<endl;
-	ofs<<"m_iCapacity = "<<m_iCapacity<<endl;
-	ofs<<"m_iFluidStartIndex = "<<m_iFluidStartIndex<<endl;
-	ofs<<"m_iBoundaryStartIndex = "<<m_iBoundaryStartIndex<<endl;
-	ofs<<"m_iGhostStartIndex = "<<m_iGhostStartIndex<<endl;
+	}
+	else {
+		bool saveData = false;
+		// Compute the number of particles to initialize the particle array
+		m_iFluidNum = initGeometryAndStateOnHexPacking(saveData, "fluid");
+		m_iBoundaryNum = initGeometryAndStateOnHexPacking(saveData, "boundary");
+		
+		m_iCapacity = (size_t)(1.5*(m_iFluidNum+m_iBoundaryNum));
+		
+		// use m_iCapacity to create memory
+		initParticleDataMemory();
+		
+		saveData = true;
+		// Really initialize particle location and state this time
+		initGeometryAndStateOnHexPacking(saveData, "fluid");
+		initGeometryAndStateOnHexPacking(saveData, "boundary");
+
+		// assign the start index of fluid, boundary, and ghost particles
+		// this variables are only relevant in 2D & 3D; In 1D only m_iFluidNum is used
+		m_iFluidStartIndex = 0;
+		m_iBoundaryStartIndex = m_iFluidStartIndex + m_iFluidNum;
+		m_iGhostStartIndex = m_iFluidStartIndex + m_iFluidNum + m_iBoundaryNum;
+			
+		debug<<"m_iFluidNum = "<<m_iFluidNum<<endl;
+		debug<<"m_iBoundaryNum = "<<m_iBoundaryNum<<endl;
+		debug<<"m_iCapacity = "<<m_iCapacity<<endl;
+		debug<<"m_iFluidStartIndex = "<<m_iFluidStartIndex<<endl;
+		debug<<"m_iBoundaryStartIndex = "<<m_iBoundaryStartIndex<<endl;
+		debug<<"m_iGhostStartIndex = "<<m_iGhostStartIndex<<endl;	
+	}	
 	
-	ofs<<"-----------------Initialized geometry and state info as above-------------------"<<endl;
+	debug<<"-----------------End Initializer::initGeometryAndState()---------------"<<endl<<endl;
 	
 }
 
@@ -337,8 +398,8 @@ void Initializer::setBoundingBoxStartIndex() {
 		m_vFluidBoundingBox[p]->setStartIndex(m_iFluidStartIndex+tmp); 
 		size_t num = m_vFluidBoundingBox[p]->getNumber();	
 		tmp += num;
-		ofs<<"m_vFluidBoundingBox["<<p<<"]->m_iStartIndex="<<m_vFluidBoundingBox[p]->getStartIndex()<<endl;
-		ofs<<"m_vFluidBoundingBox["<<p<<"]->m_iNumber="<<num<<endl;
+		debug<<"m_vFluidBoundingBox["<<p<<"]->m_iStartIndex="<<m_vFluidBoundingBox[p]->getStartIndex()<<endl;
+		debug<<"m_vFluidBoundingBox["<<p<<"]->m_iNumber="<<num<<endl;
 	}
 	tmp=0;	
 	for(size_t p=0; p<m_vBoundaryBoundingBox.size(); p++) {
@@ -346,49 +407,61 @@ void Initializer::setBoundingBoxStartIndex() {
 		m_vBoundaryBoundingBox[p]->setStartIndex(m_iBoundaryStartIndex+tmp); 
 		size_t num = m_vBoundaryBoundingBox[p]->getNumber();	
 		tmp += num;
-		ofs<<"m_vBoundaryBoundingBox["<<p<<"]->m_iStartIndex="<<m_vBoundaryBoundingBox[p]->getStartIndex()<<endl;
-		ofs<<"m_vBoundaryBoundingBox["<<p<<"]->m_iNumber="<<num<<endl;
+		debug<<"m_vBoundaryBoundingBox["<<p<<"]->m_iStartIndex="<<m_vBoundaryBoundingBox[p]->getStartIndex()<<endl;
+		debug<<"m_vBoundaryBoundingBox["<<p<<"]->m_iNumber="<<num<<endl;
 	}
-	ofs<<"-----------------Initialized Bounding Box info as above-------------------"<<endl;
+	debug<<"-----------------Initialized Bounding Box info as above-------------------"<<endl;
 }
+
 
 //intial tags: fluid tag = the object num: 1, 2, 3,...; non-fluid: 0
 void Initializer::setObjectTag() {
+	// set the fluid object tag
 	size_t tmp=0;
-	//for(size_t index=0; index<m_iCapacity; index++) m_vObjectTag[index] = 0; // init object tag
 	for(size_t p=0; p<m_vFluidBoundingBox.size(); p++) { 
-		size_t num = m_vFluidBoundingBox[p]->getNumber();
-		// set the fluid object tag
+		size_t num = m_vFluidBoundingBox[p]->getNumber();	
 		for(size_t index=m_iFluidStartIndex+tmp; index<m_iFluidStartIndex+tmp+num; index++) {
 			m_vObjectTag[index] = p+1;
 		}
 		tmp += num;
 	}
+	 
 	//cout<<"-------Initializer::setObjectTag()-------"<<endl;
 	//for(size_t index=0; index<m_iCapacity; index++) cout<<"m_vObjectTag["<<index<<"]="<<m_vObjectTag[index]<<endl; 
 	//cout<<"-----------------------------------------"<<endl;
+
+	//TODO Set the tags for boundary particles
 }
 
 
 void Initializer::initParticleDataMemory() {
 	
+	// location
 	m_vPositionX = new double[m_iCapacity];
 	m_vPositionY = new double[m_iCapacity];
 	m_vPositionZ = new double[m_iCapacity];
 	fill_n(m_vPositionX,m_iCapacity,0);
 	fill_n(m_vPositionY,m_iCapacity,0);
-	if(m_iDimension==2) fill_n(m_vPositionZ,m_iCapacity,0);	
-
+	fill_n(m_vPositionZ,m_iCapacity,0);
+	//if(m_iDimension==2) fill_n(m_vPositionZ,m_iCapacity,0);	
+	
+	// velocity
 	m_vVelocityU = new double[m_iCapacity];
-	m_vVelocityV = new double[m_iCapacity];
 	fill_n(m_vVelocityU,m_iCapacity,0);
-	fill_n(m_vVelocityV,m_iCapacity,0);
+	
+	if(m_iDimension==2 || m_iDimension==3) {
+		m_vVelocityV = new double[m_iCapacity];
+		fill_n(m_vVelocityV,m_iCapacity,0);
+	}
+	else m_vVelocityV = nullptr;
+		
 	if(m_iDimension==3) {
 		m_vVelocityW = new double[m_iCapacity];
 		fill_n(m_vVelocityW,m_iCapacity,0);
 	}
-	else	m_vVelocityW = nullptr; 
-
+	else m_vVelocityW = nullptr; 
+	
+	// states
 	m_vVolume = new double[m_iCapacity];
 	fill_n(m_vVolume,m_iCapacity,0);
 	
@@ -398,11 +471,38 @@ void Initializer::initParticleDataMemory() {
 	m_vSoundSpeed = new double[m_iCapacity];
 	fill_n(m_vSoundSpeed,m_iCapacity,0);
 	
+	// object tags
 	m_vObjectTag = new int[m_iCapacity];
 	fill_n(m_vObjectTag,m_iCapacity,0);
 	
 }
 
+
+size_t Initializer::initGeometryAndState1D(bool saveData) {
+	
+	// alias
+	const vector<Geometry*>& objs = m_vFluidObj;
+	const vector<State*>& states = m_vFluidObjState;	
+
+	double xmin, xmax, ymin, ymax, zmin, zmax;
+	objs[0]->getBoundingBox(xmin, xmax, ymin, ymax, zmin, zmax);
+	size_t numParticle = (size_t)((xmax - xmin)/m_fInitParticleSpacing) + 1;
+		
+	if(saveData) { 	
+		for(size_t i=0; i<numParticle; i++) { 
+			double x = xmin + i*m_fInitParticleSpacing;
+			m_vPositionX[i] = x; 
+			m_vVolume[i]    = 1./states[0]->density(x,0,0);
+			m_vPressure[i]  = states[0]->pressure(x,0,0);
+			double tmpY, tmpZ;
+			states[0]->velocity(x,0,0,m_vVelocityU[i],tmpY,tmpZ);
+			m_vSoundSpeed[i] = m_pEOS->getSoundSpeed(m_vPressure[i],1./m_vVolume[i]);
+		}
+	}
+
+	//cout<<"xmin="<<xmin<<"	xmax="<<xmax<<"	numParticle="<<numParticle<<endl;
+	return numParticle;
+}
 
 size_t Initializer::initGeometryAndStateOnHexPacking(bool saveData, const string& kind) {
 
@@ -722,9 +822,9 @@ void Initializer::computeNumParticleWithinSearchRadius() {
 
 	m_iNumParticleWithinSearchRadius = result;
 
-	cout<<"-------Initializer::computeNumParticleWithinSearchRadius()-------"<<endl;
-	cout<<"m_iNumParticleWithinSearchRadius="<<m_iNumParticleWithinSearchRadius<<endl;
-	cout<<"-----------------------------------------------------------------"<<endl<<endl;
+	debug<<"-------Initializer::computeNumParticleWithinSearchRadius()-------"<<endl;
+	debug<<"m_iNumParticleWithinSearchRadius="<<m_iNumParticleWithinSearchRadius<<endl;
+	debug<<"-----------------------------------------------------------------"<<endl<<endl;
 }
 
 

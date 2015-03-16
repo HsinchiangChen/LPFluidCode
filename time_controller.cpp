@@ -18,9 +18,9 @@ bool TimeController::adjustDtByWriteTimeInterval() {
 		m_fNextWriteTime += m_fWriteTimeInterval;
 		if(m_fNextWriteTime > m_fEndTime) m_fNextWriteTime = m_fEndTime;
 		assert(m_fDt >= 0);
-		cout<<"-------TimeController::adjustDtByWriteTimeInterval()-------"<<endl;
-		cout<<"m_fDt="<<m_fDt<<endl;
-		cout<<"-----------------------------------------------------------"<<endl;
+		//cout<<"-------TimeController::adjustDtByWriteTimeInterval()-------"<<endl;
+		//cout<<"m_fDt="<<m_fDt<<endl;
+		//cout<<"-----------------------------------------------------------"<<endl;
 		return true; // m_fDt adjusted
 	}
 	return false; // m_fDt did not get adjusted
@@ -58,7 +58,9 @@ DefaultTimeController::DefaultTimeController(const Initializer& init, LPSolver* 
 	
 	// private data member in this class
 	m_fCFLCoeff = init.getCFLCoeff();
-
+	
+	m_iIfDebug = init.getIfDebug();
+	debug.open(init.getDebugfileName(), std::ofstream::out | std::ofstream::app);
 }
 
 
@@ -69,28 +71,34 @@ int DefaultTimeController::solve() {
 		pViewer->writeResult(m_fTime, m_iWriteStep);
 	}
 	m_iWriteStep++;
-
+	
 	size_t iterationStep = 0; // counter of the number of iterations done
 	// start iterations
 	while(m_fTime < m_fEndTime) {
+		
 		// compute dt based on CFL condition
 		computeDtByCFL();
+		
 		// adjust dt to fit into writeTimeInterval if needed
 		bool isWriteTime = adjustDtByWriteTimeInterval();
+		
 		// print out the time and dt before solving
 		printf("Time=%.16g, dt=%.16g, iterationStep=%ld\n",m_fTime, m_fDt, iterationStep);
-		// call LPSolver to solve for this time step
 		
+		// call LPSolver to solve for this time step	
 		int isIterSuccess = m_pSolver->solve(m_fDt); // 0 = success	
 		
 		if(isIterSuccess!=0) {
 			cout<<"Time = "<<m_fTime<<": solver fails!!!"<<endl;
 			return 1;
 		}
+		
 		// increment time
 		m_fTime += m_fDt;
+		
 		// increment the counter of number of iterations
 		iterationStep++;
+		
 		// write results if necessary
 		if(isWriteTime) { 
 			printf("Time=%.16g, writeStep=%ld\n",m_fTime, m_iWriteStep); // check the write time is correct
@@ -116,9 +124,12 @@ void DefaultTimeController::computeDtByCFL() {
 	if(m_fDt > m_fWriteTimeInterval) { 
 		cout<<"time = "<<m_fTime<<": m_fDt > m_fWriteTimeInterval!!!"<<endl; 
 	}
-	cout<<"-------DefaultTimeController::computeDtByCFL()-------"<<endl;
-	cout<<"m_fDt="<<m_fDt<<endl;
-	cout<<"-----------------------------------------------------"<<endl;
+	if(m_iIfDebug) {
+		debug.precision(16);
+		//debug<<"-------DefaultTimeController::computeDtByCFL()-------"<<endl;
+		debug<<"m_fDt="<<m_fDt<<endl;
+		//debug<<"-----------------------------------------------------"<<endl;
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////

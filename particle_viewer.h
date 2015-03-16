@@ -1,7 +1,7 @@
 /**
  * \file   particle_viewer.h
  *
- * \brief  This header file contains classes for output simulation results in various formats such as .vtk  
+ * \brief  This header file contains classes for output simulation results in various formats such as .vtk and .txt  
  *            
  *
  * \author Chen, Hsin-Chiang (morrischen2008@gmail.com) 
@@ -76,7 +76,7 @@ protected:
 /**
  * \class VTKParticleViewer
  * 
- * \brief A class that output simulations results in the .vtk format 
+ * \brief A class that output simulation results in the .vtk format 
  *        
  *
  * \author Chen, Hsin-Chiang (morrischen2008@gmail.com)
@@ -115,5 +115,49 @@ public:
 };
 
 
+
+
+
+
+
+/**
+ * \class TXTParticleViewer1D
+ * 
+ * \brief A class that output 1D simulation results in the .txt format 
+ *        
+ *
+ * \author Chen, Hsin-Chiang (morrischen2008@gmail.com)
+ *
+ *
+ * \version 1.0 
+ *
+ * \date 2015/03/14 
+ *
+ * Created on: 2015/03/14 
+ *
+ */
+class TXTParticleViewer1D : public ParticleViewer {
+
+public:
+	/**
+	 * \brief                      Constructor 
+	 *
+	 * \param [in] data            A pointer to the object which holds particle information and data
+	 * \param [in] particleType    The type of particle to output (all, fluid, boundary, ghost)
+	 * \param [in] outputfileName  The name of the output file
+	 * \param [in] numDigits       The number of digits for the indexing of output file name
+	 *                
+	 */
+	TXTParticleViewer1D(ParticleData* data, const std::string& particleType, const std::string& outputfileName="", int numDigits=7);
+	
+	/**
+	 * \brief                Write 1D simulation results to the output file in the .txt format
+	 * \param [in] time      The physical output time
+	 * \param [in] writeStep The number of times of output
+	 * \return               0 if output success; 1 otherwise
+	 */
+	virtual int writeResult(double time, std::size_t writeStep);
+	
+};
 
 #endif // __PARTICLE_VIEWER_H__
