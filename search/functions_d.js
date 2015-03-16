@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uniformvelocitystate',['UniformVelocityState',['../classUniformVelocityState.html#a27b8930fb2779e80930915165f768a20',1,'UniformVelocityState']]]
+  ['txtparticleviewer1d',['TXTParticleViewer1D',['../classTXTParticleViewer1D.html#aba328b61f24b58d0a43ea98a2c54401d',1,'TXTParticleViewer1D']]]
 ];

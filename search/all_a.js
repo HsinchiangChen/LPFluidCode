@@ -13,6 +13,7 @@ var searchData=
   ['m_5fftime',['m_fTime',['../classTimeController.html#a62ad85a4f20827517639b6cadc7bf7ad',1,'TimeController']]],
   ['m_5ffwritetimeinterval',['m_fWriteTimeInterval',['../classTimeController.html#afa7ed4273d825146845a64260eef4c3c',1,'TimeController']]],
   ['m_5fieoschoice',['m_iEOSChoice',['../classEOS.html#a9e02fca545fe675f1aa90d8a771c8500',1,'EOS']]],
+  ['m_5fiifdebug',['m_iIfDebug',['../classLPSolver.html#a7206c069515e95ea570c190e4ae31607',1,'LPSolver::m_iIfDebug()'],['../classTimeController.html#ae7f35f1b1d7a84df659a0766b0a9d9d3',1,'TimeController::m_iIfDebug()']]],
   ['m_5finumcol',['m_iNumCol',['../classLSSolver.html#ad6c84ba57573c4a0834423489abc6775',1,'LSSolver']]],
   ['m_5finumdigits',['m_iNumDigits',['../classParticleViewer.html#a537f17422635f011d54cc577a4710c88',1,'ParticleViewer']]],
   ['m_5finumrow',['m_iNumRow',['../classLSSolver.html#accba7e985f2f74ec9581f1e1ad185b75',1,'LSSolver']]],

@@ -1,21 +1,4 @@
 var searchData=
 [
-  ['_7eball',['~Ball',['../classBall.html#a78aa1f06b39fc9f81df82bef399c475c',1,'Ball']]],
-  ['_7edisk',['~Disk',['../classDisk.html#a3acdee0c3647086009b5dba33141ccfb',1,'Disk']]],
-  ['_7ediskleft',['~DiskLeft',['../classDiskLeft.html#a71a93d69543f8863ae4db94d855e7ea0',1,'DiskLeft']]],
-  ['_7ediskright',['~DiskRight',['../classDiskRight.html#a7a46c4abbc49cc7e80abfb4f662f574f',1,'DiskRight']]],
-  ['_7eeos',['~EOS',['../classEOS.html#ae6f21ee2d4c48acbac976d8c54f520f6',1,'EOS']]],
-  ['_7egaussianpressurestate',['~GaussianPressureState',['../classGaussianPressureState.html#a2f6d732404d6fd0d84264f53316deda8',1,'GaussianPressureState']]],
-  ['_7egeometry',['~Geometry',['../classGeometry.html#aedd2e92f79197c6f0671c5d14cf72578',1,'Geometry']]],
-  ['_7einitializer',['~Initializer',['../classInitializer.html#add39a548b1e5405e938e786f069191e1',1,'Initializer']]],
-  ['_7eleftuniformvelocitystate',['~LeftUniformVelocityState',['../classLeftUniformVelocityState.html#a3df71d7b95da2f4a889e24e9158eaab9',1,'LeftUniformVelocityState']]],
-  ['_7elpsolver',['~LPSolver',['../classLPSolver.html#a9fbbdc7648d046971c74ff7ca458433e',1,'LPSolver']]],
-  ['_7elssolver',['~LSSolver',['../classLSSolver.html#ad52195d34383f38d85568be604c1fa3e',1,'LSSolver']]],
-  ['_7eneighboursearcher',['~NeighbourSearcher',['../classNeighbourSearcher.html#aa91ff4cc83209848f9318b82f73fe6d3',1,'NeighbourSearcher']]],
-  ['_7eoctreesearcher',['~OctreeSearcher',['../classOctreeSearcher.html#a2bdc0bfe3a735b21055f310ddd41031d',1,'OctreeSearcher']]],
-  ['_7eparticledata',['~ParticleData',['../classParticleData.html#a09673bdd8f17c8a39f1292df5727d71d',1,'ParticleData']]],
-  ['_7erightuniformvelocitystate',['~RightUniformVelocityState',['../classRightUniformVelocityState.html#aac4dfd87ac8205d053740e63fe2dcb29',1,'RightUniformVelocityState']]],
-  ['_7estate',['~State',['../classState.html#a9ddc1df6f998184d6477b48fab90281c',1,'State']]],
-  ['_7estiffpolytropicgaseos',['~StiffPolytropicGasEOS',['../classStiffPolytropicGasEOS.html#a6ba4ff9bbd86a79f0703b6f942e73b00',1,'StiffPolytropicGasEOS']]],
-  ['_7euniformvelocitystate',['~UniformVelocityState',['../classUniformVelocityState.html#ad906b817011d69cddf9699dbf0c84646',1,'UniformVelocityState']]]
+  ['writeresult',['writeResult',['../classParticleViewer.html#ab30b43a09b1412934e48bcf4bdac26a5',1,'ParticleViewer::writeResult()'],['../classVTKParticleViewer.html#a45efc6692f3d8d7178f456cfb7779c88',1,'VTKParticleViewer::writeResult()'],['../classTXTParticleViewer1D.html#a7635e39575c87b9679fd163d45fc4b4a',1,'TXTParticleViewer1D::writeResult()']]]
 ];

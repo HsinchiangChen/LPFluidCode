@@ -90,7 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>The default Lagrangian Particle solver for the compressible Euler's equation.  
+<p>The default Lagrangian Particle solver for the compressible Euler's equation in 2D and 3D.  
  <a href="classHyperbolicLPSolver.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="lp__solver_8h_source.html">lp_solver.h</a>&gt;</code></p>
@@ -142,9 +142,17 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLPSolver.html#ac1107221647c560b5133225491b682bd">m_fMaxFluidVelocity</a></td></tr>
 <tr class="memdesc:ac1107221647c560b5133225491b682bd inherit pro_attribs_classLPSolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum absolute value velocity of fluid particles at a time step. <br/></td></tr>
 <tr class="separator:ac1107221647c560b5133225491b682bd inherit pro_attribs_classLPSolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7206c069515e95ea570c190e4ae31607 inherit pro_attribs_classLPSolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7206c069515e95ea570c190e4ae31607"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLPSolver.html#a7206c069515e95ea570c190e4ae31607">m_iIfDebug</a></td></tr>
+<tr class="memdesc:a7206c069515e95ea570c190e4ae31607 inherit pro_attribs_classLPSolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">if true then print debug info <br/></td></tr>
+<tr class="separator:a7206c069515e95ea570c190e4ae31607 inherit pro_attribs_classLPSolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4147d2dc298f44e0382a8851b013045e inherit pro_attribs_classLPSolver"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4147d2dc298f44e0382a8851b013045e"></a>
+std::ofstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLPSolver.html#a4147d2dc298f44e0382a8851b013045e">debug</a></td></tr>
+<tr class="memdesc:a4147d2dc298f44e0382a8851b013045e inherit pro_attribs_classLPSolver"><td class="mdescLeft">&#160;</td><td class="mdescRight">output information for debugging <br/></td></tr>
+<tr class="separator:a4147d2dc298f44e0382a8851b013045e inherit pro_attribs_classLPSolver"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The default Lagrangian Particle solver for the compressible Euler's equation. </p>
+<div class="textblock"><p>The default Lagrangian Particle solver for the compressible Euler's equation in 2D and 3D. </p>
 <dl class="section author"><dt>Author</dt><dd>Chen, Hsin-Chiang (<a href="#" onclick="location.href='mai'+'lto:'+'mor'+'ri'+'sch'+'en'+'200'+'8@'+'gma'+'il'+'.co'+'m'; return false;">morri<span style="display: none;">.nosp@m.</span>sche<span style="display: none;">.nosp@m.</span>n2008<span style="display: none;">.nosp@m.</span>@gma<span style="display: none;">.nosp@m.</span>il.co<span style="display: none;">.nosp@m.</span>m</a>)</dd></dl>
 <p>Co-author: Yu, Kwangmin (<a href="#" onclick="location.href='mai'+'lto:'+'yuk'+'wa'+'ngm'+'in'+'@gm'+'ai'+'l.c'+'om'; return false;">yukwa<span style="display: none;">.nosp@m.</span>ngmi<span style="display: none;">.nosp@m.</span>n@gma<span style="display: none;">.nosp@m.</span>il.c<span style="display: none;">.nosp@m.</span>om</a>) on initial interface design and the design of data pointer swaping algorithms in the Strang splitting method</p>
 <dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
@@ -218,7 +226,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 </div><div class="memdoc">
 
 <p>The Lagrangian particle solver for the compressible Euler's equations for one iteration step. </p>
-<p>The method should be called in the context of <a class="el" href="classTimeController.html" title="An abstract class for different types of simulation time controllers. ">TimeController</a></p>
+<p>The method should be called by <a class="el" href="classTimeController.html" title="An abstract class for different types of simulation time controllers. ">TimeController</a> repeated at every time step</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>The length of physical time for this iteration </td></tr>
@@ -239,7 +247,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 13 2015 13:52:31 for Lagrangian Particle Code for The Simulation of 2D/3D Fluid Dynamics by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 15 2015 20:46:52 for Lagrangian Particle Code for The Simulation of 2D/3D Fluid Dynamics by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

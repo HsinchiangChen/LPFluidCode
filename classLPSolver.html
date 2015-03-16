@@ -101,7 +101,8 @@ Inheritance diagram for LPSolver:</div>
  <div class="center">
   <img src="classLPSolver.png" usemap="#LPSolver_map" alt=""/>
   <map id="LPSolver_map" name="LPSolver_map">
-<area href="classHyperbolicLPSolver.html" title="The default Lagrangian Particle solver for the compressible Euler&#39;s equation. " alt="HyperbolicLPSolver" shape="rect" coords="0,56,126,80"/>
+<area href="classHyperbolicLPSolver.html" title="The default Lagrangian Particle solver for the compressible Euler&#39;s equation in 2D and 3D..." alt="HyperbolicLPSolver" shape="rect" coords="0,56,142,80"/>
+<area href="classHyperbolicLPSolver1D.html" title="The default Lagrangian Particle solver for the compressible Euler&#39;s equation in 1D. " alt="HyperbolicLPSolver1D" shape="rect" coords="152,56,294,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -138,6 +139,14 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLPSolver.html#ac1107221647c560b5133225491b682bd">m_fMaxFluidVelocity</a></td></tr>
 <tr class="memdesc:ac1107221647c560b5133225491b682bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum absolute value velocity of fluid particles at a time step. <br/></td></tr>
 <tr class="separator:ac1107221647c560b5133225491b682bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7206c069515e95ea570c190e4ae31607"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7206c069515e95ea570c190e4ae31607"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLPSolver.html#a7206c069515e95ea570c190e4ae31607">m_iIfDebug</a></td></tr>
+<tr class="memdesc:a7206c069515e95ea570c190e4ae31607"><td class="mdescLeft">&#160;</td><td class="mdescRight">if true then print debug info <br/></td></tr>
+<tr class="separator:a7206c069515e95ea570c190e4ae31607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4147d2dc298f44e0382a8851b013045e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4147d2dc298f44e0382a8851b013045e"></a>
+std::ofstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLPSolver.html#a4147d2dc298f44e0382a8851b013045e">debug</a></td></tr>
+<tr class="memdesc:a4147d2dc298f44e0382a8851b013045e"><td class="mdescLeft">&#160;</td><td class="mdescRight">output information for debugging <br/></td></tr>
+<tr class="separator:a4147d2dc298f44e0382a8851b013045e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An abstract class for the family of Lagrangian Particle solvers. </p>
@@ -266,7 +275,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 </div><div class="memdoc">
 
 <p>The black box main Lagrangian particle solver for one iteration step. </p>
-<p>The method should be called in the context of <a class="el" href="classTimeController.html" title="An abstract class for different types of simulation time controllers. ">TimeController</a></p>
+<p>The method should be called by <a class="el" href="classTimeController.html" title="An abstract class for different types of simulation time controllers. ">TimeController</a> repeated at every time step</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>The length of physical time for this iteration </td></tr>
@@ -276,7 +285,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <dl class="section return"><dt>Returns</dt><dd>0 if the iteration is success </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>The function should always return 0 because all exceptions should be handled inside this class </dd></dl>
 
-<p>Implemented in <a class="el" href="classHyperbolicLPSolver.html#a8f8cbda5f22f052208cdc4d4d03dc567">HyperbolicLPSolver</a>.</p>
+<p>Implemented in <a class="el" href="classHyperbolicLPSolver1D.html#adeec127b2c0b1eee8670f45caa582bd7">HyperbolicLPSolver1D</a>, and <a class="el" href="classHyperbolicLPSolver.html#a8f8cbda5f22f052208cdc4d4d03dc567">HyperbolicLPSolver</a>.</p>
 
 </div>
 </div>
@@ -286,7 +295,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 13 2015 13:52:31 for Lagrangian Particle Code for The Simulation of 2D/3D Fluid Dynamics by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 15 2015 20:46:53 for Lagrangian Particle Code for The Simulation of 2D/3D Fluid Dynamics by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
