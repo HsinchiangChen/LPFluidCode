@@ -1,0 +1,101 @@
+\hypertarget{classHyperbolicLPSolver1D}{\section{Hyperbolic\-L\-P\-Solver1\-D Class Reference}
+\label{classHyperbolicLPSolver1D}\index{Hyperbolic\-L\-P\-Solver1\-D@{Hyperbolic\-L\-P\-Solver1\-D}}
+}
+
+
+The default Lagrangian Particle solver for the compressible Euler's equation in 1\-D.  
+
+
+
+
+{\ttfamily \#include $<$lp\-\_\-solver.\-h$>$}
+
+Inheritance diagram for Hyperbolic\-L\-P\-Solver1\-D\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classHyperbolicLPSolver1D}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classHyperbolicLPSolver1D_a33bf8dc24f0c3b88795898e509879ae8}{Hyperbolic\-L\-P\-Solver1\-D} (const \hyperlink{classInitializer}{Initializer} \&init, \hyperlink{classParticleData}{Particle\-Data} $\ast$p\-Data)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classHyperbolicLPSolver1D_adeec127b2c0b1eee8670f45caa582bd7}{solve} (double dt)
+\begin{DoxyCompactList}\small\item\em The 1\-D Lagrangian particle solver for the compressible Euler's equations for one iteration step. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The default Lagrangian Particle solver for the compressible Euler's equation in 1\-D. 
+
+\begin{DoxyAuthor}{Author}
+Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008@gmail.\-com})
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2015/03/13
+\end{DoxyDate}
+Created on\-: 2015/03/13 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classHyperbolicLPSolver1D_a33bf8dc24f0c3b88795898e509879ae8}{\index{Hyperbolic\-L\-P\-Solver1\-D@{Hyperbolic\-L\-P\-Solver1\-D}!Hyperbolic\-L\-P\-Solver1\-D@{Hyperbolic\-L\-P\-Solver1\-D}}
+\index{Hyperbolic\-L\-P\-Solver1\-D@{Hyperbolic\-L\-P\-Solver1\-D}!HyperbolicLPSolver1D@{Hyperbolic\-L\-P\-Solver1\-D}}
+\subsubsection[{Hyperbolic\-L\-P\-Solver1\-D}]{\setlength{\rightskip}{0pt plus 5cm}Hyperbolic\-L\-P\-Solver1\-D\-::\-Hyperbolic\-L\-P\-Solver1\-D (
+\begin{DoxyParamCaption}
+\item[{const {\bf Initializer} \&}]{init, }
+\item[{{\bf Particle\-Data} $\ast$}]{p\-Data}
+\end{DoxyParamCaption}
+)}}\label{classHyperbolicLPSolver1D_a33bf8dc24f0c3b88795898e509879ae8}
+
+
+Constructor. 
+
+Get and set up parameters and obtain access to objects needed for the main solver
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em init} & To retrieve information from {\itshape init} \\
+\hline
+\mbox{\tt in}  & {\em p\-Data} & To obtain access to an object of the Paticle\-Data clas \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classHyperbolicLPSolver1D_adeec127b2c0b1eee8670f45caa582bd7}{\index{Hyperbolic\-L\-P\-Solver1\-D@{Hyperbolic\-L\-P\-Solver1\-D}!solve@{solve}}
+\index{solve@{solve}!HyperbolicLPSolver1D@{Hyperbolic\-L\-P\-Solver1\-D}}
+\subsubsection[{solve}]{\setlength{\rightskip}{0pt plus 5cm}int Hyperbolic\-L\-P\-Solver1\-D\-::solve (
+\begin{DoxyParamCaption}
+\item[{double}]{dt}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classHyperbolicLPSolver1D_adeec127b2c0b1eee8670f45caa582bd7}
+
+
+The 1\-D Lagrangian particle solver for the compressible Euler's equations for one iteration step. 
+
+The method should be called by \hyperlink{classTimeController}{Time\-Controller} repeated at every time step
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em dt} & The length of physical time for this iteration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the iteration is success 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The function should always return 0 because all exceptions should be handled inside this class 
+\end{DoxyWarning}
+
+
+Implements \hyperlink{classLPSolver_a5cac44bfd7d885abab818841471b457a}{L\-P\-Solver}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{lp__solver_8h}{lp\-\_\-solver.\-h}\item 
+lp\-\_\-solver.\-cpp\end{DoxyCompactItemize}

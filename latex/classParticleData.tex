@@ -58,13 +58,26 @@ const double $\ast$const \hyperlink{classParticleData_a3713fca18cdeba32c17a244a6
 const double $\ast$const \hyperlink{classParticleData_a493cb98a9d33fc3bd48fc879456a426c}{get\-Sound\-Speed} () const 
 \begin{DoxyCompactList}\small\item\em Getter function of the array of sound speed of the initialized particles. \end{DoxyCompactList}\item 
 const int $\ast$const \hyperlink{classParticleData_abb5cbc18cc19ba33786fabdb6b6bf8be}{get\-Object\-Tag} () const 
-\begin{DoxyCompactList}\small\item\em Getter function of the array of \char`\"{}object tags\char`\"{} of the initialized particles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Getter function of the array of \char`\"{}object tags\char`\"{} of the initialized particles. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_a0571f782e53d0e83a6302a83508863dd}{get\-D\-D1} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of divided difference of order 1. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_a4107cd3e039402131b9c1c2b161a950e}{get\-D\-D2\-Left} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of divided difference of order 2. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_afdf161e6bf7c6a6ef8f7dd47cf34d20d}{get\-D\-D2\-Right} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of divided difference of order 2. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_ad14c7643b2ef4a22bd717ee0353c5961}{get\-D\-D3\-Left} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of divided difference of order 3. \end{DoxyCompactList}\item 
+const double $\ast$const \hyperlink{classParticleData_a82f4135bd88853cf26a79e7050760df5}{get\-D\-D3\-Right} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the array of divided difference of order 3. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
 \hypertarget{classParticleData_a0085845c5573d5e5dd332dc5bab4ad17}{class \hyperlink{classParticleData_a0085845c5573d5e5dd332dc5bab4ad17}{Hyperbolic\-L\-P\-Solver}}\label{classParticleData_a0085845c5573d5e5dd332dc5bab4ad17}
 
-\begin{DoxyCompactList}\small\item\em To facilitate access of data in this class for \hyperlink{classHyperbolicLPSolver}{Hyperbolic\-L\-P\-Solver}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em To facilitate access of data in this class for \hyperlink{classHyperbolicLPSolver}{Hyperbolic\-L\-P\-Solver}. \end{DoxyCompactList}\item 
+\hypertarget{classParticleData_a37d38b9c8eb8b119aea3e7cc1b0b6373}{class \hyperlink{classParticleData_a37d38b9c8eb8b119aea3e7cc1b0b6373}{Hyperbolic\-L\-P\-Solver1\-D}}\label{classParticleData_a37d38b9c8eb8b119aea3e7cc1b0b6373}
+
+\begin{DoxyCompactList}\small\item\em To facilitate access of data in this class for \hyperlink{classHyperbolicLPSolver1D}{Hyperbolic\-L\-P\-Solver1\-D}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -179,6 +192,101 @@ The specified array length for particle data arrays such as x, y, and z-\/coordi
 \begin{DoxyNote}{Note}
 Capacity is a number larger than the total number of {\itshape all} types of particles 
 \end{DoxyNote}
+\hypertarget{classParticleData_a0571f782e53d0e83a6302a83508863dd}{\index{Particle\-Data@{Particle\-Data}!get\-D\-D1@{get\-D\-D1}}
+\index{get\-D\-D1@{get\-D\-D1}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-D\-D1}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-D\-D1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a0571f782e53d0e83a6302a83508863dd}
+
+
+Getter function of the array of divided difference of order 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of divided difference of order 1 
+\end{DoxyReturn}
+\hypertarget{classParticleData_a4107cd3e039402131b9c1c2b161a950e}{\index{Particle\-Data@{Particle\-Data}!get\-D\-D2\-Left@{get\-D\-D2\-Left}}
+\index{get\-D\-D2\-Left@{get\-D\-D2\-Left}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-D\-D2\-Left}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-D\-D2\-Left (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a4107cd3e039402131b9c1c2b161a950e}
+
+
+Getter function of the array of divided difference of order 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of divided difference of order 2 
+\end{DoxyReturn}
+\hypertarget{classParticleData_afdf161e6bf7c6a6ef8f7dd47cf34d20d}{\index{Particle\-Data@{Particle\-Data}!get\-D\-D2\-Right@{get\-D\-D2\-Right}}
+\index{get\-D\-D2\-Right@{get\-D\-D2\-Right}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-D\-D2\-Right}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-D\-D2\-Right (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_afdf161e6bf7c6a6ef8f7dd47cf34d20d}
+
+
+Getter function of the array of divided difference of order 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of divided difference of order 2 
+\end{DoxyReturn}
+\hypertarget{classParticleData_ad14c7643b2ef4a22bd717ee0353c5961}{\index{Particle\-Data@{Particle\-Data}!get\-D\-D3\-Left@{get\-D\-D3\-Left}}
+\index{get\-D\-D3\-Left@{get\-D\-D3\-Left}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-D\-D3\-Left}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-D\-D3\-Left (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_ad14c7643b2ef4a22bd717ee0353c5961}
+
+
+Getter function of the array of divided difference of order 3. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of divided difference of order 3 
+\end{DoxyReturn}
+\hypertarget{classParticleData_a82f4135bd88853cf26a79e7050760df5}{\index{Particle\-Data@{Particle\-Data}!get\-D\-D3\-Right@{get\-D\-D3\-Right}}
+\index{get\-D\-D3\-Right@{get\-D\-D3\-Right}!ParticleData@{Particle\-Data}}
+\subsubsection[{get\-D\-D3\-Right}]{\setlength{\rightskip}{0pt plus 5cm}const double$\ast$ const Particle\-Data\-::get\-D\-D3\-Right (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classParticleData_a82f4135bd88853cf26a79e7050760df5}
+
+
+Getter function of the array of divided difference of order 3. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer pointing to the array of divided difference of order 3 
+\end{DoxyReturn}
 \hypertarget{classParticleData_a60ceebcf0e4d76dfc5ce1a8f2875d735}{\index{Particle\-Data@{Particle\-Data}!get\-Dimension@{get\-Dimension}}
 \index{get\-Dimension@{get\-Dimension}!ParticleData@{Particle\-Data}}
 \subsubsection[{get\-Dimension}]{\setlength{\rightskip}{0pt plus 5cm}int Particle\-Data\-::get\-Dimension (

@@ -13,11 +13,15 @@ This class initializes the simulation.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classInitializer_ad2bebb491fabcaec13ae64528fcdbf49}{Initializer} (const std\-::string \&input\-File\-Name)
+\hyperlink{classInitializer_aa49080b548dcd5ef06d2fb5dedce46c5}{Initializer} (const std\-::string \&inputfile\-Name, const std\-::string \&debugfile\-Name=\char`\"{}debug\char`\"{}, bool if\-Debug=false)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 \hypertarget{classInitializer_add39a548b1e5405e938e786f069191e1}{\hyperlink{classInitializer_add39a548b1e5405e938e786f069191e1}{$\sim$\-Initializer} ()}\label{classInitializer_add39a548b1e5405e938e786f069191e1}
 
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classInitializer_a34db3aa329d059001e7debc85615ebf7}{get\-If\-Debug} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the boolean value on whether to print debug information. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classInitializer_a8453e187009cff7a59a915c80b2ddcf9}{get\-Debugfile\-Name} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the filename for printing debug information. \end{DoxyCompactList}\item 
 int \hyperlink{classInitializer_a4dcf0bde88ac4546d5bd514ccee9edd9}{get\-Num\-Threads} () const 
 \begin{DoxyCompactList}\small\item\em Getter function of the specified number of threads. \end{DoxyCompactList}\item 
 double \hyperlink{classInitializer_a9ceaeef9151ef04eec9869d87ef72fc9}{get\-Start\-Time} () const 
@@ -42,6 +46,10 @@ double \hyperlink{classInitializer_a29d827fbcc690011796160e9c372819c}{get\-Gravi
 \begin{DoxyCompactList}\small\item\em Getter function of the specified gravity value. \end{DoxyCompactList}\item 
 bool \hyperlink{classInitializer_abf444acdb91394def021a2f74ab5243f}{get\-Moving\-Box\-For\-Ghost\-Particle} () const 
 \begin{DoxyCompactList}\small\item\em Getter function of the specified boolean value on whether to update the bounding box of fluid objects. \end{DoxyCompactList}\item 
+bool \hyperlink{classInitializer_a0bc9d30df11bc117f92745faba61d35d}{get\-Use\-Limiter} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified boolean value on whether to use limiter or not. \end{DoxyCompactList}\item 
+double \hyperlink{classInitializer_a77fcb334d6948a0e6db3925227dc2dad}{get\-Threshold\-P} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the specified threshold value on pressure if limiter is used. \end{DoxyCompactList}\item 
 std\-::size\-\_\-t \hyperlink{classInitializer_a32b46cefcbeccae88af7a46bed5949ee}{get\-Max\-Neighbour\-Num} () const 
 \begin{DoxyCompactList}\small\item\em Getter function of the specified maximum number of neighbours of a particle. \end{DoxyCompactList}\item 
 std\-::size\-\_\-t \hyperlink{classInitializer_a67b441e77ae377f8f418d6c28afd8df1}{get\-Max\-Neighbour\-Num\-In\-One\-Dir} () const 
@@ -101,7 +109,9 @@ int $\ast$ \hyperlink{classInitializer_a8f419c10688793258e1359ea25683bca}{get\-O
 \hyperlink{classEOS}{E\-O\-S} $\ast$ \hyperlink{classInitializer_a20859e6765c50a0173b7f164c1962e6f}{get\-E\-O\-S} () const 
 \begin{DoxyCompactList}\small\item\em Getter function of the pointer to an object in the \hyperlink{classEOS}{E\-O\-S} family. \end{DoxyCompactList}\item 
 const std\-::vector$<$ \hyperlink{classBoundingBox}{Bounding\-Box} $\ast$ $>$ \& \hyperlink{classInitializer_ac7822b9561a21c40809738236b10bb91}{get\-Fluid\-Bounding\-Box} () const 
-\begin{DoxyCompactList}\small\item\em Getter function of the bounding boxes for the initialized fluid objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Getter function of the bounding boxes for the initialized fluid objects. \end{DoxyCompactList}\item 
+const std\-::vector$<$ std\-::string $>$ \& \hyperlink{classInitializer_ae0b5288020bb976927447d0da25a322c}{get\-Boundary\-Obj\-Types} () const 
+\begin{DoxyCompactList}\small\item\em Getter function of the types of the initialized boundary objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -131,13 +141,15 @@ Chen, Hsin-\/\-Chiang (\href{mailto:morrischen2008@gmail.com}{\tt morrischen2008
 Created on\-: 2014/06/01 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classInitializer_ad2bebb491fabcaec13ae64528fcdbf49}{\index{Initializer@{Initializer}!Initializer@{Initializer}}
+\hypertarget{classInitializer_aa49080b548dcd5ef06d2fb5dedce46c5}{\index{Initializer@{Initializer}!Initializer@{Initializer}}
 \index{Initializer@{Initializer}!Initializer@{Initializer}}
 \subsubsection[{Initializer}]{\setlength{\rightskip}{0pt plus 5cm}Initializer\-::\-Initializer (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{input\-File\-Name}
+\item[{const std\-::string \&}]{inputfile\-Name, }
+\item[{const std\-::string \&}]{debugfile\-Name = {\ttfamily \char`\"{}debug\char`\"{}}, }
+\item[{bool}]{if\-Debug = {\ttfamily false}}
 \end{DoxyParamCaption}
-)}}\label{classInitializer_ad2bebb491fabcaec13ae64528fcdbf49}
+)}}\label{classInitializer_aa49080b548dcd5ef06d2fb5dedce46c5}
 
 
 Constructor. 
@@ -172,6 +184,25 @@ Getter function of the number of {\itshape boundary} particles initialized.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The number of {\itshape boundary} particles initialized 
+\end{DoxyReturn}
+\hypertarget{classInitializer_ae0b5288020bb976927447d0da25a322c}{\index{Initializer@{Initializer}!get\-Boundary\-Obj\-Types@{get\-Boundary\-Obj\-Types}}
+\index{get\-Boundary\-Obj\-Types@{get\-Boundary\-Obj\-Types}!Initializer@{Initializer}}
+\subsubsection[{get\-Boundary\-Obj\-Types}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$std\-::string$>$\& Initializer\-::get\-Boundary\-Obj\-Types (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_ae0b5288020bb976927447d0da25a322c}
+
+
+Getter function of the types of the initialized boundary objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of strings of boundary object types 
 \end{DoxyReturn}
 \hypertarget{classInitializer_ae9ff8c4f144f3dee1b14ec72e7c59157}{\index{Initializer@{Initializer}!get\-Boundary\-Start\-Index@{get\-Boundary\-Start\-Index}}
 \index{get\-Boundary\-Start\-Index@{get\-Boundary\-Start\-Index}!Initializer@{Initializer}}
@@ -255,6 +286,25 @@ The specified length such that if the distance between two particles coming from
 \begin{DoxyNote}{Note}
 The length is only valid in simulations with more than one fluid object. If two particles are in contact, they can start to take neighbours from the other fluid object. The length is specified as a number less than the initial inter-\/particle spacing 
 \end{DoxyNote}
+\hypertarget{classInitializer_a8453e187009cff7a59a915c80b2ddcf9}{\index{Initializer@{Initializer}!get\-Debugfile\-Name@{get\-Debugfile\-Name}}
+\index{get\-Debugfile\-Name@{get\-Debugfile\-Name}!Initializer@{Initializer}}
+\subsubsection[{get\-Debugfile\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Initializer\-::get\-Debugfile\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a8453e187009cff7a59a915c80b2ddcf9}
+
+
+Getter function of the filename for printing debug information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The filename for printing debug information 
+\end{DoxyReturn}
 \hypertarget{classInitializer_ad336449c8ae4f0866aaed2b6ecb8b47b}{\index{Initializer@{Initializer}!get\-Dimension@{get\-Dimension}}
 \index{get\-Dimension@{get\-Dimension}!Initializer@{Initializer}}
 \subsubsection[{get\-Dimension}]{\setlength{\rightskip}{0pt plus 5cm}int Initializer\-::get\-Dimension (
@@ -428,6 +478,25 @@ Getter function of the specified gravity value.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The specified gravity value 
+\end{DoxyReturn}
+\hypertarget{classInitializer_a34db3aa329d059001e7debc85615ebf7}{\index{Initializer@{Initializer}!get\-If\-Debug@{get\-If\-Debug}}
+\index{get\-If\-Debug@{get\-If\-Debug}!Initializer@{Initializer}}
+\subsubsection[{get\-If\-Debug}]{\setlength{\rightskip}{0pt plus 5cm}bool Initializer\-::get\-If\-Debug (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a34db3aa329d059001e7debc85615ebf7}
+
+
+Getter function of the boolean value on whether to print debug information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The boolean value on whether to print debug information 
 \end{DoxyReturn}
 \hypertarget{classInitializer_a70bb3a249925f55e2e1581bdc960b260}{\index{Initializer@{Initializer}!get\-Init\-Particle\-Spacing@{get\-Init\-Particle\-Spacing}}
 \index{get\-Init\-Particle\-Spacing@{get\-Init\-Particle\-Spacing}!Initializer@{Initializer}}
@@ -874,6 +943,28 @@ Getter function of the specified simulation physical start time.
 \begin{DoxyReturn}{Returns}
 The specified simulation physical start time specified 
 \end{DoxyReturn}
+\hypertarget{classInitializer_a77fcb334d6948a0e6db3925227dc2dad}{\index{Initializer@{Initializer}!get\-Threshold\-P@{get\-Threshold\-P}}
+\index{get\-Threshold\-P@{get\-Threshold\-P}!Initializer@{Initializer}}
+\subsubsection[{get\-Threshold\-P}]{\setlength{\rightskip}{0pt plus 5cm}double Initializer\-::get\-Threshold\-P (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a77fcb334d6948a0e6db3925227dc2dad}
+
+
+Getter function of the specified threshold value on pressure if limiter is used. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified threshold value on pressure if limiter is used 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+We only have 1\-D limiter now 
+\end{DoxyNote}
 \hypertarget{classInitializer_ada300941810ded357d47b0f60c78eff9}{\index{Initializer@{Initializer}!get\-Tree\-Depth@{get\-Tree\-Depth}}
 \index{get\-Tree\-Depth@{get\-Tree\-Depth}!Initializer@{Initializer}}
 \subsubsection[{get\-Tree\-Depth}]{\setlength{\rightskip}{0pt plus 5cm}int Initializer\-::get\-Tree\-Depth (
@@ -893,6 +984,28 @@ Getter function of the specified tree depth for the octree neighbour search algo
 \begin{DoxyReturn}{Returns}
 The specified tree depth for the octree neighbour search algorithm 
 \end{DoxyReturn}
+\hypertarget{classInitializer_a0bc9d30df11bc117f92745faba61d35d}{\index{Initializer@{Initializer}!get\-Use\-Limiter@{get\-Use\-Limiter}}
+\index{get\-Use\-Limiter@{get\-Use\-Limiter}!Initializer@{Initializer}}
+\subsubsection[{get\-Use\-Limiter}]{\setlength{\rightskip}{0pt plus 5cm}bool Initializer\-::get\-Use\-Limiter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classInitializer_a0bc9d30df11bc117f92745faba61d35d}
+
+
+Getter function of the specified boolean value on whether to use limiter or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specified boolean value on whether to use limiter or not 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+We only have 1\-D limiter now 
+\end{DoxyNote}
 \hypertarget{classInitializer_a519f3ec935a5c159c564d7877ee5b9a9}{\index{Initializer@{Initializer}!get\-Velocity\-U@{get\-Velocity\-U}}
 \index{get\-Velocity\-U@{get\-Velocity\-U}!Initializer@{Initializer}}
 \subsubsection[{get\-Velocity\-U}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ Initializer\-::get\-Velocity\-U (

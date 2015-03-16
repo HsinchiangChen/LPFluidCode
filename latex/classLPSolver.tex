@@ -41,7 +41,13 @@ virtual double \hyperlink{classLPSolver_a1b6395ab3455bfb747bb3fd55301ddce}{get\-
 \begin{DoxyCompactList}\small\item\em Maximum sound speed of fluid particles at a time step. \end{DoxyCompactList}\item 
 \hypertarget{classLPSolver_ac1107221647c560b5133225491b682bd}{double \hyperlink{classLPSolver_ac1107221647c560b5133225491b682bd}{m\-\_\-f\-Max\-Fluid\-Velocity}}\label{classLPSolver_ac1107221647c560b5133225491b682bd}
 
-\begin{DoxyCompactList}\small\item\em Maximum absolute value velocity of fluid particles at a time step. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Maximum absolute value velocity of fluid particles at a time step. \end{DoxyCompactList}\item 
+\hypertarget{classLPSolver_a7206c069515e95ea570c190e4ae31607}{bool \hyperlink{classLPSolver_a7206c069515e95ea570c190e4ae31607}{m\-\_\-i\-If\-Debug}}\label{classLPSolver_a7206c069515e95ea570c190e4ae31607}
+
+\begin{DoxyCompactList}\small\item\em if true then print debug info \end{DoxyCompactList}\item 
+\hypertarget{classLPSolver_a4147d2dc298f44e0382a8851b013045e}{std\-::ofstream \hyperlink{classLPSolver_a4147d2dc298f44e0382a8851b013045e}{debug}}\label{classLPSolver_a4147d2dc298f44e0382a8851b013045e}
+
+\begin{DoxyCompactList}\small\item\em output information for debugging \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -129,7 +135,7 @@ The minimum inter-\/particle distance among all fluid particles
 
 The black box main Lagrangian particle solver for one iteration step. 
 
-The method should be called in the context of \hyperlink{classTimeController}{Time\-Controller}
+The method should be called by \hyperlink{classTimeController}{Time\-Controller} repeated at every time step
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -144,7 +150,7 @@ The function should always return 0 because all exceptions should be handled ins
 \end{DoxyWarning}
 
 
-Implemented in \hyperlink{classHyperbolicLPSolver_a8f8cbda5f22f052208cdc4d4d03dc567}{Hyperbolic\-L\-P\-Solver}.
+Implemented in \hyperlink{classHyperbolicLPSolver1D_adeec127b2c0b1eee8670f45caa582bd7}{Hyperbolic\-L\-P\-Solver1\-D}, and \hyperlink{classHyperbolicLPSolver_a8f8cbda5f22f052208cdc4d4d03dc567}{Hyperbolic\-L\-P\-Solver}.
 
 
 
